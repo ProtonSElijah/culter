@@ -1,0 +1,55 @@
+.App {
+    margin: 0;
+    width: 100vmin;
+    min-height: 100vmax;
+    text-align: center;
+}
+
+.Swipe-main {
+    min-height: 88.5vmax;
+}
+
+.Swipe-content {
+    width: 95vmin;
+    height: 85vmax;
+    margin: 2vmax 2.5vmin;
+    flex-direction: column;
+    display: flex;
+}
+
+.Swipe-content-up {
+    height: 70.8vmax;
+    background: #ccc;
+    border-radius: 7.5vmin 7.5vmin 0 0;
+}
+
+.Swipe-content-down {
+    text-align: center;
+    height: 14.2vmax;
+    border-radius: 0 0 7.5vmin 7.5vmin;
+    background: #ddd;
+}
+
+.Swipe-content-down p{
+    font-size: 3vmax;
+    padding: 0;
+    margin: 0;
+}
+
+#Font-bold {
+    font-size: 4vmax;
+    padding-top: 1.4vmax;
+}
+
+.App-header
+ {
+     height: 6.5vmax;
+     background-color: #282c34;
+     color: white;
+}
+
+.App-bottom {
+    height: 5vmax;
+    background-color: #282c34;
+    color: white;
+}
