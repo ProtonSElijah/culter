@@ -6,12 +6,12 @@
 }
 
 .Swipe-main {
-    min-height: 88.5vmax;
+    min-height: 84.7vmax;
 }
 
 .Swipe-content {
     width: 95vmin;
-    height: 85vmax;
+    height: 81.2vmax;
     margin: 2vmax 2.5vmin;
     flex-direction: column;
     display: flex;

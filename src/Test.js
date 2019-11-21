@@ -7,8 +7,6 @@ import "./Test.css";
 
 const Test = () => {
 
-    document.body.style.margin = 0;
-
     return (
         <div className="App">
           <div className="App-header">
@@ -21,7 +19,7 @@ const Test = () => {
                   </div>
                   <div className="Swipe-content-down">
                       <p id="Font-bold"><b>Элджей</b></p>
-                      <p>4 апреля</p>
+                      <p>8 апреля</p>
                       <p>20 человек</p>
                   </div>
                </div>
