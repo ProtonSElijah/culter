@@ -7,20 +7,22 @@ class MatchedPerson extends Component {
     }
 
     renderPlaces = () => {
-        return this.props.commonPlaces.map(
-            place =>
-                <div> {place} </div>
-        )
+        let str = this.props.commonPlaces.toString();
+        if (str.length > 25)
+            str = str.slice(0, 25) + "..";
+        return str;
     };
 
     render() {
         return (
-            <div>
-                <img src={this.props.imgLink} alt={"Person photo"} width={200} height={200}/>
-                <div>{this.props.name}</div>
-                <div>Общих мест: <b>{this.props.commonPlacesCount}</b></div>
-                <div>
-                    {this.renderPlaces()}
+            <div className="Person">
+                <img src={this.props.imgLink} alt={"Person photo"}/>
+                <div className="PersonData">
+                    <div className="PersonName"><b>{this.props.name}</b></div>
+                    <div className="PersonPlacesCount">Общих мест: <b>{this.props.commonPlacesCount}</b></div>
+                    <div className="PersonPlacesList">
+                        {this.renderPlaces()}
+                    </div>
                 </div>
             </div>
         );

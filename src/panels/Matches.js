@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {CellButton} from "@vkontakte/vkui";
 import MatchedPerson from "../Components/MatchedPerson";
+import '../ResetBrowser.css';
+import './Matches.css';
 
 class Matches extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            isSelectedFriends: true,
+            isSelectedFriends: true, //показывает выбранную вкладку
             matchedPeople: [
                 {
                     imgLink: "https://sun9-17.userapi.com/c841322/v841322634/36d69/IrmwPwh6tlI.jpg",
@@ -46,40 +48,47 @@ class Matches extends Component {
     renderMatchedPeople = () => {
       return this.state.matchedPeople.map(
           person =>
-            <li>
-                {<MatchedPerson imgLink={person.imgLink}
-                               name={person.name}
-                               commonPlacesCount={person.commonPlacesCount}
-                               commonPlaces={person.commonPlaces}
+            <div>
+                {<MatchedPerson
+                    imgLink={person.imgLink}
+                    name={person.name}
+                    commonPlacesCount={person.commonPlacesCount}
+                    commonPlaces={person.commonPlaces}
                 />}
-            </li>
+            </div>
       )
     };
 
     renderMatchedFriends = () =>{
         return this.state.matchedFriends.map(
             person =>
-                <li>
-                    {<MatchedPerson imgLink={person.imgLink}
-                                    name={person.name}
-                                    commonPlacesCount={person.commonPlacesCount}
-                                    commonPlaces={person.commonPlaces}
+                <div className="PersonList">
+                    {<MatchedPerson
+                        imgLink={person.imgLink}
+                        name={person.name}
+                        commonPlacesCount={person.commonPlacesCount}
+                        commonPlaces={person.commonPlaces}
                     />}
-                </li>
+                </div>
         )
     };
 
     render() {
         return (
-            <div>
-                <button onClick={()=> this.onSwitchClick(true)} >
-                    2 Совпали
-                </button>
-                <button onClick={()=> this.onSwitchClick(false)} >
-                    1 друг
-                </button>
-                <div>
+            <div className="PanelMatches">
+                <div className="App-header">
+                    <p>Matches</p>
+                </div>
+               <div className="NavigationButtons">
+                    <button onClick={()=> this.onSwitchClick(true)}> 2 Совпали </button>
+                    <button onClick={()=> this.onSwitchClick(false)}> 1 друг </button>
+                </div>
+                <div className="ListContainer">
                     {this.state.isSelectedFriends ? this.renderMatchedPeople() : this.renderMatchedFriends()}
+                </div>
+                <div className="App-bottom">
+                    <div className="BottomLeftButton"><div></div></div>
+                    <div className="BottomRightButton"><div></div></div>
                 </div>
             </div>
         );

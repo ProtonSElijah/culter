@@ -4,7 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import connect from '@vkontakte/vk-connect';
 //import App from './App';
-import Test from './Test';
+//import Test from './Test';
+import Matches from './panels/Matches';
 // import registerServiceWorker from './sw';
 
 // Init VK  Mini App
@@ -16,4 +17,4 @@ connect.send('VKWebAppInit');
 // Подробнее про сервис воркеры можно почитать тут — https://vk.cc/8MHpmT
 // registerServiceWorker();
 
-ReactDOM.render(<Test />, document.getElementById('root'));
+ReactDOM.render(<Matches />, document.getElementById('root'));
