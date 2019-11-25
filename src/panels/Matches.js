@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {CellButton} from "@vkontakte/vkui";
+import Header from "../Components/Header";
 import ScrollMatchedList from "../Components/ScrollMatchedList";
 import MatchedList from "../Components/MatchedList";
+import Bottom from "../Components/Bottom";
 import '../ResetBrowser.css';
 import './Matches.css';
 
@@ -110,35 +112,50 @@ class Matches extends Component {
 
     onSwitchClick = (value) => {
         this.setState({isSelectedFriends:value});
+        document.getElementById("matchedButton")
+            .classList.toggle("NavigationButtonsActive", value);
+        document.getElementById("friendsButton")
+            .classList.toggle("NavigationButtonsActive", !value);
+        document.getElementById("matchedButton")
+            .classList.toggle("NavigationButtonsDefault", !value);
+        document.getElementById("friendsButton")
+            .classList.toggle("NavigationButtonsDefault", value);
     };
 
+    //Хедер Header.js
+    //Скролл список ScrollMatchedList.js с параметром list, в который передаётся текущий список пользователей
     //Список метчей генерируется в MatchedList.js с параметром list, в который передаётся текущий список пользователей
     //Ячейка пользователя из списка метчей генерируется в MatchedPerson.js
-    //Скролл список генерируется в ScrollMatchedList.js с параметром list, в который передаётся текущий список пользователей
+    //Боттом Bottom.js
     render() {
         return (
             <div className="PanelMatches">
-                <div className="App-header">
-                    <p>Matches</p>
-                </div>
-               <div className="NavigationButtons">
-                    <button onClick={()=> this.onSwitchClick(true)}> 2 Совпали </button>
-                    <button onClick={()=> this.onSwitchClick(false)}> 1 друг </button>
+                <Header />
+                <div className="NavigationButtons">
+                    <button
+                        id="matchedButton"
+                        className="NavigationButtonsActive"
+                        onClick={()=> this.onSwitchClick(true)}>
+                            {this.state.matchedPeople.length} совпали
+                    </button>
+                    <button
+                        id="friendsButton"
+                        className="NavigationButtonsDefault"
+                        onClick={()=> this.onSwitchClick(false)}>
+                            {this.state.matchedFriends.length} друг
+                        </button>
                 </div>
                 <div className="ScrollContainer">
                     <ScrollMatchedList list={this.state.isSelectedFriends
                             ? this.state.matchedPeople
                             : this.state.matchedFriends} />
-                </div>
+                    </div>
                 <div className="ListContainer">
                     <MatchedList list = {this.state.isSelectedFriends
                             ? this.state.matchedPeople
                             : this.state.matchedFriends} />
-                </div>
-                <div className="App-bottom">
-                    <div className="BottomLeftButton"><div></div></div>
-                    <div className="BottomRightButton"><div></div></div>
-                </div>
+                    </div>
+                <Bottom />
             </div>
         );
     }
