@@ -100,8 +100,13 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 0;
     margin-bottom: calc(5vmax/7);
     height: 10vmax;
+}
+
+.Person:last-child {
+    margin-bottom: 0;
 }
 
 .Person img {
