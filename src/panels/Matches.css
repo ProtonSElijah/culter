@@ -1,7 +1,17 @@
+/*
+Хедер 9%
+Кнопки-переключатели 7%
+Скролл - 12%
+Лист - 65%
+Боттом - 7%
+*/
+body {
+    overflow: hidden;
+}
 /*хедер*/
 .App-header
  {
-    height: 8.5vmax;
+    height: 9vmax;
     background-color: #282c34;
     color: white;
      font-size: 4vmax;
@@ -16,7 +26,7 @@
 /*навигационные кнопки*/
 .NavigationButtons {
     width: 95vmin;
-    height: 6.7vmax;
+    height: 7vmax;
     margin: 0 2.5vmin;
     display: flex;
     flex-direction: row;
@@ -26,7 +36,7 @@
 
 .NavigationButtons button {
     width: 47.5vmin;
-    height: 4vmax;
+    height: 4.3vmax;
     color: black;
     background: #9D9C9B;
     font-weight: 700;
@@ -55,10 +65,48 @@
 }
 /*конец навигационных кнопок*/
 
-.ListContainer {
-    height: 78vmax;
+/*скролл список*/
+.ScrollContainer {
+    height: 12vmax;
+    width: 95vmin;
     margin: 0 2.5vmin;
+    display: flex;
+    flex-direction: row;
+    font-family: Arial;
+    margin-bottom: 1vmax;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
+
+.ScrollContainerContent {
+    height: 12vmax;
+}
+
+.ScrollPerson {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(95vmin/4);
+}
+
+.ScrollPeopleImg {
+    height: 9vmax;
+    width: 9vmax;
+    border-radius: 11vmin;
+}
+/*конец скролл списка*/
+
+/* Список метчей */
+.ListContainer {
+    height: 65vmax;
+    margin: 0 2.5vmin;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.ListContainer::-webkit-scrollbar { width: 0;}
 
 .Person {
     border-radius: 5vmin;
@@ -67,14 +115,14 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 0.75vmax;
-    height: 9vmax;
+    height: 10vmax;
 }
 
 .Person img {
     border-radius: 10vmin;
     margin-left: 0.5vmax;
-    width: 8vmax;
-    height: 8vmax;
+    width: 8.5vmax;
+    height: 8.5vmax;
 }
 
 .PersonData {
@@ -89,11 +137,11 @@
     font-family: Franklin Gothic Medium;
     letter-spacing: 0.5vmin;
 }
-
+/*конец списка метчей*/
 
 /*низ*/
 .App-bottom {
-    height: 6.8vmax;
+    height: 7vmax;
     width: 100vmin;
     display: flex;
     flex-direction: row;
@@ -101,7 +149,7 @@
 
 .BottomLeftButton,
 .BottomRightButton {
-    height: 6.8vmax;
+    height: 7vmax;
     width: 50vmin;
     background: white;
     text-decoration: none;
