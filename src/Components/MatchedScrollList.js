@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScrollMatchedList = ({list}) => {
+const MatchedScrollList = ({list}) => {
     return list.map(
         person =>
         <div className="ScrollContainerContent">
@@ -12,4 +12,4 @@ const ScrollMatchedList = ({list}) => {
     );
 }
 
-export default ScrollMatchedList;
+export default MatchedScrollList;
