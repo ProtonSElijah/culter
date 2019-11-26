@@ -1,10 +1,4 @@
-/*
-Хедер 9%
-Кнопки-переключатели 7%
-Скролл - 12%
-Лист - 65%
-Боттом - 7%
-*/
+/*хедер и боттом 16% от высоты*/
 body {
     overflow: hidden;
 }
@@ -86,7 +80,7 @@ body {
 
 /* Список метчей */
 .ListContainer {
-    height: 65vmax;
+    height: 64vmax;
     margin: 0 2.5vmin;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -101,7 +95,7 @@ body {
     flex-direction: row;
     align-items: center;
     margin-top: 0;
-    margin-bottom: calc(5vmax/7);
+    margin-bottom: calc(4vmax/7);
     height: 10vmax;
 }
 

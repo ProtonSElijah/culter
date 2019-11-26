@@ -1,0 +1,52 @@
+/*хедер и боттом 16% от высоты*/
+body {
+    overflow: hidden;
+}
+
+.Swipe-main {
+    min-height: 70vmax;
+}
+
+.Swipe-content {
+    width: 95vmin;
+    height: 80vmax;
+    margin: 2vmax 2.5vmin;
+    flex-direction: column;
+    display: flex;
+}
+
+.Swipe-content-up {
+    height: 66vmax;
+    background: #ccc;
+    border-radius: 7.5vmin 7.5vmin 0 0;
+}
+
+.Swipe-content-down {
+    text-align: center;
+    height: 14vmax;
+    border-radius: 0 0 7.5vmin 7.5vmin;
+    background: #ddd;
+}
+
+.Swipe-content-down p{
+    font-size: 3vmax;
+    padding: 0;
+    margin: 0;
+}
+
+#Font-bold {
+    font-size: 4vmax;
+    padding-top: 1.4vmax;
+}
+
+.Swipe-content-up img {
+    width: 100%;
+    border-radius: 7.5vmin 7.5vmin 0 0;
+    object-fit: cover;
+}
+
+.el {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

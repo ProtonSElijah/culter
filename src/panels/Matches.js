@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
 import Header from "../Components/Header";
 import MatchedNavigationButtons from "../Components/MatchedNavigationButtons"
@@ -11,13 +11,15 @@ import './panelsStyle/Matches.css';
 import matchedPeople from "../Components/ExportMatchedPeople";
 import matchedFriends from "../Components/ExportMatchedFriends";
 
-const Matches = () => {
+import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
+
+const Matches = ({id, go}) => {
     const [isSelectedFriends, setIsSelectedFriends] = useState("true");
 
     const onSwitchClick = (value) => {setIsSelectedFriends(value);}
 
     return (
-        <div id="SwipeScreen" className="PanelMatches">
+        <Panel id={id}>
             <Header />
             <MatchedNavigationButtons
                 stateList = {isSelectedFriends}
@@ -36,8 +38,8 @@ const Matches = () => {
                             ? matchedPeople
                             : matchedFriends} />
                 </div>
-            <Bottom />
-        </div>
+            <Bottom go={go} left="" right=""/>
+        </Panel>
     );
 }
 

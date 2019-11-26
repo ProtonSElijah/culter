@@ -28,3 +28,7 @@ table {
     border-spacing: 0;
 }
 /* end reset browser styles */
+
+.View__header {
+    visibility: hidden;
+}

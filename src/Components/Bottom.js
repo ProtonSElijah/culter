@@ -1,19 +1,11 @@
 import React from 'react';
 import './ComponentsStyle/Bottom.css';
 
-const Bottom = () => {
-    const goLeft = e => {
-        alert("Left");
-    };
-
-    const goRight = e => {
-        alert("Right");
-    };
-
+const Bottom = ({go, left, right}) => {
     return (
         <div className="App-bottom">
-            <div className="BottomLeftButton" onClick={goLeft}><div></div></div>
-            <div className="BottomRightButton" onClick={goRight}><div></div></div>
+            <div className="BottomLeftButton" onClick={go} data-to={left}><div></div></div>
+            <div className="BottomRightButton" onClick={go} data-to={right}><div></div></div>
         </div>
     );
 }

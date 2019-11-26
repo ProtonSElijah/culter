@@ -6,7 +6,9 @@ import connect from '@vkontakte/vk-connect';
 //import App from './App';
 //import Test from './Test';
 import Matches from './panels/Matches';
+import Swipe from './panels/Swipe';
 // import registerServiceWorker from './sw';
+import AppCulter from './AppCulter';
 
 // Init VK  Mini App
 connect.send('VKWebAppInit');
@@ -17,4 +19,4 @@ connect.send('VKWebAppInit');
 // Подробнее про сервис воркеры можно почитать тут — https://vk.cc/8MHpmT
 // registerServiceWorker();
 
-ReactDOM.render(<Matches />, document.getElementById('root'));
+ReactDOM.render(<AppCulter />, document.getElementById('root'));
