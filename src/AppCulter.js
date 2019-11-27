@@ -6,8 +6,11 @@ import Personal from './panels/Personal';
 import Swipe from './panels/Swipe';
 import Matches from './panels/Matches';
 
+import '@vkontakte/vkui/dist/vkui.css';
+import './ResetBrowser.css';
+
 const AppCulter = () => {
-    const [activePanel, setActivePanel] = useState('matches');
+    const [activePanel, setActivePanel] = useState('swipe');
 
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);

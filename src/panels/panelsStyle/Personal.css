@@ -1,0 +1,41 @@
+/*хедер и боттом 16% от высоты*/
+
+#personal {
+    max-height: 100vmax;
+}
+
+.PersonalContent {
+    height: 84vmax;
+    display: flex;
+    flex-direction: column;
+}
+
+.PersonalBlock {
+    height: 50vmax;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.PersonalData {
+    height: 100%;
+    width: 80vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PersonalData img {
+    height: 30vmax;
+    width: 30vmax;
+    border-radius: 100vmin;
+    object-fit: cover;
+}
+
+.PersonalData p {
+    margin-top: 2vmax;
+    font-size: 10vmin;
+    font-family: Franklin Gothic Medium;
+    letter-spacing: 0.5vmin;
+}

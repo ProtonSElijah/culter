@@ -1,10 +1,10 @@
 import React from 'react';
 import './ComponentsStyle/Header.css';
 
-const Header = () => {
+const Header = ({text}) => {
     return (
         <div className="App-header">
-            <p>Matches</p>
+            <p>{text.toUpperCase()}</p>
         </div>
     );
 }

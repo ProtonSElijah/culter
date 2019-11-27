@@ -13,7 +13,7 @@ const Swipe = ({id, go}) => {
 
     return (
         <Panel id={id}>
-            <Header />
+            <Header text={id}/>
 
             <div className="Swipe-main">
                <div className="Swipe-content">
@@ -28,7 +28,7 @@ const Swipe = ({id, go}) => {
                </div>
             </div>
 
-            <Bottom go={go} left="" right=""/>
+            <Bottom go={go} left="personal" right="matches"/>
         </Panel>
     );
 };

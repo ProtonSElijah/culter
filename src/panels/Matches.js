@@ -20,7 +20,7 @@ const Matches = ({id, go}) => {
 
     return (
         <Panel id={id}>
-            <Header />
+            <Header text={id}/>
             <MatchedNavigationButtons
                 stateList = {isSelectedFriends}
                 stateRefresh = {onSwitchClick}
@@ -38,7 +38,7 @@ const Matches = ({id, go}) => {
                             ? matchedPeople
                             : matchedFriends} />
                 </div>
-            <Bottom go={go} left="" right=""/>
+            <Bottom go={go} left="swipe" right="personal"/>
         </Panel>
     );
 }
