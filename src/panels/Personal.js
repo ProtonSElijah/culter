@@ -14,6 +14,11 @@ const Personal = ({id, go}) => {
             document.getElementById(id).children[0].style.paddingTop = 0;
         }
         refreshHeaderVK();
+        async function fetchData() {
+            const user = await connect.sendPromise('VKWebAppGetUserInfo');
+            setUser(user);
+        }
+        fetchData();
     }, []);
 
     return (
