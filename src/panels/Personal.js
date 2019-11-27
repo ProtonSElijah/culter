@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import connect from '@vkontakte/vk-connect';
 import './panelsStyle/Personal.css';
 
@@ -11,16 +10,14 @@ const Personal = ({id, go}) => {
     const [fetchedUser, setUser] = useState(null);
 
     useEffect(() => {
-        async function fetchData() {
-            const user = await connect.sendPromise('VKWebAppGetUserInfo');
-            setUser(user);
+        async function refreshHeaderVK() {
+            document.getElementById(id).children[0].style.paddingTop = 0;
         }
-        fetchData();
+        refreshHeaderVK();
     }, []);
 
     return (
         <Panel id={id}>
-
             <Header text={id}></Header>
             <div className="PersonalContent">
                 <div className="PersonalBlock">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -10,6 +10,13 @@ const Swipe = ({id, go}) => {
     const goTouch = e => {
         alert("Работает " + e.type);
     };
+
+    useEffect(() => {
+        async function refreshHeaderVK() {
+            document.getElementById(id).children[0].style.paddingTop = 0;
+        }
+        refreshHeaderVK();
+    }, []);
 
     return (
         <Panel id={id}>
