@@ -71,31 +71,71 @@ class Card extends Component {
     };
 
     render() {
-        let style = this.state.isSwiping
+        let contentStyle = this.state.isSwiping
             ?
-                {"margin-left": this.state.xLength*1.3 + "px",
-                "margin-top": this.state.yLength*0.9 + "px",
-                "transform": "rotate(" + -this.state.xLength / 20 + "deg)"}
+                this.getStyleForSwipe()
             :
                 {"margin": "2vmax 2.5vmin"};
+        let labelStyles = this.getStyleForLabels();
+        let opacityStyle = {"opacity": (1 -  Math.abs(this.state.xLength) / 400)};
         return (
             <div className="Swipe-main">
                 <div className="Swipe-content"
-                     style={style}
+                     style={contentStyle}
                      onTouchMove={this.onTouch}
                      onTouchEnd={this.onTouchEnd}
                      onTouchStart={this.onTouchStart}>
                     <div className="Swipe-content-up">
-                        <img className="el" src="https://img.muz1.tv/img/2018-01-15/fmt_94_124_foto-1.jpg"/>
+                        <div className="Swipe-content-up-labels">
+                            <div style={labelStyles.right} className="Swipe-right-label choice-label">
+                                Круто
+                            </div>
+                            <div style={labelStyles.left} className="Swipe-left-label choice-label">
+                                Отстой
+                            </div>
+                        </div>
+                        <img style={opacityStyle} className="el" src="https://img.muz1.tv/img/2018-01-15/fmt_94_124_foto-1.jpg"/>
                     </div>
-                    <div className="Swipe-content-down">
+                    <div style={opacityStyle} className="Swipe-content-down" >
                         <p id="Font-bold"><b>Элджей</b></p>
-                        <p>11 апреля</p>
-                        <p>20 человек</p>
+                        <p><b>4</b> апреля, суббота, <b>20:00</b></p>
+                        <p><b>20</b> человек идёт - <b>1</b> друг</p>
                     </div>
                 </div>
             </div>
         );
+    }
+
+    getStyleForSwipe = () => {
+        return {
+            "position": "absolute",
+            "left": this.state.xLength*1.3 + "px",
+            "top": this.state.yLength*0.9 + "px",
+            "transform": "rotate(" + -this.state.xLength / 20 + "deg)",
+
+        };
+    };
+
+    getCoords = ({elem}) => {
+        let box = elem.getBoundingClientRect();
+
+        return {
+            top: box.top + window.pageYOffset,
+            left: box.left + window.pageXOffset
+        };
+
+    };
+
+    getStyleForLabels = () => {
+        let opacity = Math.min(Math.abs(this.state.xLength) / 50,1) ;
+        return {
+            left :{
+                opacity: this.state.xLength < 0 ? opacity : 0
+            },
+            right :{
+                opacity: this.state.xLength > 0 ? opacity : 0
+            }
+        }
     }
 }
 

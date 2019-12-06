@@ -47,6 +47,37 @@
     object-fit: cover;
 }
 
+.choice-label{
+    font-family: Roboto, serif;
+    font-size: 6vmax;
+}
+
+.Swipe-content-up-labels{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.Swipe-left-label{
+    margin-right: 1vmax;
+    margin-top: 3vmin;
+    float: left;
+    color: palevioletred;
+    border: palevioletred solid 0.5vmax;
+    border-radius: 1vmax;
+}
+
+.Swipe-right-label{
+    color: palegreen;
+    margin-left: 1vmax;
+    margin-top: 3vmin;
+    border: palegreen solid 0.5vmax;
+    border-radius: 1vmax;
+    float: right;
+}
+
 .el {
     display: block;
     width: 100%;
