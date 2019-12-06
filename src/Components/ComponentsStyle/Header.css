@@ -2,10 +2,10 @@
 .App-header
  {
     height: 9vmax;
-    background-color: #282c34;
-    color: white;
+    background-color: white;
+    color: #ff4f4f;;
      font-size: 4vmax;
-     font-family: Georgia;
+     font-family: Roboto;
     align-content: center;
     display: flex;
     justify-content: center;

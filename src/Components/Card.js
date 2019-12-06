@@ -77,7 +77,7 @@ class Card extends Component {
             :
                 {"margin": "2vmax 2.5vmin"};
         let labelStyles = this.getStyleForLabels();
-        let opacityStyle = {"opacity": (1 -  Math.abs(this.state.xLength) / 400)};
+        let opacityStyle = {"opacity": (1 -  Math.abs(this.state.xLength) / 500)};
         return (
             <div className="Swipe-main">
                 <div className="Swipe-content"
