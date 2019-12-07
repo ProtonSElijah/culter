@@ -5,6 +5,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
 import './panelsStyle/Swipe.css';
 import Card from "../Components/Card";
+import Deck from "../Components/Deck";
 
 const Swipe = ({id, go}) => {
 
@@ -19,7 +20,7 @@ const Swipe = ({id, go}) => {
         <Panel id={id}>
             <Header text={id}/>
 
-            <Card/>
+            <Deck/>
 
             <Bottom go={go} left="personal" right="matches"/>
         </Panel>

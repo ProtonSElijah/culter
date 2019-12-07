@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import '../panels/panelsStyle/Swipe.css';
+import './ComponentsStyle/Card.css'
+import CardView from "./CardView";
 
 class Card extends Component {
     constructor(props) {
@@ -12,16 +13,25 @@ class Card extends Component {
             xDifference: 0,
             startX: 0,
             startY: 0,
-            xLength: 0,
-            yLength: 0,
+            horizontalShift: 0,
+            verticalShift: 0,
             isFirstTouch: true,
-            isSwiping: false
-        }
+            isSwiping: false,
+            height: 0
+
+        };
+        this.viewRef = React.createRef();
     }
 
-    onTouch = (e) => {
-        e.stopPropagation();
-        let touches = e.changedTouches;
+    componentDidMount = () => {
+        this.setState({
+            height: this.viewRef.current.clientHeight
+        })
+    };
+
+    onTouch = (event) => {  
+        event.stopPropagation();
+        let touches = event.changedTouches;
         for (let i = 0; i < touches.length; i++){
             let lastX = this.state.currentX;
             let lastY = this.state.currentY;
@@ -34,32 +44,34 @@ class Card extends Component {
             };
 
             if (this.state.isFirstTouch){
+                updatedState.isUpperTouch = touches[i].clientY > this.state.height / 2;
                 updatedState.isFirstTouch = false;
             } else {
+
                 let xDifference = touches[i].clientX - lastX;
                 updatedState.xDifference = xDifference;
-                updatedState.xLength = this.state.xLength + xDifference;
+                updatedState.horizontalShift = this.state.horizontalShift + xDifference;
                 let yDifference = touches[i].clientY - lastY;
                 updatedState.yDifference = yDifference;
-                updatedState.yLength = this.state.yLength + yDifference;
+                updatedState.verticalShift = this.state.verticalShift + yDifference;
             }
 
             this.setState(updatedState);
         }
     };
 
-    onTouchStart = (e) => {
-        e.preventDefault();
+    onTouchStart = (event) => {
+        event.preventDefault();
         this.setState({
             isFirstTouch: true,
             isSwiping: true
         });
     };
-    onTouchEnd = (e) => {
+    onTouchEnd = (event) => {
         this.setState(
             {
-                xLength: 0,
-                yLength: 0,
+                horizontalShift: 0,
+                verticalShift: 0,
                 currentX: 0,
                 currentY: 0,
                 prevX: 0,
@@ -71,71 +83,20 @@ class Card extends Component {
     };
 
     render() {
-        let contentStyle = this.state.isSwiping
-            ?
-                this.getStyleForSwipe()
-            :
-                {"margin": "2vmax 2.5vmin"};
-        let labelStyles = this.getStyleForLabels();
-        let opacityStyle = {"opacity": (1 -  Math.abs(this.state.xLength) / 500)};
+
         return (
-            <div className="Swipe-main">
-                <div className="Swipe-content"
-                     style={contentStyle}
-                     onTouchMove={this.onTouch}
-                     onTouchEnd={this.onTouchEnd}
-                     onTouchStart={this.onTouchStart}>
-                    <div className="Swipe-content-up">
-                        <div className="Swipe-content-up-labels">
-                            <div style={labelStyles.right} className="Swipe-right-label choice-label">
-                                Круто
-                            </div>
-                            <div style={labelStyles.left} className="Swipe-left-label choice-label">
-                                Отстой
-                            </div>
-                        </div>
-                        <img style={opacityStyle} className="el" src="https://img.muz1.tv/img/2018-01-15/fmt_94_124_foto-1.jpg"/>
-                    </div>
-                    <div style={opacityStyle} className="Swipe-content-down" >
-                        <p id="Font-bold"><b>Элджей</b></p>
-                        <p><b>4</b> апреля, суббота, <b>20:00</b></p>
-                        <p><b>20</b> человек идёт - <b>1</b> друг</p>
-                    </div>
-                </div>
+            <div ref={this.viewRef}
+                className="Swipe-main"
+                 onTouchMove={this.onTouch}
+                 onTouchEnd={this.onTouchEnd}
+                 onTouchStart={this.onTouchStart}>
+                <CardView
+                          isSwiping={this.state.isSwiping}
+                          horizontalShift={this.state.horizontalShift}
+                          verticalShift={this.state.verticalShift}
+                          isUpperTouch={this.state.isUpperTouch}/>
             </div>
         );
-    }
-
-    getStyleForSwipe = () => {
-        return {
-            "position": "absolute",
-            "left": this.state.xLength*1.3 + "px",
-            "top": this.state.yLength*0.9 + "px",
-            "transform": "rotate(" + -this.state.xLength / 20 + "deg)",
-
-        };
-    };
-
-    getCoords = ({elem}) => {
-        let box = elem.getBoundingClientRect();
-
-        return {
-            top: box.top + window.pageYOffset,
-            left: box.left + window.pageXOffset
-        };
-
-    };
-
-    getStyleForLabels = () => {
-        let opacity = Math.min(Math.abs(this.state.xLength) / 50,1) ;
-        return {
-            left :{
-                opacity: this.state.xLength < 0 ? opacity : 0
-            },
-            right :{
-                opacity: this.state.xLength > 0 ? opacity : 0
-            }
-        }
     }
 }
 
