@@ -52,7 +52,7 @@
     margin: 0 2.5vmin;
     display: flex;
     flex-direction: row;
-    font-family: Arial;
+    font-family: "Roboto";
     margin-bottom: 1vmax;
 
     overflow-x: scroll;
@@ -121,7 +121,7 @@
     flex-direction: column;
     justify-content: space-between;
      font-size: 4.2vmin;
-    font-family: Franklin Gothic Medium;
+    font-family: "Roboto";
     letter-spacing: 0.5vmin;
 }
 
