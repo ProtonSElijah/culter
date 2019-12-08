@@ -25,7 +25,7 @@ class Card extends Component {
 
     componentDidMount = () => {
         this.setState({
-            height: this.viewRef.current.clientHeight
+            height: 300
         })
     };
 
