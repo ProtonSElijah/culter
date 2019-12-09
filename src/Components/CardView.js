@@ -4,10 +4,10 @@ import './ComponentsStyle/CardView.css'
 const CardView = ({horizontalShift, verticalShift, isSwiping, isUpperTouch}) => {
     let rotationCoefficient = isUpperTouch ? -1 : 1;
     let contentStyle = isSwiping ? {
-            "position": "absolute",
-            "left": horizontalShift + "px",
-            "top": verticalShift + "px",
-            "transform": "rotate(" + rotationCoefficient * horizontalShift / 15 + "deg)",
+
+
+            "transform": "rotate(" + rotationCoefficient * horizontalShift / 15 + "deg)" +
+                " translate("+ horizontalShift + "px, "+ verticalShift + "px)",
         } : {
             "transition" : "0.5s"
         };
