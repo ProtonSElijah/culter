@@ -25,7 +25,7 @@ class Card extends Component {
 
     componentDidMount = () => {
         this.setState({
-            height: 300
+            height: 600
         })
     };
 
