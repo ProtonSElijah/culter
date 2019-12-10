@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ComponentsStyle/CardView.css'
 
-const CardView = ({horizontalShift, verticalShift, isSwiping, isUpperTouch}) => {
+const CardView = ({horizontalShift, verticalShift, isSwiping, isUpperTouch, cardInfo}) => {
     let rotationCoefficient = isUpperTouch ? -1 : 1;
     let contentStyle = isSwiping ? {
 
@@ -35,10 +35,10 @@ const CardView = ({horizontalShift, verticalShift, isSwiping, isUpperTouch}) => 
                     </div>
                 </div>
                 <img className="Swipe-content-up-image"
-                     src="https://img.muz1.tv/img/2018-01-15/fmt_94_124_foto-1.jpg"/>
+                     src={cardInfo.image}/>
             </div>
             <div className="Swipe-content-down">
-                <p id="Font-bold"><b>Элджей</b></p>
+                <p id="Font-bold"><b>{cardInfo.name}</b></p>
                 <p><b>4</b> апреля, суббота, <b>20:00</b></p>
                 <p><b>20</b> человек идёт - <b>1</b> друг</p>
             </div>

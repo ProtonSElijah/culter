@@ -8,24 +8,18 @@ class Card extends Component {
         this.state = {
             currentX: 0,
             currentY: 0,
-            prevX: 0,
-            prevY: 0,
-            xDifference: 0,
-            startX: 0,
-            startY: 0,
             horizontalShift: 0,
             verticalShift: 0,
             isFirstTouch: true,
             isSwiping: false,
             height: 0
-
         };
         this.viewRef = React.createRef();
     }
 
     componentDidMount = () => {
         this.setState({
-            height: 600
+            height: 650
         })
     };
 
@@ -33,12 +27,10 @@ class Card extends Component {
         event.stopPropagation();
         let touches = event.changedTouches;
         for (let i = 0; i < touches.length; i++){
-            let lastX = this.state.currentX;
-            let lastY = this.state.currentY;
+            let previousX = this.state.currentX;
+            let previousY = this.state.currentY;
 
             let updatedState = {
-                prevX: lastX,
-                prevY: lastY,
                 currentX: touches[i].clientX,
                 currentY: touches[i].clientY,
             };
@@ -47,13 +39,8 @@ class Card extends Component {
                 updatedState.isUpperTouch = touches[i].clientY > this.state.height / 2;
                 updatedState.isFirstTouch = false;
             } else {
-
-                let xDifference = touches[i].clientX - lastX;
-                updatedState.xDifference = xDifference;
-                updatedState.horizontalShift = this.state.horizontalShift + xDifference;
-                let yDifference = touches[i].clientY - lastY;
-                updatedState.yDifference = yDifference;
-                updatedState.verticalShift = this.state.verticalShift + yDifference;
+                updatedState.horizontalShift = this.state.horizontalShift + touches[i].clientX - previousX;
+                updatedState.verticalShift = this.state.verticalShift + touches[i].clientY - previousY;
             }
 
             this.setState(updatedState);
@@ -74,12 +61,9 @@ class Card extends Component {
                 verticalShift: 0,
                 currentX: 0,
                 currentY: 0,
-                prevX: 0,
-                prevY: 0,
-                xDifference: 0,
-                yDifference: 0,
                 isSwiping: false
             });
+        this.props.onSwipeEnd();
     };
 
     render() {
@@ -91,6 +75,7 @@ class Card extends Component {
                  onTouchEnd={this.onTouchEnd}
                  onTouchStart={this.onTouchStart}>
                 <CardView
+                          cardInfo={this.props.cardInfo}
                           isSwiping={this.state.isSwiping}
                           horizontalShift={this.state.horizontalShift}
                           verticalShift={this.state.verticalShift}
