@@ -6,6 +6,5 @@ export const cardsData = [
     {
         image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fg1.nh.ee%2Fimages%2Fpix%2F1000x654%2FX2I8LbSwrgs%2F2e48b5c9908dc782cc-85708367.jpg&f=1&nofb=1",
         name:"Баста"
-
     }
 ];
