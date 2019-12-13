@@ -8,7 +8,7 @@ import './panelsStyle/Personal.css';
 
 const Personal = ({id, go}) => {
     const [fetchedUser, setUser] = useState(null);
-
+    const [token, setToken] = useState(null);
     useEffect(() => {
         async function refreshHeaderVK() {
             document.getElementById(id).children[0].style.paddingTop = 0;
@@ -18,7 +18,15 @@ const Personal = ({id, go}) => {
             const user = await connect.sendPromise('VKWebAppGetUserInfo');
             setUser(user);
         }
+
+        async function fetchToken(){
+            let tokenObject = await connect.sendPromise("VKWebAppGetAuthToken", {
+                "app_id": 7197573, "scope": "friends"});
+            setToken(tokenObject.access_token);
+        }
+        getIvents();
         fetchData();
+        fetchToken();
     }, []);
 
     return (
@@ -33,6 +41,12 @@ const Personal = ({id, go}) => {
                            {fetchedUser.first_name ? fetchedUser.first_name : ""}
                            {fetchedUser.last_name ? (" " + fetchedUser.last_name) : "" }
                            </p>
+                            {
+                                token &&
+                                <p>
+                                    {token}
+                                </p>
+                            }
                         </div>
                         }
                 </div>
