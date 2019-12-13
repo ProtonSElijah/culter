@@ -24,7 +24,7 @@ class Card extends Component {
     };
 
     onTouch = (event) => {  
-        event.stopPropagation();
+
         let touches = event.changedTouches;
         for (let i = 0; i < touches.length; i++){
             let previousX = this.state.currentX;
@@ -51,19 +51,47 @@ class Card extends Component {
         event.preventDefault();
         this.setState({
             isFirstTouch: true,
-            isSwiping: true
+            isSwiping: true,
+            isTransition: false
         });
     };
     onTouchEnd = (event) => {
-        this.setState(
-            {
-                horizontalShift: 0,
-                verticalShift: 0,
-                currentX: 0,
-                currentY: 0,
-                isSwiping: false
+        if (Math.abs(this.state.horizontalShift) > 100){
+            this.setState({
+                isTransition: true
             });
-        this.props.onSwipeEnd();
+            this.setState(
+                {
+                    horizontalShift: this.state.horizontalShift * 5,
+                    verticalShift: this.state.verticalShift * 5,
+                });
+
+
+            let thisHandler = this;
+            setTimeout(function () {
+                thisHandler.setState({
+                    isTransition: false,
+                    horizontalShift: 0,
+                    verticalShift: 0,
+                    currentX: 0,
+                    currentY: 0,
+                });
+                thisHandler.props.onSwipeEnd();
+            },400);
+
+
+        } else {
+            this.setState(
+                {
+                    horizontalShift: 0,
+                    verticalShift: 0,
+                    currentX: 0,
+                    currentY: 0,
+                    isSwiping: false,
+                    isTransition: true
+                });
+        }
+
     };
 
     render() {
@@ -79,7 +107,8 @@ class Card extends Component {
                           isSwiping={this.state.isSwiping}
                           horizontalShift={this.state.horizontalShift}
                           verticalShift={this.state.verticalShift}
-                          isUpperTouch={this.state.isUpperTouch}/>
+                          isUpperTouch={this.state.isUpperTouch}
+                            isTransition={this.state.isTransition}/>
             </div>
         );
     }

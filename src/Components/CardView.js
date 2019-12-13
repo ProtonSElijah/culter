@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import './ComponentsStyle/CardView.css'
 
-const CardView = ({horizontalShift, verticalShift, isSwiping, isUpperTouch, cardInfo}) => {
+const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, cardInfo,isTransition}) => {
     let rotationCoefficient = isUpperTouch ? -1 : 1;
-    let contentStyle = isSwiping ? {
-
-
+    let contentStyle = {
             "transform": "rotate(" + rotationCoefficient * horizontalShift / 15 + "deg)" +
                 " translate("+ horizontalShift + "px, "+ verticalShift + "px)",
-        } : {
-            "transition" : "0.5s"
+            "transition" : isTransition ? "0.2s" : ""
         };
+
+    if (hasMargin) {
+        contentStyle["margin-top"] =  "-80vmax";
+    }
 
     let labelOpacity = Math.min(Math.abs(horizontalShift) / 50,1);
     let labelStyles = {
