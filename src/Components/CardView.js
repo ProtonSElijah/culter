@@ -36,10 +36,10 @@ const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, card
                     </div>
                 </div>
                 <img className="Swipe-content-up-image"
-                     src={cardInfo.image}/>
+                     src={cardInfo.images[0].image}/>
             </div>
             <div className="Swipe-content-down">
-                <p id="Font-bold"><b>{cardInfo.name}</b></p>
+                <p id="Font-bold"><b>{cardInfo.short_title}</b></p>
                 <p><b>4</b> апреля, суббота, <b>20:00</b></p>
                 <p><b>20</b> человек идёт - <b>1</b> друг</p>
             </div>

@@ -57,6 +57,7 @@ class Card extends Component {
     };
     onTouchEnd = (event) => {
         if (Math.abs(this.state.horizontalShift) > 100){
+            let isLike= this.state.horizontalShift > 0;
             this.setState({
                 isTransition: true
             });
@@ -76,7 +77,7 @@ class Card extends Component {
                     currentX: 0,
                     currentY: 0,
                 });
-                thisHandler.props.onSwipeEnd();
+                thisHandler.props.onSwipeEnd(isLike);
             },400);
 
 

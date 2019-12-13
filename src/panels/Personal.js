@@ -24,7 +24,6 @@ const Personal = ({id, go}) => {
                 "app_id": 7197573, "scope": "friends"});
             setToken(tokenObject.access_token);
         }
-        getIvents();
         fetchData();
         fetchToken();
     }, []);
