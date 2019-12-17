@@ -78,7 +78,7 @@ class Card extends Component {
                     currentY: 0,
                 });
                 thisHandler.props.onSwipeEnd(isLike);
-            },400);
+            },200);
 
 
         } else {
