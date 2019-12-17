@@ -10,7 +10,7 @@ class Deck extends Component {
         super(props);
         this.state = {
             currentIndex: 0
-        }
+        };
         this.onSwipeEnd = this.onSwipeEnd.bind(this);
     }
     
@@ -36,12 +36,13 @@ class Deck extends Component {
     render() {
 
         let events = this.props.events;
+        let nextCard = this.nextIndex() === 0 ? this.props.bufferedEvents[0] : this.props.events[this.nextIndex()];
         return (
 
                 events.length !== 0 ?
                 <div>
                     <Card cardInfo={this.props.events[this.state.currentIndex]} onSwipeEnd={this.onSwipeEnd}/>
-                    <CardView hasMargin={true} cardInfo={this.props.events[this.nextIndex()]}/>
+                    <CardView hasMargin={true} cardInfo={nextCard}/>
                 </div>
                     : <div>
 
