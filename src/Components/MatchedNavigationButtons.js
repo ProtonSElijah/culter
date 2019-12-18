@@ -18,7 +18,7 @@ const MatchedNavigationButtons = ({stateList, stateRefresh, matchedList, friends
                 id="matchedButton"
                 className="NavigationButtonsActive"
                 onClick={onSwitchMatched}>
-                    {matchedList.length} совпали
+                    {matchedList.length} людей
             </button>
             <button
                 id="friendsButton"

@@ -7,6 +7,7 @@ const MatchedScrollList = ({list}) => {
             <div className="ScrollPerson">
                 <img src={person.imgLink} alt="Person" className="ScrollPeopleImg"/>
                 <div>{person.firstName}</div>
+                <div className="Cirle">{person.commonPlacesCount}</div>
             </div>
         </div>
     );

@@ -4,11 +4,28 @@
     max-height: 100vmax;
 }
 
+/*Заголовок навигационных кнопок*/
+.Head {
+    display: flex;
+    align-items: flex-start;
+    width: 86vmin;
+    height: 3.5vmax;
+    margin: 0 7vmin;
+    padding-top: 1vmax;
+    padding-bottom: 1vmax;
+    border-top: 0.15vmin solid #ff4f4d;
+    font-family: Roboto;
+    font-size: 3vmax;
+    font-weight: bold;
+}
+/*конец навигационных кнопок*/
+
 /*навигационные кнопки*/
 .NavigationButtons {
     width: 95vmin;
-    height: 7vmax;
+    height: 4.45vmax;
     margin: 0 2.5vmin;
+    margin-bottom: 1.5vmax;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -18,7 +35,6 @@
 .NavigationButtons button {
     width: 47.5vmin;
     height: 4.3vmax;
-    color: black;
     font-weight: 700;
     text-decoration: none;
     user-select: none;
@@ -26,22 +42,28 @@
     transition: 0.2s;
     box-shadow: none;
     border: none;
+    border-top: 0.15vmax solid grey;
+    border-bottom: 0.15vmax solid grey;
 }
 
 .NavigationButtonsActive {
     background: white;
+    color: #ff4f4d;
 }
 
 .NavigationButtonsDefault {
-    background: #9D9C9B;
+    background: #ff4f4d;
+    color: white;
 }
 
 .NavigationButtons button:first-child {
     border-radius: 4vmin 0 0 4vmin;
+    border-left: 0.15vmax solid grey;
 }
 
 .NavigationButtons button:last-child {
     border-radius: 0 4vmin 4vmin 0;
+    border-right: 0.15vmax solid grey;
 }
 /*конец навигационных кнопок*/
 
@@ -69,6 +91,22 @@
     justify-content: center;
     align-items: center;
     width: calc(95vmin/4);
+    position: relative;
+}
+
+.Cirle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100vmax;
+    position: absolute;
+    right: 4vmin;
+    bottom: 4.5vmin;
+    width: 5vmin;
+    height: 5vmin;
+    background: #ff4f4d;
+    color: white;
+    font-size: 2vmax;
 }
 
 .ScrollPeopleImg {
@@ -81,32 +119,41 @@
 
 /* Список метчей */
 .ListContainer {
-    height: 64vmax;
+    height: 54vmax;
     margin: 0 2.5vmin;
     overflow-x: hidden;
     overflow-y: scroll;
+    margin-bottom: 0.5vmax;
 }
 
 .ListContainer::-webkit-scrollbar { width: 0;}
 
+.PersonContainer:last-child .Person{
+
+}
+
+.PersonContainer:last-child .BottomLine {
+
+}
+
 .Person {
-    border-radius: 5vmin;
-    border: 0.15vmin solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 0;
-    margin-bottom: calc(4vmax/7);
-    height: 10vmax;
+    height: 13vmax;
 }
 
-.Person:last-child {
-    margin-bottom: 0;
+.BottomLine {
+    margin: 0vmax 7.5vmin;
+    width: 80vmin;
+    padding: 0.15vmin;
+    background: #ff4f4d;
 }
 
 .Person img {
     border-radius: 10vmin;
-    margin-left: 0.5vmax;
+    margin-left: 0.5vmin;
     width: 8.5vmax;
     height: 8.5vmax;
     object-fit: cover;
