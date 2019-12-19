@@ -33,3 +33,7 @@ body {
     overflow: hidden;
 }
 
+#panels div:first-child {
+    padding-top: 0;
+}
+

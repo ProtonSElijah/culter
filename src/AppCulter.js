@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import connect from '@vkontakte/vk-connect';
-import View from '@vkontakte/vkui/dist/components/View/View';
+import { View, Gallery, Panel } from '@vkontakte/vkui';
 
 import Personal from './panels/Personal';
 import Swipe from './panels/Swipe';
@@ -11,7 +11,7 @@ import './ResetBrowser.css';
 import {authorize} from "./Api/Auth";
 
 const AppCulter = () => {
-    const [activePanel, setActivePanel] = useState('swipe');
+    const [activePanel, setActivePanel] = useState('panels');
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(null);
 
@@ -43,9 +43,17 @@ const AppCulter = () => {
     }, []);
     return (
         <View activePanel={activePanel}>
-            <Personal id='personal' go={go}/>
-            <Swipe user={user} id='swipe' go={go}/>
-            <Matches id='matches' go={go}/>
+            <Panel id="panels">
+            <Gallery
+                slideWidth="100%"
+                style={{ height: "100vmax" }}
+                bullets="dark"
+              >
+                <Personal id='personal' go={go}/>
+                <Swipe user={user} id='swipe' go={go}/>
+                <Matches id='matches' go={go}/>
+              </Gallery>
+            </Panel>
         </View>
     );
 }
