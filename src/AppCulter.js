@@ -50,7 +50,7 @@ const AppCulter = () => {
                 style={{ height: "100vmax" }}
                 bullets="dark"
                 slideIndex={slideIndex}
-                onChange={index => setSlideIndex(index)}
+                onChange={index => {if (index !== slideIndex) setSlideIndex(index)}}
               >
                 <Personal id='personal' go={go}/>
                 <Swipe user={user} id='swipe' go={go}/>
