@@ -29,6 +29,7 @@ const Matches = ({id, go}) => {
     return (
         <Panel id={id}>
             <Header text={id}/>
+            <div className="HeaderLine"></div>
             <div className="Head">
                 <p>Новые совпадения</p>
             </div>
@@ -43,7 +44,7 @@ const Matches = ({id, go}) => {
                             ? matchedPeople
                             : matchedFriends} />
             </div>
-            <div className="Head">
+            <div className="Head Dialog">
                 <p>Диалоги</p>
             </div>
             <div className="ListContainer">

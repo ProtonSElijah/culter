@@ -37,3 +37,10 @@ body {
     padding-top: 0;
 }
 
+.HeaderLine {
+    margin: 0vmax 9vmin;
+    width: 82vmin;
+    padding: 0.15vmin;
+    background: #ff4f4d;
+}
+

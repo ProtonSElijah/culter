@@ -31,6 +31,7 @@ const Personal = ({id, go}) => {
     return (
         <Panel id={id}>
             <Header text={id}></Header>
+            <div className="HeaderLine"></div>
             <div className="PersonalContent">
                 <div className="PersonalBlock">
                        {fetchedUser &&
