@@ -11,6 +11,8 @@ import {fetchEvents} from "../Api/Events";
 const Swipe = ({id, go, user}) => {
     const [events, setEvents] = useState([]);
     const [bufferedEvents, setBufferedEvents] = useState([]);
+    const [people, setPeople] = useState([]);
+    const [isUserSet, setIsUserSet] = useState(false);
 
     useEffect(() => {
         async function refreshHeaderVK() {
@@ -19,9 +21,11 @@ const Swipe = ({id, go, user}) => {
         refreshHeaderVK();
 
         async function loadAndUpdateEvents(){
-            let newEventsResponse = await fetchEvents("81818650");
-            let newEvents = await newEventsResponse.json();
-            setEvents(newEvents);
+            if (user != null){
+                let newEventsResponse = await fetchEvents(user.id);
+                let newEvents = await newEventsResponse.json();
+                setEvents(newEvents);
+            }
         }
         loadAndUpdateEvents();
 

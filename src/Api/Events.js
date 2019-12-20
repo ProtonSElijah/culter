@@ -9,3 +9,11 @@ export async function fetchEvents(userId)  {
         method: "GET",
     });
 }
+
+export async function fetchCategories(){
+    let url = config.url + "/category/all";
+
+    return await fetch(url, {
+        method: "GET",
+    });
+}

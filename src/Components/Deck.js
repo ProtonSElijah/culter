@@ -33,6 +33,9 @@ class Deck extends Component {
     nextIndex = () => {
         return this.state.currentIndex === 9 ? 0 : this.state.currentIndex + 1;
     };
+    changeDeck = () => {
+
+    };
     render() {
 
         let events = this.props.events;
@@ -41,7 +44,9 @@ class Deck extends Component {
 
                 events.length !== 0 ?
                 <div>
-                    <Card cardInfo={this.props.events[this.state.currentIndex]} onSwipeEnd={this.onSwipeEnd}/>
+                    <Card changeDeck={this.changeDeck}
+                          cardInfo={this.props.events[this.state.currentIndex]}
+                          onSwipeEnd={this.onSwipeEnd}/>
                     <CardView hasMargin={true} cardInfo={nextCard}/>
                 </div>
                     : <div>

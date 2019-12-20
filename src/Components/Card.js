@@ -12,16 +12,8 @@ class Card extends Component {
             verticalShift: 0,
             isFirstTouch: true,
             isSwiping: false,
-            height: 0
         };
-        this.viewRef = React.createRef();
     }
-
-    componentDidMount = () => {
-        this.setState({
-            height: 650
-        })
-    };
 
     onTouch = (event) => {  
 
@@ -36,7 +28,7 @@ class Card extends Component {
             };
 
             if (this.state.isFirstTouch){
-                updatedState.isUpperTouch = touches[i].clientY > this.state.height / 2;
+                updatedState.isUpperTouch = touches[i].clientY > 300;
                 updatedState.isFirstTouch = false;
             } else {
                 updatedState.horizontalShift = this.state.horizontalShift + touches[i].clientX - previousX;
@@ -82,15 +74,20 @@ class Card extends Component {
 
 
         } else {
-            this.setState(
-                {
-                    horizontalShift: 0,
-                    verticalShift: 0,
-                    currentX: 0,
-                    currentY: 0,
-                    isSwiping: false,
-                    isTransition: true
-                });
+            if (this.state.horizontalShift > 300){
+                this.props.changeDeck();
+            }  else {
+                this.setState(
+                    {
+                        horizontalShift: 0,
+                        verticalShift: 0,
+                        currentX: 0,
+                        currentY: 0,
+                        isSwiping: false,
+                        isTransition: true
+                    });
+            }
+
         }
 
     };
@@ -98,8 +95,7 @@ class Card extends Component {
     render() {
 
         return (
-            <div ref={this.viewRef}
-                className="Swipe-main"
+            <div className="Swipe-main"
                  onTouchMove={this.onTouch}
                  onTouchEnd={this.onTouchEnd}
                  onTouchStart={this.onTouchStart}>
