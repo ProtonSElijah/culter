@@ -50,13 +50,13 @@
 }
 
 .NavigationButtonsActive {
-    background: white;
-    color: #ff4f4d;
+    background: #ff4f4d;
+    color: white;
 }
 
 .NavigationButtonsDefault {
-    background: #ff4f4d;
-    color: white;
+    background: white;
+    color: #ff4f4d;
 }
 
 .NavigationButtons button:first-child {
