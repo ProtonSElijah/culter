@@ -14,6 +14,7 @@ const AppCulter = () => {
     const [activePanel, setActivePanel] = useState('panels');
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(null);
+    const [slideIndex, setSlideIndex] = useState(1);
 
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
@@ -48,6 +49,8 @@ const AppCulter = () => {
                 slideWidth="100%"
                 style={{ height: "100vmax" }}
                 bullets="dark"
+                slideIndex={slideIndex}
+                onChange={index => setSlideIndex(index)}
               >
                 <Personal id='personal' go={go}/>
                 <Swipe user={user} id='swipe' go={go}/>
