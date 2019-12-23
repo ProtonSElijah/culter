@@ -1,30 +1,7 @@
 import React, {useState} from 'react';
 
 const MatchedList = ({list}) => {
-    const text = "Я о моём последнем сообщении";
-
     return list.map(
-        person =>
-        <div className="PersonContainer">
-            <div className="Person" key={person.key}>
-                <img src={person.imgLink} alt={"Person photo"}/>
-                <div className="PersonData">
-                    <div className="PersonName"><b>{person.firstName + " " + person.lastName}</b></div>
-                    {text.length > 26 &&
-                        <div className="PersonPlacesList">
-                            {text.slice(0, 26) + ".."}
-                        </div>}
-                    {!(text.length > 26) &&
-                        <div className="PersonPlacesList">
-                            {text}
-                        </div>}
-                </div>
-            </div>
-            <div className="BottomLine"></div>
-        </div>
-    );
-
-   /* return list.map(
         person =>
             <div className="Person" key={person.key}>
                 <img src={person.imgLink} alt={"Person photo"}/>
@@ -41,7 +18,7 @@ const MatchedList = ({list}) => {
                         </div>}
                 </div>
             </div>
-    );*/
+    );
 }
 
 
