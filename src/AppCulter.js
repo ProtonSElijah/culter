@@ -46,17 +46,9 @@ const AppCulter = () => {
     return (
         <View activePanel={activePanel}>
             <Panel id="panels">
-            <Gallery
-                slideWidth="100%"
-                style={{ height: "100vmax" }}
-                bullets="dark"
-                slideIndex={slideIndex}
-                onChange={index => {if (index !== slideIndex) setSlideIndex(index)}}
-              >
                 <Personal id='personal' go={go}/>
                 <Swipe user={user} id='swipe' go={go}/>
                 <Matches id='matches' go={go}/>
-              </Gallery>
             </Panel>
         </View>
     );

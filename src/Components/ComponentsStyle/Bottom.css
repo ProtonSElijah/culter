@@ -6,12 +6,6 @@
     flex-direction: row;
 }
 
-.App-bottom {
-    visibility: hidden;
-    height: 0;
-    width: 0;
-}
-
 .BottomLeftButton,
 .BottomRightButton {
     height: 7vmax;
