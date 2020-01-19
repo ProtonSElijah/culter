@@ -14,14 +14,9 @@ class Card extends Component {
             isSwiping: false,
             height: 0
         };
-        this.viewRef = React.createRef();
+        this.animatePick = this.animatePick.bind(this);
+        this.resetCard = this.resetCard.bind(this);
     }
-
-    componentDidMount = () => {
-        this.setState({
-            height: 650
-        })
-    };
 
     onTouch = (event) => {  
 
@@ -36,7 +31,7 @@ class Card extends Component {
             };
 
             if (this.state.isFirstTouch){
-                updatedState.isUpperTouch = touches[i].clientY > this.state.height / 2;
+                updatedState.isUpperTouch = touches[i].clientY > 300;
                 updatedState.isFirstTouch = false;
             } else {
                 updatedState.horizontalShift = this.state.horizontalShift + touches[i].clientX - previousX;
@@ -55,28 +50,37 @@ class Card extends Component {
             isTransition: false
         });
     };
+
+    animatePick = () => {
+        // Задаём сначала транзитивность, а затем перемещаем карточку по вектору движения
+        this.setState({
+            isTransition: true
+        });
+        this.setState({
+            horizontalShift: this.state.horizontalShift * 5,
+            verticalShift: this.state.verticalShift * 5,
+        });
+    };
+
+    resetCard = () => {
+        this.setState({
+            isTransition: false,
+            horizontalShift: 0,
+            verticalShift: 0,
+            currentX: 0,
+            currentY: 0,
+        });
+    };
+
     onTouchEnd = (event) => {
         if (Math.abs(this.state.horizontalShift) > 100){
             let isLike= this.state.horizontalShift > 0;
-            this.setState({
-                isTransition: true
-            });
-            this.setState(
-                {
-                    horizontalShift: this.state.horizontalShift * 5,
-                    verticalShift: this.state.verticalShift * 5,
-                });
 
+            this.animatePick();
 
             let thisHandler = this;
             setTimeout(function () {
-                thisHandler.setState({
-                    isTransition: false,
-                    horizontalShift: 0,
-                    verticalShift: 0,
-                    currentX: 0,
-                    currentY: 0,
-                });
+                this.resetCard();
                 thisHandler.props.onSwipeEnd(isLike);
             },400);
 
@@ -95,10 +99,12 @@ class Card extends Component {
 
     };
 
+
+
     render() {
 
         return (
-            <div ref={this.viewRef}
+            <div
                 className="Swipe-main"
                  onTouchMove={this.onTouch}
                  onTouchEnd={this.onTouchEnd}
