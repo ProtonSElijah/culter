@@ -79,8 +79,8 @@ class Card extends Component {
             this.animatePick();
 
             let thisHandler = this;
-            setTimeout(function () {
-                this.resetCard();
+            setTimeout(() => {
+                thisHandler.resetCard();
                 thisHandler.props.onSwipeEnd(isLike);
             },400);
 
