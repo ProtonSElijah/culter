@@ -13,18 +13,19 @@ const Swipe = ({id, go, user}) => {
     const [bufferedEvents, setBufferedEvents] = useState([]);
 
     useEffect(() => {
+        async function loadAndUpdateEvents(){
+            let newEventsResponse = await fetchEvents(user.id);
+            let newEvents = await newEventsResponse.json();
+            setEvents(newEvents);
+        }
+        if (user != null) loadAndUpdateEvents();
+    }, [user]);
+
+    useEffect(() => {
         async function refreshHeaderVK() {
             document.getElementById(id).children[0].style.paddingTop = 0;
         }
         refreshHeaderVK();
-
-        async function loadAndUpdateEvents(){
-            let newEventsResponse = await fetchEvents("81818650");
-            let newEvents = await newEventsResponse.json();
-            setEvents(newEvents);
-        }
-        loadAndUpdateEvents();
-
     }, []);
 
 
