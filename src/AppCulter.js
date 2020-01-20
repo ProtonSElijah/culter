@@ -12,7 +12,6 @@ import {authorize} from "./Api/Auth";
 
 const AppCulter = () => {
     const [activePanel, setActivePanel] = useState('swipe');
-    const [token, setToken] = useState(null);
     const [user, setUser] = useState(null);
 
     const go = e => {
@@ -23,24 +22,12 @@ const AppCulter = () => {
         async function fetchData() {
             const user = await connect.sendPromise('VKWebAppGetUserInfo');
             setUser(user);
+            return user;
         }
-        async function fetchToken(){
-            let tokenObject = await connect.sendPromise("VKWebAppGetAuthToken", {
-                "app_id": 7197573, "scope": "friends"});
-            setToken(tokenObject.access_token);
-        }
-
-        fetchData().then(
-            _ => fetchToken().then(_ =>
-                authorize(user.id,token).then(
-                    data => console.log(data)
-                )
-            )
-        );
-        authorize("USER_ID","TOKEN")
-            .then(data => console.log(data));
-
+        fetchData().then(user => authorize(user.id));
     }, []);
+
+
     return (
         <View activePanel={activePanel}>
             <Personal id='personal' go={go}/>
