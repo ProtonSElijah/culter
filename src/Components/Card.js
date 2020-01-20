@@ -51,26 +51,7 @@ class Card extends Component {
         });
     };
 
-    animatePick = () => {
-        // Задаём сначала транзитивность, а затем перемещаем карточку по вектору движения
-        this.setState({
-            isTransition: true
-        });
-        this.setState({
-            horizontalShift: this.state.horizontalShift * 5,
-            verticalShift: this.state.verticalShift * 5,
-        });
-    };
 
-    resetCard = () => {
-        this.setState({
-            isTransition: false,
-            horizontalShift: 0,
-            verticalShift: 0,
-            currentX: 0,
-            currentY: 0,
-        });
-    };
 
     onTouchEnd = (event) => {
         if (Math.abs(this.state.horizontalShift) > 100){
@@ -99,7 +80,28 @@ class Card extends Component {
 
     };
 
+    // Перемещает карту в сторону свайпа
+    animatePick = () => {
+        // Задаём сначала транзитивность, а затем перемещаем карточку по вектору движения
+        this.setState({
+            isTransition: true
+        });
+        this.setState({
+            horizontalShift: this.state.horizontalShift * 5,
+            verticalShift: this.state.verticalShift * 5,
+        });
+    };
 
+    // Возвращает карту в начальное положение
+    resetCard = () => {
+        this.setState({
+            isTransition: false,
+            horizontalShift: 0,
+            verticalShift: 0,
+            currentX: 0,
+            currentY: 0,
+        });
+    };
 
     render() {
 
