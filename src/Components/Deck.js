@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Card from "./Card";
-import "./testData/exportDataCards"
-import {cardsData} from "./testData/exportDataCards";
 import CardView from "./CardView";
 import {setRate} from "../Api/Ratings";
 
@@ -10,7 +8,7 @@ class Deck extends Component {
         super(props);
         this.state = {
             currentIndex: 0
-        }
+        };
         this.onSwipeEnd = this.onSwipeEnd.bind(this);
     }
     
