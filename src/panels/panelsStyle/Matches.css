@@ -119,7 +119,7 @@
 
 /* Список метчей */
 .ListContainer {
-    height: 54vmax;
+    height: 53vmax;
     margin: 0 2.5vmin;
     overflow-x: hidden;
     overflow-y: scroll;

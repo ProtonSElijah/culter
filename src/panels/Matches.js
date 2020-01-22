@@ -52,7 +52,7 @@ const Matches = ({id, go}) => {
                             ? matchedPeople
                             : matchedFriends} />
             </div>
-            <Bottom go={go} left="swipe" right="personal"/>
+            <Bottom go={go}/>
         </Panel>
     );
 }

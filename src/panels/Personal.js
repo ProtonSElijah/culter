@@ -50,7 +50,7 @@ const Personal = ({id, go}) => {
                         }
                 </div>
             </div>
-            <Bottom go={go} left="matches" right="swipe"/>
+            <Bottom go={go}/>
         </Panel>
     );
 }
