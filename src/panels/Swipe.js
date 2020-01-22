@@ -44,7 +44,7 @@ const Swipe = ({id, go, user}) => {
             <Header text={id}/>
             <Deck events={events} loadEvents={loadEvents} updateEvents={updateEvents}/>
 
-            <Bottom go={go} left="personal" right="matches"/>
+            <Bottom go={go}/>
         </Panel>
     );
 };
