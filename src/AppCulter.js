@@ -9,6 +9,7 @@ import Matches from './panels/Matches';
 import '@vkontakte/vkui/dist/vkui.css';
 import './ResetBrowser.css';
 import {authorize} from "./Api/Auth";
+import config from "./Api/api_config.json";
 
 const AppCulter = () => {
     const [activePanel, setActivePanel] = useState('swipe');
@@ -20,11 +21,15 @@ const AppCulter = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const user = await connect.sendPromise('VKWebAppGetUserInfo');
-            setUser(user);
-            return user;
+            let fetchedUser = config.is_dev ?
+                {'id' : config.user_id} :
+                await connect.sendPromise('VKWebAppGetUserInfo');
+                
+            await authorize(fetchedUser.id);
+            setUser(fetchedUser);
         }
-        fetchData().then(user => authorize(user.id));
+        fetchData();
+    
     }, []);
 
 

@@ -11,17 +11,19 @@ const Swipe = ({id, go, user}) => {
     const [events, setEvents] = useState([]);
     const [bufferedEvents, setBufferedEvents] = useState([]);
 
+    async function loadEvents(){
+        let eventsResponse = await fetchEvents(user.id);
+        let newEvents = await eventsResponse.json();
+        
+        setEvents(events.concat(newEvents.content));
+    }
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        async function loadAndUpdateEvents(){
-            let eventsResponse = await fetchEvents(user.id);
-            console.log(user.id);
-            let newEvents = await eventsResponse.json();
-            setEvents(newEvents.content);
-        }
-        if (user != null) loadAndUpdateEvents();
+        if (user != null) 
+            loadEvents();
     }, [user]);
+
 
     useEffect(() => {
         async function refreshHeaderVK() {
@@ -30,17 +32,6 @@ const Swipe = ({id, go, user}) => {
         refreshHeaderVK();
     }, []);
 
-
-
-    async function loadEvents(){
-        let newEventsResponse = await fetchEvents(user.id);
-        let newEvents = await newEventsResponse.json();
-        setBufferedEvents(newEvents);
-    }
-
-    async function updateEvents(){
-        setEvents(bufferedEvents);
-    }
 
     return (
         <Panel id={id}>
