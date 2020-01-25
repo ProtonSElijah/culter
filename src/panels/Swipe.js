@@ -6,16 +6,20 @@ import '../ResetBrowser.css';
 import './panelsStyle/Swipe.css';
 import Deck from "../Components/Deck";
 import {fetchEvents} from "../Api/Events";
+import { setRate } from '../Api/Ratings';
 
 const Swipe = ({id, go, user}) => {
     const [events, setEvents] = useState([]);
-    const [bufferedEvents, setBufferedEvents] = useState([]);
 
     async function loadEvents(){
         let eventsResponse = await fetchEvents(user.id);
         let newEvents = await eventsResponse.json();
         
         setEvents(events.concat(newEvents.content));
+    }
+
+    async function setRateBy(eventId, isLike){
+        setRate(user.id, eventId, isLike );
     }
 
     // При получении user id, получаем ивенты
@@ -36,7 +40,7 @@ const Swipe = ({id, go, user}) => {
     return (
         <Panel id={id}>
             <Header text={id}/>
-            <Deck events={events} loadEvents={loadEvents} updateEvents={updateEvents}/>
+            <Deck events={events} loadEvents={loadEvents} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>
         </Panel>
