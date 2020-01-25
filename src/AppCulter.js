@@ -5,6 +5,7 @@ import View from '@vkontakte/vkui/dist/components/View/View';
 import Personal from './panels/Personal';
 import Swipe from './panels/Swipe';
 import Matches from './panels/Matches';
+import Grid from './panels/Grid';
 
 import '@vkontakte/vkui/dist/vkui.css';
 import './ResetBrowser.css';
@@ -16,7 +17,7 @@ const AppCulter = () => {
 
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
-    };
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -30,9 +31,10 @@ const AppCulter = () => {
 
     return (
         <View activePanel={activePanel}>
-            <Personal id='personal' go={go}/>
-            <Swipe user={user} id='swipe' go={go}/>
-            <Matches id='matches' go={go}/>
+            <Personal id='personal' go={go} />
+            <Grid id="grid" go={go} />
+            <Swipe user={user} id='swipe' go={go} />
+            <Matches id='matches' go={go} />
         </View>
     );
 }
