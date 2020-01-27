@@ -3,10 +3,11 @@
 #grid {
     height: 84vmax;
     width: 100vmin;
+    position: relative;
 }
 
 .Grid-eventList {
-    height: 84vmax;
+    height: 78vmax;
     width: 97.5vmin;
     display: flex;
     flex-direction: row;
@@ -17,16 +18,72 @@
 
 .Grid-eventCell {
     width: 30vmin;
-    height: 26.5vmax;
+    height: 25vmax;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 2.5vmin;
-    margin-bottom: 1.5vmax;
+    margin-bottom: 1vmax;
 }
 
 .Grid-eventCell img{
     width: 30vmin;
-    height: 26.5vmax;
+    height: 25vmax;
     object-fit: cover;
+}
+
+.Filter {
+    height: 3.6vmax;
+    width: 94.2vmin;
+    margin-left: 2.5vmin;
+    margin-right: 2.5vmin;
+    margin-top: 1vmax;
+    margin-bottom: 1vmax;
+    border-radius: 20vmax;
+    border-top: 0.2vmax solid grey;
+    border-bottom: 0.2vmax solid grey;
+    border-left: 0.4vmin solid grey;
+    border-right: 0.4vmin solid grey;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Filter-modal-content {
+
+    margin-top: 20vmax;
+    margin-left: 10vmin;
+
+    width: 80vmin;
+    height: 60vmax;
+
+    background: white;
+}
+
+.Filter-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vmin;
+    height: 100vmax;
+    z-index: 1000;
+
+    background-color: rgba(0,0,0,0.6);
+}
+
+.Filter-modal-header {
+    margin-left: 7%;
+    height: 10%;
+    width: 86%;
+
+    letter-spacing: 0.8vmin;
+    font-size: 1.9em;
+    color: #ff4f4d;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 0.19vmax #ff4f4d solid;
 }

@@ -45,7 +45,18 @@ const Grid = ({id, go, user}) => {
             document.getElementById(id).children[0].style.paddingTop = 0;
         }
         refreshHeaderVK();
+
+        window.addEventListener("click", function(e) {
+            if (e.target.id == "filter_modal") {
+                onModal(e);
+            }
+        });
     }, []);
+
+    const onModal = e => {
+        let modal = document.getElementById("filter_modal");
+        modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
+    }
 
     return (
         <Panel id={id}>
@@ -54,6 +65,18 @@ const Grid = ({id, go, user}) => {
                 <div className="Grid-eventList" onScroll={uploadData}>
                     {dataEvents &&
                         <GridEventList data={dataEvents}/> }
+                </div>
+
+                <div className="Filter" onClick={onModal}>
+                    <p>Фильтр</p>
+                </div>
+
+                <div className="Filter-modal" id="filter_modal" style={{visibility: 'hidden'}} >
+                    <div className="Filter-modal-content">
+                        <div className="Filter-modal-header">
+                            <p>Фильтр</p>
+                        </div>
+                    </div>
                 </div>
 
             <Bottom go={go}/>
