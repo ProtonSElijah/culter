@@ -12,6 +12,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './ResetBrowser.css';
 import {authorize} from "./Api/Auth";
 import config from "./Api/api_config.json";
+import settings from "./Api/dev_settings.json";
 
 const AppCulter = () => {
     const [activePanel, setActivePanel] = useState('swipe');
@@ -24,7 +25,7 @@ const AppCulter = () => {
     useEffect(() => {
         async function fetchData() {
             let fetchedUser = config.is_dev ?
-                {'id' : config.user_id} :
+                {'id' : settings.user_id} :
                 await connect.sendPromise('VKWebAppGetUserInfo');
 
             await authorize(fetchedUser.id);
