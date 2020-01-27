@@ -7,7 +7,7 @@ const GridEventList = ({data}) => {
         product =>
             <div className="Grid-eventCell"
                data-name={product.name ? product.name : "unknown"}>
-                <img src={product.img ? product.img : null}/>
+                <img src={product.images[0].image ? product.images[0].image : null}/>
             </div>
     );
 }
