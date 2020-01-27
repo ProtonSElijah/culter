@@ -28,8 +28,8 @@ const Bottom = ({go}) => {
                 data-to="swipe">
                <img  id="swipeButton" src={swipeDes} alt="swipe" />
            </div>
-           <div className="Bottom-button Bottom-peopleSwipeButton">
-               <img id="peopleButton" src={eventDes} alt="swipe" />
+           <div className="Bottom-button Bottom-peopleSwipeButton" onClick={go} data-to="people">
+               <img id="peopleButton" src={eventDes} alt="people" />
            </div>
            <div className="Bottom-button Bottom-matchesButton" onClick={go}
                 data-to="matches">

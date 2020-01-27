@@ -6,6 +6,7 @@ import Personal from './panels/Personal';
 import Swipe from './panels/Swipe';
 import Matches from './panels/Matches';
 import Grid from './panels/Grid';
+import People from './panels/People';
 
 import '@vkontakte/vkui/dist/vkui.css';
 import './ResetBrowser.css';
@@ -39,6 +40,7 @@ const AppCulter = () => {
             <Personal id='personal' go={go} />
             <Grid user={user} id="grid" go={go} />
             <Swipe user={user} id='swipe' go={go} />
+            <People user={user} id='people' go={go} />
             <Matches id='matches' go={go} />
         </View>
     );
