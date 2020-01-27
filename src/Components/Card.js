@@ -19,26 +19,9 @@ class Card extends Component {
     }
 
     onTouch = (event) => {  
-
         let touches = event.changedTouches;
         for (let i = 0; i < touches.length; i++){
-            let previousX = this.state.currentX;
-            let previousY = this.state.currentY;
-
-            let updatedState = {
-                currentX: touches[i].clientX,
-                currentY: touches[i].clientY,
-            };
-
-            if (this.state.isFirstTouch){
-                updatedState.isUpperTouch = touches[i].clientY > 300;
-                updatedState.isFirstTouch = false;
-            } else {
-                updatedState.horizontalShift = this.state.horizontalShift + touches[i].clientX - previousX;
-                updatedState.verticalShift = this.state.verticalShift + touches[i].clientY - previousY;
-            }
-
-            this.setState(updatedState);
+            this.updateByTouch(touches[i])
         }
     };
 
@@ -50,34 +33,40 @@ class Card extends Component {
         });
     };
 
-
-
     onTouchEnd = (event) => {
         if (Math.abs(this.state.horizontalShift) > 100){
             let isLike= this.state.horizontalShift > 0;
-
             this.animatePick();
-
             let thisHandler = this;
             setTimeout(() => {
-                thisHandler.resetCard();
+                thisHandler.resetCard(false);
                 thisHandler.props.onSwipeEnd(isLike);
             },400);
-
-
         } else {
-            this.setState(
-                {
-                    horizontalShift: 0,
-                    verticalShift: 0,
-                    currentX: 0,
-                    currentY: 0,
-                    isSwiping: false,
-                    isTransition: true
-                });
+            this.resetCard(true);
         }
 
     };
+
+    updateByTouch = (touch) =>{
+        let previousX = this.state.currentX;
+        let previousY = this.state.currentY;
+
+        let updatedState = {
+            currentX: touch.clientX,
+            currentY: touch.clientY,
+        };
+
+        if (this.state.isFirstTouch){
+            updatedState.isUpperTouch = touch.clientY > 300;
+            updatedState.isFirstTouch = false;
+        } else {
+            updatedState.horizontalShift = this.state.horizontalShift + touch.clientX - previousX;
+            updatedState.verticalShift = this.state.verticalShift + touch.clientY - previousY;
+        }
+
+        this.setState(updatedState);
+    }
 
     // Перемещает карту в сторону свайпа
     animatePick = () => {
@@ -92,9 +81,10 @@ class Card extends Component {
     };
 
     // Возвращает карту в начальное положение
-    resetCard = () => {
+    resetCard = (withTransition) => {
         this.setState({
-            isTransition: false,
+            isTransition: withTransition,
+            isSwiping: false,
             horizontalShift: 0,
             verticalShift: 0,
             currentX: 0,
