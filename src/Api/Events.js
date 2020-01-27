@@ -1,6 +1,8 @@
 import config from "./api_config"
 
-export async function fetchEvents(userId)  {
-    let url = config.url + "/user/" + userId + "/events/selection?category_id=1&category_id=6&is_personal=true";
+export async function fetchEvents(userId, categories=[1,6], page=0, size=20, is_personal=true )  {
+    let categoriesParameter = "category_id=" + categories.join("&category_id=");
+    let url = config.url + "/user/" + userId 
+    + "/events/selection?" + categoriesParameter +"&is_personal=true";
     return fetch(url, {method: "GET",});
 }
