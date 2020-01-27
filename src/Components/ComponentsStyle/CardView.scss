@@ -1,3 +1,6 @@
+$swipeRightColor: palegreen;
+$swipeLeftColor: palevioletred;
+
 .Swipe-content {
     width: 95vmin;
     height: 80vmax;
@@ -56,18 +59,20 @@
     margin-right: 2vmax;
     margin-top: 12vmin;
     float: left;
-    color: palevioletred;
-    border: palevioletred solid 0.5vmax;
+    color: $swipeLeftColor;
+    border: $swipeLeftColor solid 0.5vmax;
     border-radius: 1vmax;
     transform: rotate(45deg);
 }
 
+
+
 .Swipe-right-label{
     z-index: 2;
-    color: palegreen;
+    color: $swipeRightColor;
     margin-left: 2vmax;
     margin-top: 12vmin;
-    border: palegreen solid 0.5vmax;
+    border: $swipeRightColor solid 0.5vmax;
     border-radius: 1vmax;
     float: right;
     transform: rotate(-45deg);

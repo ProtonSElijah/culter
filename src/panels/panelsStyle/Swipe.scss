@@ -1,7 +1,7 @@
 /*хедер и боттом 16% от высоты*/
-
+$height: 100vmax;
 #swipe {
-    max-height: 100vmax;
+    max-height: $height;
 }
 
 

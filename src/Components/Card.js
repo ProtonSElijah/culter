@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './ComponentsStyle/Card.css'
+import './ComponentsStyle/Card.scss'
 import CardView from "./CardView";
 
 class Card extends Component {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './ComponentsStyle/CardView.css'
+import './ComponentsStyle/CardView.scss'
 
 const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, cardInfo,isTransition}) => {
     let rotationCoefficient = isUpperTouch ? -1 : 1;

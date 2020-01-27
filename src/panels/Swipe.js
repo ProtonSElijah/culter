@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
-import './panelsStyle/Swipe.css';
+import './panelsStyle/Swipe.scss';
 import Deck from "../Components/Deck";
 import {fetchEvents} from "../Api/Events";
 import { setRate } from '../Api/Ratings';
