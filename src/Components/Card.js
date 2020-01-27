@@ -43,7 +43,6 @@ class Card extends Component {
     };
 
     onTouchStart = (event) => {
-        event.preventDefault();
         this.setState({
             isFirstTouch: true,
             isSwiping: true,
