@@ -19,7 +19,7 @@ const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, card
         contentStyle["margin-top"] =  "-80vmax";
     }
 
-    let isEventCard = cardInfo.first_name == null;
+    let isEventCard = "short_title" in cardInfo;
 
     let imageSource = isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
 
