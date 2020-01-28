@@ -39,7 +39,7 @@ class Deck extends Component {
         let index = this.state.currentIndex;
         return (
 
-                events.length !== 0 ?
+                events.length > 0 ?
                 <div>
                     <Card cardInfo={events[index]} onSwipeEnd={this.onSwipeEnd}/>
                     <CardView hasMargin={true} cardInfo={events[index+1]}/>
