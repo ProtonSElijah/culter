@@ -14,6 +14,9 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 const Grid = ({id, go, user}) => {
 
     const [dataEvents, setDataEvents] = useState([]);
+    const [page, setPage] = useState(0);
+    const [categories, setCategories] = useState([1,6]);
+    const [size, setSize] = useState(20);
 
     const uploadData = e => {
         let elem = e.currentTarget;
@@ -29,8 +32,11 @@ const Grid = ({id, go, user}) => {
 
 
     async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id);
+        let eventsResponse = await fetchEvents(user.id,categories,page,size);
+
         let newEvents = await eventsResponse.json();
+
+        setPage(page + 1);
 
         setDataEvents(dataEvents.concat(newEvents.content));
     }
