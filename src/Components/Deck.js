@@ -14,11 +14,11 @@ class Deck extends Component {
     }
     
      onSwipeEnd = async function(isLike) {
-        this.props.setRateBy(this.props.events[this.state.currentIndex].id, isLike);
+        this.props.setRateBy(this.props.cards[this.state.currentIndex].id, isLike);
 
         // Uploading if nessecary
         if (this.state.swipesCountFromUpload == 10){
-            this.props.loadEvents();
+            this.props.loadCards();
             this.setState({
                 swipesCountFromUpload: 0
             })
@@ -35,14 +35,14 @@ class Deck extends Component {
 
     render() {
 
-        let events = this.props.events;
+        let cards = this.props.cards;
         let index = this.state.currentIndex;
         return (
 
-                events.length > 0 ?
+                cards.length > 0 ?
                 <div>
-                    <Card cardInfo={events[index]} onSwipeEnd={this.onSwipeEnd}/>
-                    <CardView hasMargin={true} cardInfo={events[index+1]}/>
+                    <Card cardInfo={cards[index]} onSwipeEnd={this.onSwipeEnd}/>
+                    <CardView hasMargin={true} cardInfo={cards[index+1]}/>
                 </div>
                     : <div>
 

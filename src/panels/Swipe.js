@@ -14,10 +14,8 @@ const Swipe = ({id, go, user}) => {
     async function loadEvents(){
         let eventsResponse = await fetchEvents(user.id);
         let newEvents = await eventsResponse.json();
-        
         setEvents(events.concat(newEvents.content));
     }
-
     async function setRateBy(eventId, isLike){
         setRate(user.id, eventId, isLike );
     }
@@ -40,7 +38,7 @@ const Swipe = ({id, go, user}) => {
     return (
         <Panel id={id}>
             <Header text={id}/>
-            <Deck events={events} loadEvents={loadEvents} setRateBy={setRateBy}/>
+            <Deck cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>
         </Panel>

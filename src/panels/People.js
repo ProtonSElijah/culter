@@ -40,7 +40,7 @@ const People = ({id, go, user}) => {
     return (
         <Panel id={id}>
             <Header text={id}/>
-            <Deck events={events} loadEvents={loadEvents} setRateBy={setRateBy}/>
+            <Deck cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>
         </Panel>
