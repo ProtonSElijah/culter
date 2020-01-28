@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Card from "./Card";
-import CardView from "./CardView";
+import CardView from "./View/CardView";
 import {setRate} from "../Api/Ratings";
 
 class Deck extends Component {
