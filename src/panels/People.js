@@ -18,8 +18,9 @@ const People = ({id, go, user}) => {
         let peopleResponse = await fetchPeople(user.id, page, size);
         let newPeople = await peopleResponse.json();
         
+        setPage(page + 1);
         setPeople(people.concat(newPeople.content));
-        console.log(newPeople);
+
     }
 
     async function setRateBy(otherUserId, isLike){
