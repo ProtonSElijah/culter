@@ -88,7 +88,7 @@ const Grid = ({id, go, user}) => {
 
     return (
         <Panel id={id}>
-            <Header text={id}/>
+            <Header panelId={id}/>
 
                 <div className="Grid-eventList" onScroll={uploadData}>
                     {dataEvents &&

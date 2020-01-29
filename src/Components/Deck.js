@@ -13,7 +13,7 @@ class Deck extends Component {
         this.onSwipeEnd = this.onSwipeEnd.bind(this);
         this.renderBottomCard = this.renderBottomCard.bind(this);
     }
-    
+
      onSwipeEnd = async function(isLike) {
         this.props.setRateBy(this.props.cards[this.state.currentIndex].id, isLike);
 
@@ -25,18 +25,18 @@ class Deck extends Component {
             })
         }
 
-        // Ticking index for next card and decreasing 
+        // Ticking index for next card and decreasing
         this.setState({
             currentIndex: this.state.currentIndex + 1,
             swipesCountFromUpload: this.state.swipesCountFromUpload + 1
         });
 
-        
+
     };
 
     renderBottomCard = () => {
-        return this.props.cards.length > 1 
-            ? <CardView hasMargin={true} cardInfo={this.props.cards[this.state.currentIndex+1]}/>
+        return this.props.cards.length > 1
+            ? <CardView cardInfo={this.props.cards[this.state.currentIndex+1]}/>
             : <div></div>
     }
 
@@ -45,16 +45,12 @@ class Deck extends Component {
         let cards = this.props.cards;
         let index = this.state.currentIndex;
         return (
-
-                cards.length > 0 && index < cards.length ?
+            cards.length > 0 && index < cards.length ?
                 <div>
                     <Card cardInfo={cards[index]} onSwipeEnd={this.onSwipeEnd}/>
                     {this.renderBottomCard()}
-                </div>
-                    : <div>
-
-                    </div>
-
+                </div> :
+                <div></div>
         );
     }
 }

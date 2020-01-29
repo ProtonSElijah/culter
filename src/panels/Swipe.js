@@ -36,7 +36,7 @@ const Swipe = ({id, go, user}) => {
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        if (user != null) 
+        if (user != null)
             loadEvents();
     }, [user]);
 
@@ -51,7 +51,7 @@ const Swipe = ({id, go, user}) => {
 
     return (
         <Panel id={id}>
-            <Header text={id}/>
+            <Header panelId={id}/>
             <Deck cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>

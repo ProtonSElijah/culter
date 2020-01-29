@@ -30,7 +30,7 @@ const Personal = ({id, go}) => {
 
     return (
         <Panel id={id}>
-            <Header text={id}></Header>
+            <Header panelId={id}/>
             <div className="PersonalContent">
                 <div className="PersonalBlock">
                        {fetchedUser &&

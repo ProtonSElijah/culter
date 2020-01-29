@@ -28,7 +28,7 @@ const Matches = ({id, go}) => {
 
     return (
         <Panel id={id}>
-            <Header text={id}/>
+            <Header panelId={id}/>
             <div className="Head">
                 <p>Новые совпадения</p>
             </div>

@@ -1,14 +1,44 @@
 /*хедер*/
 .App-header
  {
-    height: 9vmax;
+    height: 10.59vmax;
     background-color: white;
     color: #ff4f4f;;
-     font-size: 4vmax;
-     font-family: "Roboto";
+    font-family: "Roboto";
     align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App-header-content {
+    width: 100%;
+    height: 4.3vmax;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    letter-spacing: 5vmin;
+    margin-right: -5vmin;
+    margin-top: 0.4vmax;
+}
+
+.App-header-bottomLine {
+    width: 85%;
+    height: 0.19vmax;
+    background: #ff4f4d;
+
+    margin-top: 0.4vmax;
+    margin-bottom: 1vmax;
+}
+
+.App-header-panelTitle {
+    width: 100%;
+    height: 4.3vmax;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 3.6vmax;
 }
 /*конец хедера*/

@@ -1,4 +1,4 @@
-/*хедер и боттом 16% от высоты*/
+/*хедер и боттом 16+1.59% от высоты*/
 
 #matches {
     max-height: 100vmax;
@@ -13,7 +13,6 @@
     margin: 0 7vmin;
     padding-top: 1vmax;
     padding-bottom: 1vmax;
-    border-top: 0.15vmin solid #ff4f4d;
     font-family: Roboto;
     font-size: 3vmax;
     font-weight: bold;
@@ -119,7 +118,7 @@
 
 /* Список метчей */
 .ListContainer {
-    height: 53vmax;
+    height: 51.41vmax;
     margin: 0 2.5vmin;
     overflow-x: hidden;
     overflow-y: scroll;

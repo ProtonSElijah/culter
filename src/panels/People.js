@@ -17,7 +17,7 @@ const People = ({id, go, user}) => {
     async function loadPeople(){
         let peopleResponse = await fetchPeople(user.id, page, size);
         let newPeople = await peopleResponse.json();
-        
+
         setPage(page + 1);
         setPeople(people.concat(newPeople.content));
 
@@ -29,7 +29,7 @@ const People = ({id, go, user}) => {
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        if (user != null) 
+        if (user != null)
             loadPeople();
     }, [user]);
 
@@ -44,7 +44,7 @@ const People = ({id, go, user}) => {
 
     return (
         <Panel id={id}>
-            <Header text={id}/>
+            <Header panelId={id}/>
             <Deck cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>

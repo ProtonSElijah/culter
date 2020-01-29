@@ -7,7 +7,8 @@
 }
 
 .Grid-eventList {
-    height: 78vmax;
+    margin-top: 1vmax;
+    height: 75.41vmax;
     width: 97.5vmin;
     display: flex;
     flex-direction: row;
