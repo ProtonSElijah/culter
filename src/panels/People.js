@@ -5,27 +5,32 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
 import './panelsStyle/People.scss';
 import Deck from "../Components/Deck";
-import {fetchEvents} from "../Api/Events";
-import { setRate } from '../Api/Ratings';
+import {fetchPeople} from "../Api/People";
+import { setUserRate } from '../Api/Ratings';
 
 const People = ({id, go, user}) => {
-    const [events, setEvents] = useState([]);
+    const [people, setPeople] = useState([]);
+    const [page, setPage] = useState(0);
+    const [categories, setCategories] = useState([1,6]);
+    const [size, setSize] = useState(20);
 
-    async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id);
-        let newEvents = await eventsResponse.json();
+    async function loadPeople(){
+        let peopleResponse = await fetchPeople(user.id, page, size);
+        let newPeople = await peopleResponse.json();
         
-        setEvents(events.concat(newEvents.content));
+        setPage(page + 1);
+        setPeople(people.concat(newPeople.content));
+
     }
 
-    async function setRateBy(eventId, isLike){
-        setRate(user.id, eventId, isLike );
+    async function setRateBy(otherUserId, isLike){
+        setUserRate(user.id, otherUserId, isLike );
     }
 
     // При получении user id, получаем ивенты
     useEffect(() => {
         if (user != null) 
-            loadEvents();
+            loadPeople();
     }, [user]);
 
 
@@ -40,7 +45,7 @@ const People = ({id, go, user}) => {
     return (
         <Panel id={id}>
             <Header text={id}/>
-            <Deck events={events} loadEvents={loadEvents} setRateBy={setRateBy}/>
+            <Deck cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>
         </Panel>

@@ -10,14 +10,26 @@ import { setRate } from '../Api/Ratings';
 
 const Swipe = ({id, go, user}) => {
     const [events, setEvents] = useState([]);
+    const [page, setPage] = useState(0);
+    const [categories, setCategories] = useState([1,6]);
+    const [size, setSize] = useState(20);
 
     async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id);
-        let newEvents = await eventsResponse.json();
-        
-        setEvents(events.concat(newEvents.content));
-    }
+        let eventsResponse = await fetchEvents(user.id,categories,page,size);
 
+        let newEventsJson = await eventsResponse.json();
+        let newEvents = newEventsJson.content;
+
+        let isLastPartition = newEvents == undefined || newEvents.length < size;
+        if (isLastPartition){
+            setPage(0);
+        } else {
+            setPage(page + 1);
+        }
+
+        setEvents(events.concat(newEvents));
+
+    }
     async function setRateBy(eventId, isLike){
         setRate(user.id, eventId, isLike );
     }
@@ -40,7 +52,7 @@ const Swipe = ({id, go, user}) => {
     return (
         <Panel id={id}>
             <Header text={id}/>
-            <Deck events={events} loadEvents={loadEvents} setRateBy={setRateBy}/>
+            <Deck cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
 
             <Bottom go={go}/>
         </Panel>

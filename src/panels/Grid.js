@@ -14,6 +14,8 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 const Grid = ({id, go, user}) => {
 
     const [dataEvents, setDataEvents] = useState([]);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(20);
     const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
 
     const uploadData = e => {
@@ -29,11 +31,26 @@ const Grid = ({id, go, user}) => {
     };
 
     async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id);
+        let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
+
         let newEvents = await eventsResponse.json();
+
+        setPage(page + 1);
 
         setDataEvents(dataEvents.concat(newEvents.content));
     }
+
+    async function deleteAndloadEvents(){
+        let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
+
+        let newEvents = await eventsResponse.json();
+
+        setPage(1);
+
+        setDataEvents(newEvents.content);
+    }
+
+
     useEffect(() => {
         if (user != null)
             loadEvents();
@@ -50,7 +67,7 @@ const Grid = ({id, go, user}) => {
     const onModal = e => {
         let modal = document.getElementById("filter_modal");
         if (modal.style.visibility == "visible") {
-            console.log(categoriesId);
+            deleteAndloadEvents();
         }
         modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
     }
