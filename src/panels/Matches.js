@@ -26,24 +26,28 @@ const Matches = ({id, go}) => {
         refreshHeaderVK();
     }, []);
 
+    /*<MatchedNavigationButtons
+                stateList = {isSelectedFriends}
+                stateRefresh = {onSwitchClick}
+                matchedList = {matchedPeople}
+                friendsList = {matchedFriends}/>*/
+
     return (
         <Panel id={id}>
             <Header panelId={id}/>
             <div className="Head">
-                <p>Новые совпадения</p>
+                <p>{matchedPeople.length != 1 ?
+                ""+matchedPeople.length+" новых совпадений" :
+                   "" + matchedPeople.length + "новое совпадение"}</p>
             </div>
-            <MatchedNavigationButtons
-                stateList = {isSelectedFriends}
-                stateRefresh = {onSwitchClick}
-                matchedList = {matchedPeople}
-                friendsList = {matchedFriends}/>
+
             <div className="ScrollContainer">
                 <MatchedScrollList
                        list={isSelectedFriends
                             ? matchedPeople
                             : matchedFriends} />
             </div>
-            <div className="Head">
+            <div className="Dialogies">
                 <p>Диалоги</p>
             </div>
             <div className="ListContainer">

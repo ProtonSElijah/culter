@@ -5,17 +5,21 @@
 }
 
 /*Заголовок навигационных кнопок*/
-.Head {
+.Head, .Dialogies {
     display: flex;
-    align-items: flex-start;
-    width: 86vmin;
-    height: 3.5vmax;
-    margin: 0 7vmin;
+    align-items: center;
+    width: 95vmin;
+    height: 2.3vmax;
+    margin: 0 2.5vmin;
     padding-top: 1vmax;
     padding-bottom: 1vmax;
     font-family: Roboto;
-    font-size: 3vmax;
+    font-size: 2.3vmax;
     font-weight: bold;
+}
+
+.Dialogies {
+    padding-top: 0;
 }
 /*конец навигационных кнопок*/
 
@@ -118,7 +122,7 @@
 
 /* Список метчей */
 .ListContainer {
-    height: 51.41vmax;
+    height: 54.91vmax;
     margin: 0 2.5vmin;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -140,7 +144,7 @@
     flex-direction: row;
     align-items: center;
     margin-top: 0;
-    height: 13vmax;
+    height: 13.3vmax;
 }
 
 .BottomLine {
