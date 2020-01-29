@@ -61,7 +61,7 @@ const Grid = ({id, go, user}) => {
         modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
     }
 
-    const bb = e => {
+    const onChangeFilterItemState = e => {
         if (e.currentTarget.dataset.isactive == "false") {
             setCategoriesId(categoriesId.concat(e.currentTarget.dataset.id));
         }
@@ -99,35 +99,35 @@ const Grid = ({id, go, user}) => {
                         <div className="Filter-modal-categories">
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={31}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={31}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Квесты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={15}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={15}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Флешмобы</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={6}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={6}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Концерты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={12}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={12}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Выставки</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={27}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={27}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Ночная жизнь</p>
