@@ -14,7 +14,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 const Grid = ({id, go, user}) => {
 
     const [dataEvents, setDataEvents] = useState([]);
-    const [categoriesId, setCategoriesId] = useState([]);
+    const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
 
     const uploadData = e => {
         let elem = e.currentTarget;
@@ -61,16 +61,8 @@ const Grid = ({id, go, user}) => {
         modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
     }
 
-    const onChangeCheckedCategories = e => {
-        /*if (e.target.checked) setCategoriesId(categoriesId.concat(e.target.value));
-        else categoriesId.splice(categoriesId.indexOf(e.target.value), 1);*/
-
-        if (e.target.checked) setCategoriesId(categoriesId.concat(e.target.value));
-        else categoriesId.splice(categoriesId.indexOf(e.target.value), 1);
-    }
-
     const bb = e => {
-        if (e.currentTarget.dataset.isactive == "true") {
+        if (e.currentTarget.dataset.isactive == "false") {
             setCategoriesId(categoriesId.concat(e.currentTarget.dataset.id));
         }
         else categoriesId.splice(categoriesId.indexOf(e.currentTarget.dataset.id), 1);
@@ -109,35 +101,35 @@ const Grid = ({id, go, user}) => {
                             <div className="Filter-modal-categories-item"
                                onClick={bb} data-isactive={true} data-id={31}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Квесты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
                                onClick={bb} data-isactive={true} data-id={15}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Флешмобы</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
                                onClick={bb} data-isactive={true} data-id={6}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Концерты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
                                onClick={bb} data-isactive={true} data-id={12}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Выставки</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
                                onClick={bb} data-isactive={true} data-id={27}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Ночная жизнь</p>
                             </div>
 
