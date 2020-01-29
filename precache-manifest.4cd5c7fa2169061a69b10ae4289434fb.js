@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1d8c082eda136842cf666b9342126243",
+    "revision": "cb535a00813a1f7f447533f6b159e94f",
     "url": "./index.html"
   },
   {
-    "revision": "a662eec307565a14a6d5",
-    "url": "./static/css/2.478d3b03.chunk.css"
+    "revision": "f88e33e91e1721d57203",
+    "url": "./static/css/2.266626f9.chunk.css"
   },
   {
-    "revision": "53a508838afdce461fe7",
-    "url": "./static/css/main.408ace07.chunk.css"
+    "revision": "82415aa450a34b81210e",
+    "url": "./static/css/main.be70b38b.chunk.css"
   },
   {
-    "revision": "a662eec307565a14a6d5",
-    "url": "./static/js/2.c78343b8.chunk.js"
+    "revision": "f88e33e91e1721d57203",
+    "url": "./static/js/2.6178c951.chunk.js"
   },
   {
-    "revision": "ce028d5e2b0507b0fb507336501c1edf",
-    "url": "./static/js/2.c78343b8.chunk.js.LICENSE"
+    "revision": "d705cb622423d72c5defbf368ca70dcc",
+    "url": "./static/js/2.6178c951.chunk.js.LICENSE"
   },
   {
-    "revision": "53a508838afdce461fe7",
-    "url": "./static/js/main.3a4c6178.chunk.js"
+    "revision": "82415aa450a34b81210e",
+    "url": "./static/js/main.f77551a8.chunk.js"
   },
   {
     "revision": "b5f3d03bc5f3c9a537b1",
@@ -44,20 +44,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/eventRed.333d01ba.svg"
   },
   {
-    "revision": "c04b60397e43cb3f9ff156e859a52b91",
-    "url": "./static/media/gridGrey.c04b6039.svg"
+    "revision": "e698b3c30c69bf4d0b2d27c3c8b07160",
+    "url": "./static/media/gridGrey.e698b3c3.svg"
   },
   {
-    "revision": "b64b72cb3d927bc01c3683f82c984fd8",
-    "url": "./static/media/gridRed.b64b72cb.svg"
+    "revision": "2dc704355a8cecdd906e80ee97b59871",
+    "url": "./static/media/gridRed.2dc70435.svg"
   },
   {
-    "revision": "2be3924b3590150fd835a9de218268eb",
-    "url": "./static/media/swipeGrey.2be3924b.svg"
+    "revision": "451737d0cf2ce965fb92570be8ea3635",
+    "url": "./static/media/swipeGrey.451737d0.svg"
   },
   {
-    "revision": "2f9e85a7ed7f298b664f47a96b259cf3",
-    "url": "./static/media/swipeRed.2f9e85a7.svg"
+    "revision": "08ccde9274888c2b5ac6b2f9c5319c9b",
+    "url": "./static/media/swipeRed.08ccde92.svg"
   },
   {
     "revision": "7612f005598984276d08282369dbe426",
