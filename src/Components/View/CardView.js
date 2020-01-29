@@ -6,7 +6,6 @@ import ChoiceLabelsView from './ChoiceLabelsView';
 
 
 const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, cardInfo,isTransition}) => {
-    console.log(cardInfo);
     let rotationCoefficient = isUpperTouch ? -1 : 1;
     let rotation = rotationCoefficient * horizontalShift / 15 ;
     let contentStyle = {

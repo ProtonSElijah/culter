@@ -16,7 +16,7 @@ const Grid = ({id, go, user}) => {
     const [dataEvents, setDataEvents] = useState([]);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(20);
-    const [categoriesId, setCategoriesId] = useState([]);
+    const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
 
     const uploadData = e => {
         let elem = e.currentTarget;
@@ -39,6 +39,18 @@ const Grid = ({id, go, user}) => {
 
         setDataEvents(dataEvents.concat(newEvents.content));
     }
+
+    async function deleteAndloadEvents(){
+        let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
+
+        let newEvents = await eventsResponse.json();
+
+        setPage(1);
+
+        setDataEvents(newEvents.content);
+    }
+
+
     useEffect(() => {
         if (user != null)
             loadEvents();
@@ -50,38 +62,28 @@ const Grid = ({id, go, user}) => {
             document.getElementById(id).children[0].style.paddingTop = 0;
         }
         refreshHeaderVK();
-
-        window.addEventListener("click", function(e) {
-            if (e.target.id == "filter_modal") {
-                onModal(e);
-            }
-        });
     }, []);
 
     const onModal = e => {
         let modal = document.getElementById("filter_modal");
         if (modal.style.visibility == "visible") {
-            console.log(categoriesId);
+            deleteAndloadEvents();
         }
         modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
     }
 
-    const onChangeCheckedCategories = e => {
-        /*if (e.target.checked) setCategoriesId(categoriesId.concat(e.target.value));
-        else categoriesId.splice(categoriesId.indexOf(e.target.value), 1);*/
-
-        if (e.target.checked) setCategoriesId(categoriesId.concat(e.target.value));
-        else categoriesId.splice(categoriesId.indexOf(e.target.value), 1);
-    }
-
-    const bb = e => {
-        if (e.currentTarget.dataset.isactive == "true") {
+    const onChangeFilterItemState = e => {
+        if (e.currentTarget.dataset.isactive == "false") {
             setCategoriesId(categoriesId.concat(e.currentTarget.dataset.id));
         }
         else categoriesId.splice(categoriesId.indexOf(e.currentTarget.dataset.id), 1);
         e.currentTarget.dataset.isactive = (e.currentTarget.dataset.isactive == "true") ? "false" : "true";
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-disabled");
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-active");
+    }
+
+    const onCloseFilterEnvironment = e => {
+        if (e.target.id == "filter_modal") onModal(e);
     }
 
     return (
@@ -97,7 +99,7 @@ const Grid = ({id, go, user}) => {
                     <p>Фильтр</p>
                 </div>
 
-                <div className="Filter-modal" id="filter_modal" style={{visibility: 'hidden'}} >
+                <div className="Filter-modal" id="filter_modal" style={{visibility: 'hidden'}} onClick={onCloseFilterEnvironment}>
                     <div className="Filter-modal-content">
 
                         <div className="Filter-modal-header">
@@ -112,37 +114,37 @@ const Grid = ({id, go, user}) => {
                         <div className="Filter-modal-categories">
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={31}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={31}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Квесты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={15}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={15}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Флешмобы</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={6}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={6}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Концерты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={12}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={12}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Выставки</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
-                               onClick={bb} data-isactive={true} data-id={27}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={27}>
                                 <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-disabled"></div>
+                                    Filter-modal-categories-item-checkbox-active"></div>
                                 <p className="Filter-modal-categories-item-name">Ночная жизнь</p>
                             </div>
 
