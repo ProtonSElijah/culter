@@ -50,17 +50,6 @@
     align-items: center;
 }
 
-.Filter-modal-content {
-
-    margin-top: 20vmax;
-    margin-left: 10vmin;
-
-    width: 80vmin;
-    height: 60vmax;
-
-    background: white;
-}
-
 .Filter-modal {
     position: absolute;
     top: 0;
@@ -70,6 +59,20 @@
     z-index: 1000;
 
     background-color: rgba(0,0,0,0.6);
+}
+
+.Filter-modal-content {
+
+    margin-top: 20vmax;
+    margin-left: 10vmin;
+
+    width: 80vmin;
+    height: 60vmax;
+
+    background: white;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .Filter-modal-header {
@@ -86,4 +89,79 @@
     align-items: center;
 
     border-bottom: 0.19vmax #ff4f4d solid;
+}
+
+.Filter-modal-categoriesTitle {
+    margin-left: 7%;
+    margin-top: 2%;
+    height: 8%;
+    width: 86%;
+
+    font-size: 1.2em;
+    color: #ff4f4d;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Filter-modal-categoriesTitleBottomLine {
+    margin-top: 2%;
+    width: 80%;
+
+    border-bottom: #ff4f4d solid 0.19vmax;
+}
+
+.Filter-modal-categories {
+    margin-top: 3%;
+    width: 86%;
+    height: 65%;
+    margin-left: 7%;
+
+    font-size: 1.2em;
+}
+
+.Filter-modal-categories-item {
+    height: 10%;
+    width: 100%;
+    margin-bottom: 6%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Filter-modal-categories-item-checkbox {
+    margin-right: 4%;
+
+    border-radius: 20vmax;
+}
+
+.Filter-modal-categories-item-checkbox-active {
+    height: 2.08vmax;
+    width: 2.08vmax;
+    background: #ff4f4d;
+    border: none;
+}
+
+.Filter-modal-categories-item-checkbox-disabled {
+    height: 1.7vmax;
+    width: 1.7vmax;
+    background: white;
+    border: solid grey 0.19vmax;
+}
+
+.Filter-modal-buttonOK {
+    margin-left: 15%;
+    margin-top: 2%;
+    height: 6%;
+    width: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 0.19vmax grey solid;
+    border-radius: 20vmax;
 }
