@@ -10,7 +10,7 @@
     align-items: center;
     width: 95vmin;
     height: 2.3vmax;
-    margin: 0 2.5vmin;
+    margin: 1vmax 2.5vmin;
     padding-top: 1vmax;
     padding-bottom: 1vmax;
     font-family: Roboto;
@@ -19,7 +19,7 @@
 }
 
 .Dialogies {
-    padding-top: 0;
+    padding-bottom: 0;
 }
 /*конец навигационных кнопок*/
 
