@@ -15,9 +15,9 @@ const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, card
             "transition" : isTransition ? "0.2s" : ""
         };
 
-    /*if (hasMargin) {
-        contentStyle["marginTop"] =  "-90vmax";
-    }*/
+    if (hasMargin) {
+        contentStyle["marginTop"] =  "-80vmax";
+    }
 
     let isEventCard = cardInfo.hasOwnProperty("short_title");
 
@@ -31,17 +31,16 @@ const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, card
                 <ChoiceLabelsView horizontalShift={horizontalShift} />
                 <img className="Swipe-content-up-image" src={imageSource}/>
 
-                <div className="Swipe-content-down">
-                    {isEventCard ?
-                        <EventInformationView event={cardInfo}/> :
-                        <PersonInformationView person={cardInfo}/>}
-                </div>
-
             </div>
 
         </div>
     )
 
+    /*<div className="Swipe-content-down">
+                    {isEventCard ?
+                        <EventInformationView event={cardInfo}/> :
+                        <PersonInformationView person={cardInfo}/>}
+                </div>*/
 };
 
 export default CardView;
