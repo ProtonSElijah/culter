@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './ComponentsStyle/Card.scss'
-import CardView from "./CardView";
+import CardView from "./View/CardView";
 
 class Card extends Component {
     constructor(props) {
@@ -93,7 +93,6 @@ class Card extends Component {
     };
 
     render() {
-
         return (
             <div
                 className="Swipe-main"
