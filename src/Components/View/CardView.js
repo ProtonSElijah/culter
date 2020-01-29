@@ -6,7 +6,7 @@ import ChoiceLabelsView from './ChoiceLabelsView';
 
 
 const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, cardInfo,isTransition}) => {
-    
+
     let rotationCoefficient = isUpperTouch ? -1 : 1;
     let rotation = rotationCoefficient * horizontalShift / 15 ;
     let contentStyle = {
@@ -15,36 +15,30 @@ const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, card
             "transition" : isTransition ? "0.2s" : ""
         };
 
-    if (hasMargin) {
-        contentStyle["margin-top"] =  "-80vmax";
-    }
+    /*if (hasMargin) {
+        contentStyle["marginTop"] =  "-90vmax";
+    }*/
 
     let isEventCard = cardInfo.first_name == null;
 
     let imageSource = isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
 
-    let contentDown = isEventCard ? 
-        <EventInformationView event={cardInfo}/> :
-        <PersonInformationView person={cardInfo}/> ;
-        
-    
-
     return  (
 
         <div className="Swipe-content" style={contentStyle}>
+
             <div className="Swipe-content-up">
-
                 <ChoiceLabelsView horizontalShift={horizontalShift} />
+                <img className="Swipe-content-up-image" src={imageSource}/>
 
-                <img className="Swipe-content-up-image"
-                     src={imageSource}/>
+                <div className="Swipe-content-down">
+                    {isEventCard ?
+                        <EventInformationView event={cardInfo}/> :
+                        <PersonInformationView person={cardInfo}/>}
+                </div>
+
             </div>
 
-            <div className="Swipe-content-down">
-
-                {contentDown}
-
-            </div>
         </div>
     )
 

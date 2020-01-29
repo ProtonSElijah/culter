@@ -11,17 +11,28 @@ $swipeLeftColor: palevioletred;
 }
 
 .Swipe-content-up {
-    height: 66vmax;
+    height: 80vmax;
     background: #ccc;
-    border-radius: 7.5vmin 7.5vmin 0 0;
+    border-radius: 7.5vmin 7.5vmin 7.5vmin 7.5vmin;
 }
 
 .Swipe-content-down {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 4vmin;
+
+    right: 0;
+    margin-right: 4vmin;
+
+    width: 87vmin;
+    height: 20%;
+
     text-align: center;
     height: 14vmax;
-    border-radius: 0 0 7.5vmin 7.5vmin;
-    color: white;
-    background: #ff4f4f;
+
+    border-radius: 7.5vmin 7.5vmin 7.5vmin 7.5vmin;
+    color: black;
+    background: white;
 }
 
 .Swipe-content-down p{
@@ -38,7 +49,7 @@ $swipeLeftColor: palevioletred;
 .Swipe-content-up img {
     width: 100%;
     height: 100%;
-    border-radius: 7.5vmin 7.5vmin 0 0;
+    border-radius: 7.5vmin 7.5vmin 7.5vmin 7.5vmin;
     object-fit: cover;
 }
 
@@ -51,11 +62,11 @@ $swipeLeftColor: palevioletred;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    z-index: 4;
+    z-index: 400;
 }
 
 .Swipe-left-label{
-    z-index: 2;
+    z-index: 200;
     margin-right: 2vmax;
     margin-top: 12vmin;
     float: left;
@@ -68,7 +79,7 @@ $swipeLeftColor: palevioletred;
 
 
 .Swipe-right-label{
-    z-index: 2;
+    z-index: 200;
     color: $swipeRightColor;
     margin-left: 2vmax;
     margin-top: 12vmin;
@@ -79,7 +90,7 @@ $swipeLeftColor: palevioletred;
 }
 
 .Swipe-content-up-image {
-    z-index: 1;
+    z-index: 100;
     display: block;
     width: 100%;
     height: 100%;
