@@ -45,12 +45,6 @@ const Grid = ({id, go, user}) => {
             document.getElementById(id).children[0].style.paddingTop = 0;
         }
         refreshHeaderVK();
-
-        window.addEventListener("click", function(e) {
-            if (e.target.id == "filter_modal") {
-                onModal(e);
-            }
-        });
     }, []);
 
     const onModal = e => {
@@ -71,6 +65,10 @@ const Grid = ({id, go, user}) => {
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-active");
     }
 
+    const onCloseFilterEnvironment = e => {
+        if (e.target.id == "filter_modal") onModal(e);
+    }
+
     return (
         <Panel id={id}>
             <Header text={id}/>
@@ -84,7 +82,7 @@ const Grid = ({id, go, user}) => {
                     <p>Фильтр</p>
                 </div>
 
-                <div className="Filter-modal" id="filter_modal" style={{visibility: 'hidden'}} >
+                <div className="Filter-modal" id="filter_modal" style={{visibility: 'hidden'}} onClick={onCloseFilterEnvironment}>
                     <div className="Filter-modal-content">
 
                         <div className="Filter-modal-header">
