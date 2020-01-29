@@ -9,14 +9,14 @@ const PersonInformationView = ({person}) => {
     return  (
 
         <div>
-            <p id="Font-bold"><b>{person.first_name}</b></p>
+            <p id="Font-bold">{person.first_name}</p>
 
-            <p>Общих событий: <b>{person.common_events.length}</b></p>
-            <p>Всего событий: <b>{person.liked_events.length}</b></p>
+            <p>Общих событий: {person.common_events.length}</p>
+            <p>Всего событий: {person.liked_events.length}</p>
 
         </div>
     )
 
 };
 
-export default PersonInformationView;        
+export default PersonInformationView;
