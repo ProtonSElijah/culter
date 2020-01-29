@@ -6,7 +6,7 @@ import ChoiceLabelsView from './ChoiceLabelsView';
 
 
 const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, cardInfo,isTransition}) => {
-    
+    console.log(cardInfo);
     let rotationCoefficient = isUpperTouch ? -1 : 1;
     let rotation = rotationCoefficient * horizontalShift / 15 ;
     let contentStyle = {
@@ -19,7 +19,7 @@ const CardView = ({horizontalShift, verticalShift, hasMargin, isUpperTouch, card
         contentStyle["margin-top"] =  "-80vmax";
     }
 
-    let isEventCard = "short_title" in cardInfo;
+    let isEventCard = cardInfo.hasOwnProperty("short_title");
 
     let imageSource = isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
 
