@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "./static/css/main.be70b38b.chunk.css",
-    "main.js": "./static/js/main.f77551a8.chunk.js",
-    "main.js.map": "./static/js/main.f77551a8.chunk.js.map",
+    "main.css": "./static/css/main.3442483d.chunk.css",
+    "main.js": "./static/js/main.3f0ee957.chunk.js",
+    "main.js.map": "./static/js/main.3f0ee957.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.0134f1f3.js",
     "runtime-main.js.map": "./static/js/runtime-main.0134f1f3.js.map",
     "static/css/2.266626f9.chunk.css": "./static/css/2.266626f9.chunk.css",
-    "static/js/2.6178c951.chunk.js": "./static/js/2.6178c951.chunk.js",
-    "static/js/2.6178c951.chunk.js.map": "./static/js/2.6178c951.chunk.js.map",
+    "static/js/2.5b020ffa.chunk.js": "./static/js/2.5b020ffa.chunk.js",
+    "static/js/2.5b020ffa.chunk.js.map": "./static/js/2.5b020ffa.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.4cd5c7fa2169061a69b10ae4289434fb.js": "./precache-manifest.4cd5c7fa2169061a69b10ae4289434fb.js",
+    "precache-manifest.7ee60e2c26edc86a2f9acbb3a2495dad.js": "./precache-manifest.7ee60e2c26edc86a2f9acbb3a2495dad.js",
     "service-worker.js": "./service-worker.js",
     "static/css/2.266626f9.chunk.css.map": "./static/css/2.266626f9.chunk.css.map",
-    "static/css/main.be70b38b.chunk.css.map": "./static/css/main.be70b38b.chunk.css.map",
-    "static/js/2.6178c951.chunk.js.LICENSE": "./static/js/2.6178c951.chunk.js.LICENSE",
+    "static/css/main.3442483d.chunk.css.map": "./static/css/main.3442483d.chunk.css.map",
+    "static/js/2.5b020ffa.chunk.js.LICENSE": "./static/js/2.5b020ffa.chunk.js.LICENSE",
     "static/media/chatGrey.svg": "./static/media/chatGrey.49b6c726.svg",
     "static/media/chatRed.svg": "./static/media/chatRed.2e82a215.svg",
     "static/media/eventGrey.svg": "./static/media/eventGrey.89b02bab.svg",
     "static/media/eventRed.svg": "./static/media/eventRed.333d01ba.svg",
     "static/media/gridGrey.svg": "./static/media/gridGrey.e698b3c3.svg",
     "static/media/gridRed.svg": "./static/media/gridRed.2dc70435.svg",
+    "static/media/Grid.css": "./static/media/index.rotating-balls-spinner.2f46cdea.svg",
     "static/media/swipeGrey.svg": "./static/media/swipeGrey.451737d0.svg",
     "static/media/swipeRed.svg": "./static/media/swipeRed.08ccde92.svg",
     "static/media/userGrey.svg": "./static/media/userGrey.7612f005.svg",
@@ -28,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.0134f1f3.js",
     "static/css/2.266626f9.chunk.css",
-    "static/js/2.6178c951.chunk.js",
-    "static/css/main.be70b38b.chunk.css",
-    "static/js/main.f77551a8.chunk.js"
+    "static/js/2.5b020ffa.chunk.js",
+    "static/css/main.3442483d.chunk.css",
+    "static/js/main.3f0ee957.chunk.js"
   ]
 }
