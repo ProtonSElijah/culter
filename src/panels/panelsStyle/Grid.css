@@ -31,6 +31,7 @@
     width: 30vmin;
     height: 25vmax;
     object-fit: cover;
+    background: url("../../index.rotating-balls-spinner.svg") no-repeat;
 }
 
 .Filter {

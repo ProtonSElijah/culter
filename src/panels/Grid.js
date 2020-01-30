@@ -17,12 +17,16 @@ const Grid = ({id, go, user}) => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(20);
     const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const uploadData = e => {
         let elem = e.currentTarget;
         if (elem.scrollHeight - elem.clientHeight*2 <= elem.scrollTop) {
             try {
-                loadEvents();
+                if (!isLoading){
+                    setIsLoading(true);
+                    loadEvents();
+                }
             }
             catch (err) {
                 console.log(err);
@@ -38,6 +42,8 @@ const Grid = ({id, go, user}) => {
         setPage(page + 1);
 
         setDataEvents(dataEvents.concat(newEvents.content));
+
+        setIsLoading(false);
     }
 
     async function deleteAndloadEvents(){
