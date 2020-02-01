@@ -5,7 +5,7 @@
 }
 
 /*Заголовок навигационных кнопок*/
-.Head, .Dialogies {
+.Head, .Dialogues {
     display: flex;
     align-items: center;
     width: 95vmin;
@@ -18,7 +18,7 @@
     font-weight: bold;
 }
 
-.Dialogies {
+.Dialogues {
     padding-bottom: 0;
 }
 /*конец навигационных кнопок*/

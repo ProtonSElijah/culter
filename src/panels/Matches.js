@@ -14,10 +14,8 @@ import matchedFriends from "../Components/ExportMatchedFriends";
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-const Matches = ({id, go}) => {
-    const [isSelectedFriends, setIsSelectedFriends] = useState("true");
-
-    const onSwitchClick = (value) => {setIsSelectedFriends(value);}
+const Matches = ({id, user, go}) => {
+    const [matchedPeople, setMatchedPeople] = useState([]);
 
     useEffect(() => {
         async function refreshHeaderVK() {
@@ -26,12 +24,6 @@ const Matches = ({id, go}) => {
         }
         refreshHeaderVK();
     }, []);
-
-    /*<MatchedNavigationButtons
-                stateList = {isSelectedFriends}
-                stateRefresh = {onSwitchClick}
-                matchedList = {matchedPeople}
-                friendsList = {matchedFriends}/>*/
 
     return (
         <Panel id={id}>
@@ -48,7 +40,7 @@ const Matches = ({id, go}) => {
                             ? matchedPeople
                             : matchedFriends} />
             </div>
-            <div className="Dialogies">
+            <div className="Dialogues">
                 <p>Диалоги</p>
             </div>
             <div className="ListContainer">
@@ -63,3 +55,11 @@ const Matches = ({id, go}) => {
 }
 
 export default Matches;
+
+//const [isSelectedFriends, setIsSelectedFriends] = useState("true");
+//const onSwitchClick = (value) => {setIsSelectedFriends(value);}
+/*<MatchedNavigationButtons
+               stateList = {isSelectedFriends}
+               stateRefresh = {onSwitchClick}
+               matchedList = {matchedPeople}
+               friendsList = {matchedFriends}/>*/
