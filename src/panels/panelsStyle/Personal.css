@@ -1,11 +1,11 @@
-/*хедер и боттом 16% от высоты*/
+/*хедер и боттом 16% +4.2 + 1.59 от высоты*/
 
 #personal {
     max-height: 100vmax;
 }
 
 .PersonalContent {
-    height: 84vmax;
+    height: 78.21vmax;
     display: flex;
     flex-direction: column;
 }

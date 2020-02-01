@@ -1,6 +1,8 @@
 import React from 'react';
 import './ComponentsStyle/Header.css';
 
+import IconApp from '../icons/culterIcon.svg';
+
 const Header = ({panelId}) => {
     let panelTitle = "";
     switch (panelId) {
@@ -13,7 +15,8 @@ const Header = ({panelId}) => {
     return (
         <div className="App-header">
             <div className="App-header-content">
-                <p>{"Culter".toUpperCase()}</p>
+               <img src={IconApp} alt="icon" />
+                <p>{"Culter"}</p>
             </div>
             <div className="App-header-bottomLine"></div>
             <div className="App-header-panelTitle">
