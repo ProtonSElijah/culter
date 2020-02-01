@@ -7,9 +7,9 @@ const MatchedList = ({list}) => {
         person =>
         <div className="PersonContainer">
             <div className="Person" key={person.key}>
-                <img src={person.imgLink} alt={"Person photo"}/>
+                <img src={person.photo_400_orig} alt={"Person photo"}/>
                 <div className="PersonData">
-                    <div className="PersonName"><b>{person.firstName + " " + person.lastName}</b></div>
+                    <div className="PersonName"><b>{person.first_name + " " + person.last_name}</b></div>
                     {text.length > 26 &&
                         <div className="PersonPlacesList">
                             {text.slice(0, 26) + ".."}
