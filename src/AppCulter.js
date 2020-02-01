@@ -42,7 +42,7 @@ const AppCulter = () => {
             <Grid user={user} id="grid" go={go} />
             <Swipe user={user} id='swipe' go={go} />
             <People user={user} id='people' go={go} />
-            <Matches id='matches' go={go} />
+            <Matches user={user} id='matches' go={go} />
         </View>
     );
 }
