@@ -44,6 +44,7 @@ const Swipe = ({id, go, user}) => {
     useEffect(() => {
         async function refreshHeaderVK() {
             document.getElementById(id).children[0].style.paddingTop = 0;
+            document.body.style.setProperty('--background_page', 'white');
         }
         refreshHeaderVK();
     }, []);
