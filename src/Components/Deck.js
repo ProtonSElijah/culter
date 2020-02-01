@@ -11,7 +11,6 @@ class Deck extends Component {
             swipesCountFromUpload: 0
         };
         this.onSwipeEnd = this.onSwipeEnd.bind(this);
-        this.renderBottomCard = this.renderBottomCard.bind(this);
     }
 
      onSwipeEnd = async function(isLike) {
@@ -34,23 +33,22 @@ class Deck extends Component {
 
     };
 
-    renderBottomCard = () => {
-        return this.props.cards.length > 1
-            ? <CardView cardInfo={this.props.cards[this.state.currentIndex+1]}/>
-            : <div></div>
-    }
-
     render() {
 
         let cards = this.props.cards;
-        let index = this.state.currentIndex;
+        let topCardIndex = this.state.currentIndex;
+        let bottomCardIndex = topCardIndex + 1;
         return (
-            cards.length > 0 && index < cards.length ?
+            cards.length > 0 && topCardIndex < cards.length ?
                 <div>
-                    <Card cardInfo={cards[index]} onSwipeEnd={this.onSwipeEnd}/>
-                    {this.renderBottomCard()}
+                    <Card cardInfo={cards[topCardIndex]} onSwipeEnd={this.onSwipeEnd}/>
+                    {
+                        bottomCardIndex < cards.length ?
+                            <CardView cardInfo={cards[bottomCardIndex]}/>:
+                            <div/>
+                    }
                 </div> :
-                <div></div>
+                <div/>
         );
     }
 }
