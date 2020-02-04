@@ -1,11 +1,11 @@
-/*хедер и боттом 16+1.59% от высоты*/
+/*хедер и боттом 16+1.59+4.2 от высоты*/
 
 #matches {
     max-height: 100vmax;
 }
 
 /*Заголовок навигационных кнопок*/
-.Head, .Dialogies {
+.Head, .Dialogues {
     display: flex;
     align-items: center;
     width: 95vmin;
@@ -18,7 +18,7 @@
     font-weight: bold;
 }
 
-.Dialogies {
+.Dialogues {
     padding-bottom: 0;
 }
 /*конец навигационных кнопок*/
@@ -122,7 +122,7 @@
 
 /* Список метчей */
 .ListContainer {
-    height: 54.91vmax;
+    height: 53.71vmax;
     margin: 0 2.5vmin;
     overflow-x: hidden;
     overflow-y: scroll;

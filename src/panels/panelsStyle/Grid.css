@@ -1,4 +1,4 @@
-/*хедер и боттом 16% от высоты*/
+/*хедер и боттом 16% +4.2 от высоты*/
 
 #grid {
     height: 84vmax;
@@ -8,7 +8,7 @@
 
 .Grid-eventList {
     margin-top: 1vmax;
-    height: 75.41vmax;
+    height: 71.21vmax;
     width: 97.5vmin;
     display: flex;
     flex-direction: row;
@@ -99,7 +99,7 @@
     height: 8%;
     width: 86%;
 
-    font-size: 1.2em;
+    font-size: 1em;
     color: #ff4f4d;
 
     display: flex;

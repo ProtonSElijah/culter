@@ -39,15 +39,15 @@ const Personal = ({id, go, activePanel}) => {
                        {fetchedUser &&
                         <div className="PersonalData">
                            <img src={fetchedUser.photo_200 ? fetchedUser.photo_200 : null} alt="Person"/>
-                           <p>
-                           {fetchedUser.first_name ? fetchedUser.first_name : ""}
-                           {fetchedUser.last_name ? (" " + fetchedUser.last_name) : "" }
-                           </p>
+
+                           <p>{fetchedUser.first_name ? fetchedUser.first_name : ""}</p>
+                           <p>{fetchedUser.last_name ? (" " + fetchedUser.last_name) : "" }</p>
+
                             {
-                                token &&
+                               /* token &&
                                 <p>
                                     {token}
-                                </p>
+                                </p>*/
                             }
                         </div>
                         }
