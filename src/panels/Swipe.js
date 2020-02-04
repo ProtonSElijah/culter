@@ -18,19 +18,19 @@ const Swipe = ({id, go, activePanel}) => {
     const [size, setSize] = useState(20);
 
     async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id,categories,page,size);
+        // let eventsResponse = await fetchEvents(user.id,categories,page,size);
 
-        let newEventsJson = await eventsResponse.json();
-        let newEvents = newEventsJson.content;
+        // let newEventsJson = await eventsResponse.json();
+        // let newEvents = newEventsJson.content;
 
-        let isLastPartition = newEvents == undefined || newEvents.length < size;
-        if (isLastPartition){
-            setPage(0);
-        } else {
-            setPage(page + 1);
-        }
+        // let isLastPartition = newEvents == undefined || newEvents.length < size;
+        // if (isLastPartition){
+        //     setPage(0);
+        // } else {
+        //     setPage(page + 1);
+        // }
 
-        setEvents(events.concat(newEvents));
+        // setEvents(events.concat(newEvents));
 
     }
     async function setRateBy(eventId, isLike){

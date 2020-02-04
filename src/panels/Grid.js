@@ -15,6 +15,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 const Grid = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
+    const events = useSelector(state => state.eventsState.events);
 
     const [dataEvents, setDataEvents] = useState([]);
     const [page, setPage] = useState(0);
@@ -38,20 +39,21 @@ const Grid = ({id, go, activePanel}) => {
     };
 
     async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
-        let newEvents = await eventsResponse.json();
+        await fetchEvents(categoriesId);
+        // let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
+        // let newEvents = await eventsResponse.json();
 
-        setPage(page + 1);
-        setDataEvents(dataEvents.concat(newEvents.content));
+        // setPage(page + 1);
+        // setDataEvents(dataEvents.concat(newEvents.content));
         setIsLoading(false);
     }
 
     async function deleteAndloadEvents(){
-        let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
-        let newEvents = await eventsResponse.json();
+        // let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
+        // let newEvents = await eventsResponse.json();
 
-        setPage(1);
-        setDataEvents(newEvents.content);
+        // setPage(1);
+        // setDataEvents(newEvents.content);
     }
 
 
@@ -97,8 +99,8 @@ const Grid = ({id, go, activePanel}) => {
             <Header panelId={id}/>
 
                 <div className="Grid-eventList" onScroll={uploadData}>
-                    {dataEvents &&
-                        <GridEventList data={dataEvents}/> }
+                    {events &&
+                        <GridEventList data={events}/> }
                 </div>
 
                 <div className="Filter" onClick={onModal}>
