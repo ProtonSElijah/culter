@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
+import { reload, load } from "../redux/actions/events-actions";
 
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
@@ -11,7 +13,8 @@ import './panelsStyle/Grid.css';
 import {fetchEvents} from "../Api/Events";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-const Grid = ({id, go, user}) => {
+const Grid = ({id, go, activePanel}) => {
+    const user = useSelector(state => state.userState.user);
 
     const [dataEvents, setDataEvents] = useState([]);
     const [page, setPage] = useState(0);
@@ -36,13 +39,10 @@ const Grid = ({id, go, user}) => {
 
     async function loadEvents(){
         let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
-
         let newEvents = await eventsResponse.json();
 
         setPage(page + 1);
-
         setDataEvents(dataEvents.concat(newEvents.content));
-
         setIsLoading(false);
     }
 
@@ -58,7 +58,7 @@ const Grid = ({id, go, user}) => {
 
 
     useEffect(() => {
-        if (user != null)
+        if (user != null || user != undefined)
             loadEvents();
     }, [user]);
 
@@ -92,8 +92,14 @@ const Grid = ({id, go, user}) => {
     const onCloseFilterEnvironment = e => {
         if (e.target.id == "filter_modal") onModal(e);
     }
+    
+    const bla = () => {
+        console.log("hello");
+        return true;
+    }
 
     return (
+        
         <Panel id={id}>
             <Header panelId={id}/>
 
@@ -102,7 +108,7 @@ const Grid = ({id, go, user}) => {
                         <GridEventList data={dataEvents}/> }
                 </div>
 
-                <div className="Filter" onClick={onModal}>
+                <div className="Filter" onClick={bla() && onModal}>
                     <p>Фильтр</p>
                 </div>
 
@@ -164,9 +170,14 @@ const Grid = ({id, go, user}) => {
                     </div>
                 </div>
 
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 }
-
 export default Grid;
+// function mapStateToProps(store) {
+//     return {
+//         user: store.userState.user
+//     }
+//   }
+//   export default connect(mapStateToProps)(Grid)

@@ -6,7 +6,7 @@ import connect from '@vkontakte/vk-connect';
 import './panelsStyle/Personal.css';
 
 
-const Personal = ({id, go}) => {
+const Personal = ({id, go, activePanel}) => {
     const [fetchedUser, setUser] = useState(null);
     const [token, setToken] = useState(null);
     useEffect(() => {
@@ -51,7 +51,7 @@ const Personal = ({id, go}) => {
                         }
                 </div>
             </div>
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 }

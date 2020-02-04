@@ -14,7 +14,7 @@ import matchedFriends from "../Components/ExportMatchedFriends";
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-const Matches = ({id, go}) => {
+const Matches = ({id, go, activePanel}) => {
     const [isSelectedFriends, setIsSelectedFriends] = useState("true");
 
     const onSwitchClick = (value) => {setIsSelectedFriends(value);}
@@ -57,7 +57,7 @@ const Matches = ({id, go}) => {
                             ? matchedPeople
                             : matchedFriends} />
             </div>
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 }

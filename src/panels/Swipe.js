@@ -8,7 +8,7 @@ import Deck from "../Components/Deck";
 import {fetchEvents} from "../Api/Events";
 import { setRate } from '../Api/Ratings';
 
-const Swipe = ({id, go, user}) => {
+const Swipe = ({id, go, user, activePanel}) => {
     const [events, setEvents] = useState([]);
     const [page, setPage] = useState(0);
     const [categories, setCategories] = useState([1,6]);
@@ -55,7 +55,7 @@ const Swipe = ({id, go, user}) => {
             <Header panelId={id}/>
             <Deck cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
 
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 };

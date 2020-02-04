@@ -8,7 +8,7 @@ import Deck from "../Components/Deck";
 import {fetchPeople} from "../Api/People";
 import { setUserRate } from '../Api/Ratings';
 
-const People = ({id, go, user}) => {
+const People = ({id, go, user, activePanel}) => {
     const [people, setPeople] = useState([]);
     const [page, setPage] = useState(0);
     const [categories, setCategories] = useState([1,6]);
@@ -48,7 +48,7 @@ const People = ({id, go, user}) => {
             <Header panelId={id}/>
             <Deck cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 };

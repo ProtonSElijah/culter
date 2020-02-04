@@ -17,7 +17,6 @@ import settings from "./Api/dev_settings.json";
 const AppCulter = () => {
     const [activePanel, setActivePanel] = useState('swipe');
     const [user, setUser] = useState(null);
-
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
     }
@@ -28,7 +27,7 @@ const AppCulter = () => {
                 {'id' : settings.user_id} :
                 await connect.sendPromise('VKWebAppGetUserInfo');
 
-            await authorize(fetchedUser.id);
+            await authorize(fetchedUser);
             setUser(fetchedUser);
         }
         fetchData();
@@ -38,11 +37,11 @@ const AppCulter = () => {
 
     return (
         <View activePanel={activePanel}>
-            <Personal id='personal' go={go} />
-            <Grid user={user} id="grid" go={go} />
-            <Swipe user={user} id='swipe' go={go} />
-            <People user={user} id='people' go={go} />
-            <Matches id='matches' go={go} />
+            <Personal id='personal' go={go} activePanel={activePanel}/>
+            <Grid id="grid" go={go} activePanel={activePanel}/>
+            <Swipe user={user} id='swipe' go={go} activePanel={activePanel}/>
+            <People user={user} id='people' go={go} activePanel={activePanel}/>
+            <Matches user={user} id='matches' go={go} activePanel={activePanel}/>
         </View>
     );
 }
