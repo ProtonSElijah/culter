@@ -48,17 +48,15 @@ const Grid = ({id, go, activePanel}) => {
 
     async function deleteAndloadEvents(){
         let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
-
         let newEvents = await eventsResponse.json();
 
         setPage(1);
-
         setDataEvents(newEvents.content);
     }
 
 
     useEffect(() => {
-        if (user != null || user != undefined)
+        if (user != null || user !== undefined)
             loadEvents();
     }, [user]);
 
@@ -77,7 +75,7 @@ const Grid = ({id, go, activePanel}) => {
             deleteAndloadEvents();
         }
         modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
-    }
+    };
 
     const onChangeFilterItemState = e => {
         if (e.currentTarget.dataset.isactive == "false") {
@@ -87,16 +85,11 @@ const Grid = ({id, go, activePanel}) => {
         e.currentTarget.dataset.isactive = (e.currentTarget.dataset.isactive == "true") ? "false" : "true";
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-disabled");
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-active");
-    }
+    };
 
     const onCloseFilterEnvironment = e => {
         if (e.target.id == "filter_modal") onModal(e);
-    }
-    
-    const bla = () => {
-        console.log("hello");
-        return true;
-    }
+    };
 
     return (
         
@@ -108,7 +101,7 @@ const Grid = ({id, go, activePanel}) => {
                         <GridEventList data={dataEvents}/> }
                 </div>
 
-                <div className="Filter" onClick={bla() && onModal}>
+                <div className="Filter" onClick={onModal}>
                     <p>Фильтр</p>
                 </div>
 
@@ -173,7 +166,7 @@ const Grid = ({id, go, activePanel}) => {
             <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
-}
+};
 export default Grid;
 // function mapStateToProps(store) {
 //     return {
