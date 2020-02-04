@@ -9,7 +9,8 @@ import Matches from './panels/Matches';
 import Swipe from './panels/Swipe';
 // import registerServiceWorker from './sw';
 import AppCulter from './AppCulter';
-
+import {Provider} from 'react-redux';
+import store from './redux/store/store';
 // Init VK  Mini App
 connect.send('VKWebAppInit');
 
@@ -19,4 +20,7 @@ connect.send('VKWebAppInit');
 // Подробнее про сервис воркеры можно почитать тут — https://vk.cc/8MHpmT
 // registerServiceWorker();
 
-ReactDOM.render(<AppCulter />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <AppCulter/>
+    </Provider>, document.getElementById('root'));
