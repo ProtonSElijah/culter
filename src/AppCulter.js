@@ -26,7 +26,7 @@ const AppCulter = () => {
             let fetchedUser = config.is_dev ?
                 {'id' : settings.user_id} :
                 await connect.sendPromise('VKWebAppGetUserInfo');
-
+            
             await authorize(fetchedUser);
             setUser(fetchedUser);
         }
@@ -39,9 +39,9 @@ const AppCulter = () => {
         <View activePanel={activePanel}>
             <Personal id='personal' go={go} activePanel={activePanel}/>
             <Grid id="grid" go={go} activePanel={activePanel}/>
-            <Swipe user={user} id='swipe' go={go} activePanel={activePanel}/>
-            <People user={user} id='people' go={go} activePanel={activePanel}/>
-            <Matches user={user} id='matches' go={go} activePanel={activePanel}/>
+            <Swipe id='swipe' go={go} activePanel={activePanel}/>
+            <People id='people' go={go} activePanel={activePanel}/>
+            <Matches id='matches' go={go} activePanel={activePanel}/>
         </View>
     );
 }

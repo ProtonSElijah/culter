@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
+
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -8,7 +10,8 @@ import Deck from "../Components/Deck";
 import {fetchEvents} from "../Api/Events";
 import { setRate } from '../Api/Ratings';
 
-const Swipe = ({id, go, user, activePanel}) => {
+const Swipe = ({id, go, activePanel}) => {
+    const user = useSelector(state => state.userState.user);
     const [events, setEvents] = useState([]);
     const [page, setPage] = useState(0);
     const [categories, setCategories] = useState([1,6]);

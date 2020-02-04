@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 
 import Header from "../Components/Header";
 import MatchedNavigationButtons from "../Components/MatchedNavigationButtons"
@@ -15,8 +16,9 @@ import matchedFriends from "../Components/ExportMatchedFriends";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 const Matches = ({id, go, activePanel}) => {
+    const user = useSelector(state => state.userState.user);
     const [isSelectedFriends, setIsSelectedFriends] = useState("true");
-
+    
     const onSwitchClick = (value) => {setIsSelectedFriends(value);}
 
     useEffect(() => {
