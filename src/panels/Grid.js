@@ -104,7 +104,7 @@ const Grid = ({id, go, activePanel}) => {
 
                 <div className="Grid-eventList" onScroll={uploadData}>
                     {events &&
-                        <GridEventList data={events}/> }
+                        <GridEventList go={go} data={events}/> }
                 </div>
 
                 <div className="Filter" onClick={onModal}>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 const MatchedList = ({list}) => {
-    const text = "Я о моём последнем сообщении";
+    const text = "Перейти в сообщения";
 
     return list.map(
         person =>
@@ -11,13 +11,13 @@ const MatchedList = ({list}) => {
                 <div className="PersonData">
                     <div className="PersonName"><b>{person.first_name + " " + person.last_name}</b></div>
                     {text.length > 26 &&
-                        <div className="PersonPlacesList">
+                        <a className="PersonPlacesList" href={"https://vk.com/im?sel=" + person.id}>
                             {text.slice(0, 26) + ".."}
-                        </div>}
+                        </a>}
                     {!(text.length > 26) &&
-                        <div className="PersonPlacesList">
+                        <a className="PersonPlacesList" href={"https://vk.com/im?sel=" + person.id}>
                             {text}
-                        </div>}
+                        </a>}
                 </div>
             </div>
             <div className="BottomLine"></div>

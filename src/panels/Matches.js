@@ -63,7 +63,7 @@ const Matches = ({id, go, activePanel}) => {
                 }
             </div>
             <div className="Dialogues">
-                <p>Диалоги</p>
+                <p>Совпадения</p>
             </div>
             <div className="ListContainer">
                 {matchedPeople.length > 0 ?
