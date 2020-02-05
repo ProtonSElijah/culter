@@ -13,27 +13,28 @@ import gridActive from "../icons/gridRed.svg";
 import swipeActive from "../icons/swipeRed.svg";
 import userActive from "../icons/userRed.svg";
 
-const Bottom = ({go}) => {
+const Bottom = ({go, activePanel}) => {
 
     return (
+        
         <div className="App-bottom">
            <div className="Bottom-button Bottom-profileButton" onClick={go}
                 data-to="personal">
-               <img id="personalButton" src={userDes} alt="personal" />
+               <img id="personalButton" src={activePanel == "personal" ? userActive : userDes} alt="personal" />
            </div>
            <div className="Bottom-button Bottom-eventsGridButton" onClick={go} data-to="grid">
-               <img id="gridButton" src={gridDes} alt="swipe" />
+               <img id="gridButton" src={activePanel == "grid" ? gridActive : gridDes} alt="swipe" />
            </div>
            <div className="Bottom-button Bottom-eventsSwipeButton" onClick={go}
                 data-to="swipe">
-               <img  id="swipeButton" src={swipeDes} alt="swipe" />
+               <img  id="swipeButton" src={activePanel == "swipe" ? swipeActive : swipeDes} alt="swipe" />
            </div>
            <div className="Bottom-button Bottom-peopleSwipeButton" onClick={go} data-to="people">
-               <img id="peopleButton" src={eventDes} alt="people" />
+               <img id="peopleButton" src={activePanel == "people" ? eventActive : eventDes} alt="people" />
            </div>
            <div className="Bottom-button Bottom-matchesButton" onClick={go}
                 data-to="matches">
-               <img id="matchesButton" src={chatDes} alt="matches" />
+               <img id="matchesButton" src={activePanel == "matches" ? chatActive : chatDes} alt="matches" />
            </div>
         </div>
     );

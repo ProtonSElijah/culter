@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
+import { reload, load } from "../redux/actions/events-actions";
 
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
@@ -11,11 +13,10 @@ import './panelsStyle/Grid.css';
 import {fetchEvents} from "../Api/Events";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-const Grid = ({id, go, user}) => {
+const Grid = ({id, go, activePanel}) => {
+    const user = useSelector(state => state.userState.user);
+    const events = useSelector(state => state.eventsState.events);
 
-    const [dataEvents, setDataEvents] = useState([]);
-    const [page, setPage] = useState(0);
-    const [size, setSize] = useState(20);
     const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -35,31 +36,30 @@ const Grid = ({id, go, user}) => {
     };
 
     async function loadEvents(){
-        let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
+        await fetchEvents(categoriesId);
+        // let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
+        // let newEvents = await eventsResponse.json();
 
-        let newEvents = await eventsResponse.json();
-
-        setPage(page + 1);
-
-        setDataEvents(dataEvents.concat(newEvents.content));
-
+        // setPage(page + 1);
+        // setDataEvents(dataEvents.concat(newEvents.content));
         setIsLoading(false);
     }
 
     async function deleteAndloadEvents(){
-        let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
+        // let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
+        // let newEvents = await eventsResponse.json();
 
-        let newEvents = await eventsResponse.json();
-
-        setPage(1);
-
-        setDataEvents(newEvents.content);
+        // setPage(1);
+        // setDataEvents(newEvents.content);
     }
 
 
     useEffect(() => {
-        if (user != null)
-            loadEvents();
+        if (user != null || user !== undefined)
+            if (events.length == 0){
+                loadEvents();
+            }
+              
     }, [user]);
 
 
@@ -77,7 +77,7 @@ const Grid = ({id, go, user}) => {
             deleteAndloadEvents();
         }
         modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
-    }
+    };
 
     const onChangeFilterItemState = e => {
         if (e.currentTarget.dataset.isactive == "false") {
@@ -87,19 +87,20 @@ const Grid = ({id, go, user}) => {
         e.currentTarget.dataset.isactive = (e.currentTarget.dataset.isactive == "true") ? "false" : "true";
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-disabled");
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-active");
-    }
+    };
 
     const onCloseFilterEnvironment = e => {
         if (e.target.id == "filter_modal") onModal(e);
-    }
+    };
 
     return (
+        
         <Panel id={id}>
             <Header panelId={id}/>
 
                 <div className="Grid-eventList" onScroll={uploadData}>
-                    {dataEvents &&
-                        <GridEventList data={dataEvents}/> }
+                    {events &&
+                        <GridEventList data={events}/> }
                 </div>
 
                 <div className="Filter" onClick={onModal}>
@@ -164,9 +165,14 @@ const Grid = ({id, go, user}) => {
                     </div>
                 </div>
 
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
-}
-
+};
 export default Grid;
+// function mapStateToProps(store) {
+//     return {
+//         user: store.userState.user
+//     }
+//   }
+//   export default connect(mapStateToProps)(Grid)

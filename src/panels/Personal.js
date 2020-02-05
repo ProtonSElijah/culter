@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -6,7 +7,8 @@ import connect from '@vkontakte/vk-connect';
 import './panelsStyle/Personal.css';
 
 
-const Personal = ({id, go}) => {
+const Personal = ({id, go, activePanel}) => {
+    const user = useSelector(state => state.userState.user);
     const [fetchedUser, setUser] = useState(null);
     const [token, setToken] = useState(null);
     useEffect(() => {
@@ -51,7 +53,7 @@ const Personal = ({id, go}) => {
                         }
                 </div>
             </div>
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 }

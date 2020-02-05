@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 
 import Header from "../Components/Header";
 import MatchedNavigationButtons from "../Components/MatchedNavigationButtons"
@@ -12,7 +13,8 @@ import './panelsStyle/Matches.css';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import {fetchMatches, fetchPeople} from "../Api/People";
 
-const Matches = ({id, user, go}) => {
+const Matches = ({id, go, activePanel}) => {
+    const user = useSelector(state => state.userState.user);
     const [matchedPeople, setMatchedPeople] = useState([]);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(20);
@@ -37,6 +39,12 @@ const Matches = ({id, user, go}) => {
         }
         refreshHeaderVK();
     }, []);
+
+    /*<MatchedNavigationButtons
+                stateList = {isSelectedFriends}
+                stateRefresh = {onSwitchClick}
+                matchedList = {matchedPeople}
+                friendsList = {matchedFriends}/>*/
 
     return (
         <Panel id={id}>
@@ -64,7 +72,7 @@ const Matches = ({id, user, go}) => {
                     <div/>
                 }
             </div>
-            <Bottom go={go}/>
+            <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 }
