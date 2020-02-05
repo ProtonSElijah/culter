@@ -22,13 +22,13 @@ const Personal = ({id, go, activePanel}) => {
             setUser(user);
         }
 
-        async function fetchToken(){
-            let tokenObject = await connect.sendPromise("VKWebAppGetAuthToken", {
-                "app_id": 7197573, "scope": "friends"});
-            setToken(tokenObject.access_token);
-        }
+        // async function fetchToken(){
+        //     let tokenObject = await connect.sendPromise("VKWebAppGetAuthToken", {
+        //         "app_id": lol, "scope": "friends"});
+        //     setToken(tokenObject.access_token);
+        // }
         fetchData();
-        fetchToken();
+        //fetchToken();
     }, []);
 
     return (
