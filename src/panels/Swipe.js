@@ -12,26 +12,13 @@ import { setRate } from '../Api/Ratings';
 
 const Swipe = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
-    const [events, setEvents] = useState([]);
-    const [page, setPage] = useState(0);
-    const [categories, setCategories] = useState([1,6]);
-    const [size, setSize] = useState(20);
+    const events = useSelector(state => state.eventsState.events);
+
+    const [categories, setCategories] = useState(["1","6"]);
+    
 
     async function loadEvents(){
-        // let eventsResponse = await fetchEvents(user.id,categories,page,size);
-
-        // let newEventsJson = await eventsResponse.json();
-        // let newEvents = newEventsJson.content;
-
-        // let isLastPartition = newEvents == undefined || newEvents.length < size;
-        // if (isLastPartition){
-        //     setPage(0);
-        // } else {
-        //     setPage(page + 1);
-        // }
-
-        // setEvents(events.concat(newEvents));
-
+        await fetchEvents(categories);
     }
     async function setRateBy(eventId, isLike){
         setRate(user.id, eventId, isLike );
@@ -39,8 +26,10 @@ const Swipe = ({id, go, activePanel}) => {
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        if (user != null)
-            loadEvents();
+        if (user != null || user != undefined)
+            if (events.length == 0){
+                loadEvents();
+            }
     }, [user]);
 
 

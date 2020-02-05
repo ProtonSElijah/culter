@@ -17,9 +17,6 @@ const Grid = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
     const events = useSelector(state => state.eventsState.events);
 
-    const [dataEvents, setDataEvents] = useState([]);
-    const [page, setPage] = useState(0);
-    const [size, setSize] = useState(20);
     const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -59,7 +56,10 @@ const Grid = ({id, go, activePanel}) => {
 
     useEffect(() => {
         if (user != null || user !== undefined)
-            loadEvents();
+            if (events.length == 0){
+                loadEvents();
+            }
+              
     }, [user]);
 
 

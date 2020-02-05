@@ -4,7 +4,7 @@ import { reload, load } from "../redux/actions/events-actions";
 
 export async function fetchEvents(categories=[1,6], is_personal=true )  {
     let requestState = store.getState();
-    console.log(requestState);
+
     let userId = requestState.userState.user.id;
     let page = requestState.eventsState.page;
     let size = requestState.eventsState.size;
@@ -20,5 +20,6 @@ export async function fetchEvents(categories=[1,6], is_personal=true )  {
 
     let newEvents = await response.json();
 
-    store.dispatch(load(newEvents.content));
+    if (newEvents.content.length !== 0) 
+        store.dispatch(load(newEvents.content));
 }
