@@ -2,7 +2,7 @@ import config from "./api_config"
 import store from "../redux/store/store";
 import { reload, load } from "../redux/actions/events-actions";
 
-export async function fetchEvents(categories=[1,6], is_personal=true )  {
+export async function fetchEvents(categories=[1,6], isReload=false, is_personal=true )  {
     let requestState = store.getState();
 
     let userId = requestState.userState.user.id;
@@ -20,6 +20,13 @@ export async function fetchEvents(categories=[1,6], is_personal=true )  {
 
     let newEvents = await response.json();
 
-    if (newEvents.content.length !== 0) 
-        store.dispatch(load(newEvents.content));
+    if (isReload){
+        store.dispatch(reload(newEvents.content));
+    } else {
+        if (newEvents.content.length !== 0) 
+         store.dispatch(load(newEvents.content));
+    }
+   
+       
+       
 }

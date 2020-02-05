@@ -46,6 +46,10 @@ const Grid = ({id, go, activePanel}) => {
     }
 
     async function deleteAndloadEvents(){
+        if (user != null || user != undefined){
+            await fetchEvents(categoriesId,true);
+            setIsLoading(false);
+        }
         // let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
         // let newEvents = await eventsResponse.json();
 
@@ -55,7 +59,7 @@ const Grid = ({id, go, activePanel}) => {
 
 
     useEffect(() => {
-        if (user != null || user !== undefined)
+        if (user != null || user != undefined)
             if (events.length == 0){
                 loadEvents();
             }
