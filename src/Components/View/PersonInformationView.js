@@ -12,8 +12,8 @@ const PersonInformationView = ({person}) => {
             <div className="Swipe-content-down-center user">
                 <p>{person.first_name}</p>
 
-                <p>Общих событий: {person.common_events.length}</p>
-                <p>Всего событий: {person.liked_events.length}</p>
+                <p>Общих событий: <b>{person.common_events.length}</b></p>
+   
             </div>
 
         </div>

@@ -5,8 +5,8 @@ import LeftButton from '../../icons/eventAnnotationLeftButton.svg';
 import RightButton from '../../icons/eventAnnotationRightButton.svg';
 
 const EventInformationView = ({event}) => {
-    let title = event.short_title.length > 14 ?
-        event.short_title.slice(0,11) + "..." : event.short_title;
+    let title = event.short_title.length > 18 ?
+        event.short_title.slice(0,15) + "..." : event.short_title;
 
     let isDateProvided = event.dates.length > 0;
 
@@ -25,11 +25,11 @@ const EventInformationView = ({event}) => {
     return  (
         <div className="Swipe-content-down-container">
 
-            <div className="Swipe-content-down-aside">
+            {/* <div className="Swipe-content-down-aside">
                 <div className="Swipe-content-down-button">
                     <img src={LeftButton} alt="leftButton" />
                 </div>
-            </div>
+            </div> */}
 
             <div className="Swipe-content-down-center">
                 <p>{title}</p>
@@ -40,11 +40,11 @@ const EventInformationView = ({event}) => {
                  }
             </div>
 
-            <div className="Swipe-content-down-aside">
+            {/* <div className="Swipe-content-down-aside">
                 <div className="Swipe-content-down-button">
                     <img id="Swipe-content-down-button-right" src={RightButton} alt="rightButton" />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 
