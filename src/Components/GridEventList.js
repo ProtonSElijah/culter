@@ -1,11 +1,14 @@
 import React from 'react';
+import store from "../redux/store/store";
 
 import '../panels/panelsStyle/Grid.css';
+import {setIndex} from '../redux/actions/events-actions';
 
 const GridEventList = ({go, data}) => {
 
     const handleClick = e => {
-        //setIndex(index);
+        let index = Number(e.currentTarget.dataset.index);
+        store.dispatch(setIndex(index));
         go(e);
     }
 

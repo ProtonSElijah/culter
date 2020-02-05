@@ -10,3 +10,10 @@ export function load(events){
         events
     }
 }
+
+export function setIndex(index){
+    return {
+        type: "SET_INDEX",
+        index
+    }
+}

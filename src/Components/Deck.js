@@ -1,56 +1,45 @@
 import React, {Component} from 'react';
+import store from "../redux/store/store";
+
+import { useSelector } from "react-redux";
+
 import Card from "./Card";
 import CardView from "./View/CardView";
 import {setRate} from "../Api/Ratings";
 
-class Deck extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentIndex: 0,
-            swipesCountFromUpload: 0
-        };
-        this.onSwipeEnd = this.onSwipeEnd.bind(this);
-    }
+import {setIndex} from '../redux/actions/events-actions';
 
-     onSwipeEnd = async function(isLike) {
-        this.props.setRateBy(this.props.cards[this.state.currentIndex].id, isLike);
+const Deck = ({cards, loadCards, setRateBy}) => {
+
+    const index = useSelector(state => state.eventsState.index);
+
+     const onSwipeEnd = async function(isLike) {
+        setRateBy(cards[index].id, isLike);
 
         // Uploading if nessecary
-        if (this.state.swipesCountFromUpload == 10){
-            this.props.loadCards();
-            this.setState({
-                swipesCountFromUpload: 0
-            })
+        if (cards.length - index < 10){
+            loadCards();
         }
 
-        // Ticking index for next card and decreasing
-        this.setState({
-            currentIndex: this.state.currentIndex + 1,
-            swipesCountFromUpload: this.state.swipesCountFromUpload + 1
-        });
-
-
+        store.dispatch(setIndex(index + 1));
     };
 
-    render() {
+    let topCardIndex = index;
+    let bottomCardIndex = topCardIndex + 1;
+    return (
 
-        let cards = this.props.cards;
-        let topCardIndex = this.state.currentIndex;
-        let bottomCardIndex = topCardIndex + 1;
-        return (
-            cards.length > 0 && topCardIndex < cards.length ?
-                <div>
-                    <Card cardInfo={cards[topCardIndex]} onSwipeEnd={this.onSwipeEnd}/>
-                    {
-                        bottomCardIndex < cards.length ?
-                            <CardView cardInfo={cards[bottomCardIndex]}/>:
-                            <div/>
-                    }
-                </div> :
-                <div/>
-        );
-    }
+        cards.length > 0 && topCardIndex < cards.length ?
+            <div>
+                <Card cardInfo={cards[topCardIndex]} onSwipeEnd={onSwipeEnd}/>
+                {
+                    bottomCardIndex < cards.length ?
+                        <CardView cardInfo={cards[bottomCardIndex]}/>:
+                        <div/>
+                }
+            </div> :
+            <div/>
+      
+    )
 }
 
 export default Deck;

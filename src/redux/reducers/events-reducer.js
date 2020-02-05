@@ -1,7 +1,8 @@
 const initialState = {
     events: [],
     page: 0,
-    size: 20
+    size: 20,
+    index: 0
 };
 
 function events(state=initialState, action){
@@ -13,6 +14,9 @@ function events(state=initialState, action){
         case "LOAD":
             state.events = state.events.concat(action.events);
             state.page = state.page + 1;
+            return state;
+        case "SET_INDEX":
+            state.index = action.index;
             return state;
     }
     return state;
