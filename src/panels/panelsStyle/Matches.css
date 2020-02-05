@@ -150,7 +150,7 @@
 .BottomLine {
     margin: 0vmax 7.5vmin;
     width: 80vmin;
-    padding: 0.15vmin;
+    height: 1px;
     background: #ff4f4d;
 }
 
