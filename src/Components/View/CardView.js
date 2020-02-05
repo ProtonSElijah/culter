@@ -5,7 +5,7 @@ import PersonInformationView from './PersonInformationView';
 import ChoiceLabelsView from './ChoiceLabelsView';
 
 
-const CardView = ({horizontalShift, verticalShift, isUpperTouch, cardInfo,isTransition}) => {
+const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, cardInfo,isTransition}) => {
 
     let rotationCoefficient = isUpperTouch ? -1 : 1;
     let rotation = rotationCoefficient * horizontalShift / 15 ;
@@ -14,6 +14,11 @@ const CardView = ({horizontalShift, verticalShift, isUpperTouch, cardInfo,isTran
                 " translate("+ horizontalShift + "px, "+ verticalShift + "px)",
             "transition" : isTransition ? "0.2s" : ""
         };
+
+    if (hasMargin){
+        contentStyle["position"] = "absolute";
+        contentStyle["z-index"] = "10";
+    }
 
     let isEventCard = cardInfo.hasOwnProperty("short_title");
 

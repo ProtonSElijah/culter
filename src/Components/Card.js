@@ -95,17 +95,19 @@ class Card extends Component {
     render() {
         return (
             <div
+                style={{"position":"absolute", "z-index":"20"}}
                 className="Swipe-main"
                  onTouchMove={this.onTouch}
                  onTouchEnd={this.onTouchEnd}
                  onTouchStart={this.onTouchStart}>
                 <CardView
-                          cardInfo={this.props.cardInfo}
-                          isSwiping={this.state.isSwiping}
-                          horizontalShift={this.state.horizontalShift}
-                          verticalShift={this.state.verticalShift}
-                          isUpperTouch={this.state.isUpperTouch}
-                            isTransition={this.state.isTransition}/>
+                    hasMargin={false}
+                    cardInfo={this.props.cardInfo}
+                    isSwiping={this.state.isSwiping}
+                    horizontalShift={this.state.horizontalShift}
+                    verticalShift={this.state.verticalShift}
+                    isUpperTouch={this.state.isUpperTouch}
+                    isTransition={this.state.isTransition}/>
             </div>
         );
     }
