@@ -11,17 +11,12 @@ import { setUserRate } from '../Api/Ratings';
 
 const People = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
-
-    const [people, setPeople] = useState([]);
-    const [page, setPage] = useState(0);
-    const [size, setSize] = useState(20);
+    const people = useSelector(state => state.peopleState.people);
 
     async function loadPeople(){
         let peopleResponse = await fetchPeople(user.id, page, size);
         let newPeople = await peopleResponse.json();
 
-        setPage(page + 1);
-        setPeople(people.concat(newPeople.content));
 
     }
 
