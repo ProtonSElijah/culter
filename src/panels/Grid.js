@@ -37,30 +37,20 @@ const Grid = ({id, go, activePanel}) => {
 
     async function loadEvents(){
         await fetchEvents(categoriesId);
-        // let eventsResponse = await fetchEvents(user.id,categoriesId,page,size);
-        // let newEvents = await eventsResponse.json();
-
-        // setPage(page + 1);
-        // setDataEvents(dataEvents.concat(newEvents.content));
         setIsLoading(false);
     }
 
     async function deleteAndloadEvents(){
-        if (user != null || user != undefined){
+        if (user != null || user !== undefined){
             await fetchEvents(categoriesId,true);
             setIsLoading(false);
         }
-        // let eventsResponse = await fetchEvents(user.id,categoriesId,0,size);
-        // let newEvents = await eventsResponse.json();
-
-        // setPage(1);
-        // setDataEvents(newEvents.content);
     }
 
 
     useEffect(() => {
-        if (user != null || user != undefined)
-            if (events.length == 0){
+        if (user != null || user !== undefined)
+            if (events.length === 0){
                 loadEvents();
             }
               
