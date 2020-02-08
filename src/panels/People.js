@@ -14,7 +14,6 @@ const People = ({id, go, activePanel}) => {
 
     const [people, setPeople] = useState([]);
     const [page, setPage] = useState(0);
-    const [categories, setCategories] = useState([1,6]);
     const [size, setSize] = useState(20);
 
     async function loadPeople(){
@@ -32,7 +31,7 @@ const People = ({id, go, activePanel}) => {
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        if (user != null)
+        if (user != null || user !== undefined)
             loadPeople();
     }, [user]);
 
