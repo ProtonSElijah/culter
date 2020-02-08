@@ -11,7 +11,7 @@ import '../ResetBrowser.css';
 import './panelsStyle/Matches.css';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import {fetchMatches, fetchPeople} from "../Api/People";
+import {fetchMatches} from "../Api/Matches";
 
 const Matches = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
@@ -22,7 +22,7 @@ const Matches = ({id, go, activePanel}) => {
     async function loadMatches(){
         let peopleResponse = await fetchMatches(user.id, page, size);
         let newPeople = await peopleResponse.json();
-        console.log(newPeople);
+
         setPage(page + 1);
         setMatchedPeople(matchedPeople.concat(newPeople.content));
     }

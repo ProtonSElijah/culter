@@ -9,10 +9,12 @@ import './panelsStyle/Swipe.scss';
 import Deck from "../Components/Deck";
 import {fetchEvents} from "../Api/Events";
 import { setRate } from '../Api/Ratings';
+import {setIndex} from "../redux/actions/events-actions";
 
 const Swipe = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
     const events = useSelector(state => state.eventsState.events);
+    const index = useSelector(state => state.eventsState.index);
 
     const [categories, setCategories] = useState(["1","6"]);
     
@@ -45,7 +47,7 @@ const Swipe = ({id, go, activePanel}) => {
     return (
         <Panel id={id}>
             <Header panelId={id}/>
-            <Deck cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
+            <Deck index={index} setIndex={setIndex} cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
 
             <Bottom go={go} activePanel={activePanel}/>
         </Panel>

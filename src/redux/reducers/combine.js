@@ -7,7 +7,6 @@ const reducers = combineReducers({
     eventsState: eventsReducer,
     userState: userReducer,
     peopleState: peopleReducer
-
 });
 
 export default reducers;

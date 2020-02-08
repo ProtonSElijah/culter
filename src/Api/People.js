@@ -1,17 +1,41 @@
 import config from "./api_config"
+import store from "../redux/store/store";
+import {load, reload} from "../redux/actions/people-actions";
 
-export async function fetchPeople(userId, page=0, size=20)  {
-    let url = config.url + "/user/" + userId 
-        + "/users/all?"
-        + "&page=" + page 
-        + "&size=" + size;
-    return fetch(url, {method: "GET",});
+export async function fetchPeople(isReload = false)  {
+    console.log("hello");
+    let url = createUrl();
+    console.log(url);
+    let response = await fetch(url, {method: "GET",});
+    console.log(response);
+    if (response.status !== 200){
+        return;
+    }
+
+    let newPeopleJson = await response.json();
+    let newPeople = newPeopleJson.content;
+
+    updateStore(isReload, newPeople);
 }
 
-export async function fetchMatches(userId, page=0, size=20) {
-    let url = config.url + "/user/" + userId 
-        + "/users/ratings?"
-        + "&page=" + page 
+function createUrl() {
+    let requestState = store.getState();
+
+    let userId = requestState.userState.user.id;
+    let page = requestState.eventsState.page;
+    let size = requestState.eventsState.size;
+
+    return config.url + "/user/" + userId
+        + "/users/all?"
+        + "&page=" + page
         + "&size=" + size;
-    return fetch(url, {method: "GET",});
+}
+
+function updateStore(isReload, newPeople) {
+    if (isReload) {
+        store.dispatch(reload(newPeople));
+    } else {
+        if (newPeople.length !== 0)
+            store.dispatch(load(newPeople));
+    }
 }

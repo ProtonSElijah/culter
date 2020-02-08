@@ -4,7 +4,7 @@ const initialState = {
     size: 20,
     index: 0
 };
-
+console.log(initialState);
 function events(state=initialState, action){
     switch(action.type){
         case "RELOAD":

@@ -9,10 +9,9 @@ import {setRate} from "../Api/Ratings";
 
 import {setIndex} from '../redux/actions/events-actions';
 
-const Deck = ({cards, loadCards, setRateBy}) => {
-
-    const index = useSelector(state => state.eventsState.index);
-
+const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
+     console.log(index);
+     console.log(setIndex);
      const onSwipeEnd = async function(isLike) {
         setRateBy(cards[index].id, isLike);
 

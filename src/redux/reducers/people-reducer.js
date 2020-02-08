@@ -7,15 +7,15 @@ const initialState = {
 
 function people(state=initialState, action){
     switch(action.type){
-        case "RELOAD":
+        case "PEOPLE_RELOAD":
             state.people = action.people;
             state.page = 1;
             return state;
-        case "LOAD":
+        case "PEOPLE_LOAD":
             state.people = state.people.concat(action.people);
             state.page = state.page + 1;
             return state;
-        case "SET_INDEX":
+        case "PEOPLE_SET_INDEX":
             state.index = action.index;
             return state;
     }
