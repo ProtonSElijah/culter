@@ -38,6 +38,8 @@ const Matches = ({id, go, activePanel}) => {
             document.body.style.setProperty('--background_page', 'white');
         }
         refreshHeaderVK();
+        if (user != null)
+            loadMatches();
     }, []);
 
     /*<MatchedNavigationButtons
