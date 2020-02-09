@@ -3,11 +3,8 @@ import store from "../redux/store/store";
 import {load, reload} from "../redux/actions/people-actions";
 
 export async function fetchPeople(isReload = false)  {
-    console.log("hello");
     let url = createUrl();
-    console.log(url);
     let response = await fetch(url, {method: "GET",});
-    console.log(response);
     if (response.status !== 200){
         return;
     }
@@ -20,7 +17,6 @@ export async function fetchPeople(isReload = false)  {
 
 function createUrl() {
     let requestState = store.getState();
-
     let userId = requestState.userState.user.id;
     let page = requestState.eventsState.page;
     let size = requestState.eventsState.size;
