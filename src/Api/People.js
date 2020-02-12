@@ -18,8 +18,8 @@ export async function fetchPeople(isReload = false)  {
 function createUrl() {
     let requestState = store.getState();
     let userId = requestState.userState.user.id;
-    let page = requestState.eventsState.page;
-    let size = requestState.eventsState.size;
+    let page = requestState.peopleState.page;
+    let size = requestState.peopleState.size;
 
     return config.url + "/user/" + userId
         + "/users/all?"

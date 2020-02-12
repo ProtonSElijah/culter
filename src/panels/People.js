@@ -15,8 +15,15 @@ const People = ({id, go, activePanel}) => {
     const people = useSelector(state => state.peopleState.people);
     const index = useSelector(state => state.peopleState.index);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     async function loadPeople(){
-        await fetchPeople(people.length === 0);
+        if (!isLoading){
+            setIsLoading(true);
+            await fetchPeople(people.length === 0);
+            setIsLoading(false);
+        }
+         
     }
 
     async function setRateBy(otherUserId, isLike){
@@ -28,11 +35,11 @@ const People = ({id, go, activePanel}) => {
     };
 
     // При получении user id, получаем ивенты
-    useEffect(() => {
-        if (isUserLoaded() && people.length === 0){
-            loadPeople();
-        }
-    }, [user]);
+    // useEffect(() => {
+    //     if (isUserLoaded() && people.length === 0){
+    //         loadPeople();
+    //     }
+    // }, [user]);
 
 
     useEffect(() => {

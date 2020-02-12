@@ -7,7 +7,6 @@ import Card from "./Card";
 import CardView from "./View/CardView";
 import {setRate} from "../Api/Ratings";
 
-import {setIndex} from '../redux/actions/events-actions';
 
 const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
      const onSwipeEnd = async function(isLike) {
