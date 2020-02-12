@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import store from "../redux/store/store";
 
-import { useSelector } from "react-redux";
 
 import Card from "./Card";
 import CardView from "./View/CardView";
-import {setRate} from "../Api/Ratings";
 
+import spinner from "../preloader.svg";
 
 const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
      const onSwipeEnd = async function(isLike) {
@@ -33,7 +32,8 @@ const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
                         <div/>
                 }
             </div> :
-            <div >
+            <div className="spinner-preloader-forPeople">
+                <img src={spinner} alt="loading spinner"/>
             </div>
       
     )
