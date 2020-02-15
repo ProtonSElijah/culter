@@ -11,7 +11,7 @@ const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
      const onSwipeEnd = async function(isLike) {
         setRateBy(cards[index].id, isLike);
 
-        // Uploading if nessecary
+        // Uploading if necessary
         if (cards.length - index < 10){
             loadCards();
         }
