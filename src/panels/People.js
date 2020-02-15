@@ -8,32 +8,38 @@ import './panelsStyle/People.scss';
 import Deck from "../Components/Deck";
 import {fetchPeople} from "../Api/People";
 import { setUserRate } from '../Api/Ratings';
+import {setIndex} from "../redux/actions/people-actions";
 
 const People = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
+    const people = useSelector(state => state.peopleState.people);
+    const index = useSelector(state => state.peopleState.index);
 
-    const [people, setPeople] = useState([]);
-    const [page, setPage] = useState(0);
-    const [size, setSize] = useState(20);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function loadPeople(){
-        let peopleResponse = await fetchPeople(user.id, page, size);
-        let newPeople = await peopleResponse.json();
-
-        setPage(page + 1);
-        setPeople(people.concat(newPeople.content));
-
+        if (!isLoading){
+            setIsLoading(true);
+            await fetchPeople(people.length === 0);
+            setIsLoading(false);
+        }
+         
     }
 
     async function setRateBy(otherUserId, isLike){
         setUserRate(user.id, otherUserId, isLike );
     }
 
+    const isUserLoaded = () => {
+        return user != null && user !== undefined;
+    };
+
     // При получении user id, получаем ивенты
-    useEffect(() => {
-        if (user != null || user !== undefined)
-            loadPeople();
-    }, [user]);
+    // useEffect(() => {
+    //     if (isUserLoaded() && people.length === 0){
+    //         loadPeople();
+    //     }
+    // }, [user]);
 
 
     useEffect(() => {
@@ -42,13 +48,16 @@ const People = ({id, go, activePanel}) => {
             document.body.style.setProperty('--background_page', 'white');
         }
         refreshHeaderVK();
+
+        if (isUserLoaded() && people.length === 0)
+            loadPeople();
     }, []);
 
 
     return (
         <Panel id={id}>
             <Header panelId={id}/>
-            <Deck cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
+            <Deck index={index} setIndex={setIndex} cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
             <Bottom go={go} activePanel={activePanel}/>
         </Panel>

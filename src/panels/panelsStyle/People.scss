@@ -4,6 +4,16 @@ $height2: 100vmax;
     max-height: $height2;
 }
 
+.spinner-preloader-forPeople {
+    width: 100%;
+    height: 78.21vmax;
+}
+
+.spinner-preloader-forPeople img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
 
 
 

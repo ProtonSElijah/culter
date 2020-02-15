@@ -1,22 +1,17 @@
 import React, {Component} from 'react';
 import store from "../redux/store/store";
 
-import { useSelector } from "react-redux";
 
 import Card from "./Card";
 import CardView from "./View/CardView";
-import {setRate} from "../Api/Ratings";
 
-import {setIndex} from '../redux/actions/events-actions';
+import spinner from "../preloader.svg";
 
-const Deck = ({cards, loadCards, setRateBy}) => {
-
-    const index = useSelector(state => state.eventsState.index);
-
+const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
      const onSwipeEnd = async function(isLike) {
         setRateBy(cards[index].id, isLike);
 
-        // Uploading if nessecary
+        // Uploading if necessary
         if (cards.length - index < 10){
             loadCards();
         }
@@ -36,10 +31,10 @@ const Deck = ({cards, loadCards, setRateBy}) => {
                         <CardView hasMargin={true} cardInfo={cards[bottomCardIndex]} />:
                         <div/>
                 }
-                
-                
             </div> :
-            <div/>
+            <div className="spinner-preloader-forPeople">
+                <img src={spinner} alt="loading spinner"/>
+            </div>
       
     )
 }

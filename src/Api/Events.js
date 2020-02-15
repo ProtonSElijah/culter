@@ -8,7 +8,7 @@ export async function fetchEvents(categories=[1,6], isReload=false, is_personal=
     let page = requestState.eventsState.page;
     let size = requestState.eventsState.size;
 
-    let url = getUrl(userId, categories, is_personal, page, size);
+    let url = buildUrl(userId, categories, is_personal, page, size);
     let response = await fetch(url, {method: "GET",});
     if (response.status !== 200){
         return;
@@ -21,7 +21,7 @@ export async function fetchEvents(categories=[1,6], isReload=false, is_personal=
 
 }
 
-function getUrl(userId, categories, is_personal, page, size) {
+function buildUrl(userId, categories, is_personal, page, size) {
     let categoriesParameter = "category_id=" + categories.join("&category_id=");
     return config.url + "/user/" + userId
         + "/events/selection?" + categoriesParameter

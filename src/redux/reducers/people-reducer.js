@@ -1,24 +1,25 @@
 const initialState = {
-    events: [],
+    people: [],
     page: 0,
     size: 20,
     index: 0
 };
-function events(state=initialState, action){
+
+function people(state=initialState, action){
     switch(action.type){
-        case "RELOAD":
-            state.events = action.events;
+        case "PEOPLE_RELOAD":
+            state.people = action.people;
             state.page = 1;
             return state;
-        case "LOAD":
-            state.events = state.events.concat(action.events);
+        case "PEOPLE_LOAD":
+            state.people = state.people.concat(action.people);
             state.page = state.page + 1;
             return state;
-        case "SET_INDEX":
+        case "PEOPLE_SET_INDEX":
             state.index = action.index;
             return state;
     }
     return state;
 }
 
-export default events;
+export default people;
