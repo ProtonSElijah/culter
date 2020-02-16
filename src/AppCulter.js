@@ -16,7 +16,6 @@ import settings from "./Api/dev_settings.json";
 
 const AppCulter = () => {
     const [activePanel, setActivePanel] = useState('events');
-    const [user, setUser] = useState(null);
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
     };
@@ -28,7 +27,6 @@ const AppCulter = () => {
                 await connect.sendPromise('VKWebAppGetUserInfo');
             
             await authorize(fetchedUser);
-            setUser(fetchedUser);
         }
         fetchData();
 
