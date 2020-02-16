@@ -9,25 +9,19 @@ import './panelsStyle/Personal.css';
 
 const Personal = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
-    const [fetchedUser, setUser] = useState(null);
-    const [token, setToken] = useState(null);
+
     useEffect(() => {
         async function refreshHeaderVK() {
             document.getElementById(id).children[0].style.paddingTop = 0;
             document.body.style.setProperty('--background_page', 'white');
         }
         refreshHeaderVK();
-        async function fetchData() {
-            const user = await connect.sendPromise('VKWebAppGetUserInfo');
-            setUser(user);
-        }
 
         // async function fetchToken(){
         //     let tokenObject = await connect.sendPromise("VKWebAppGetAuthToken", {
         //         "app_id": lol, "scope": "friends"});
         //     setToken(tokenObject.access_token);
         // }
-        fetchData();
         //fetchToken();
     }, []);
 
@@ -36,12 +30,12 @@ const Personal = ({id, go, activePanel}) => {
             <Header panelId={id}/>
             <div className="PersonalContent">
                 <div className="PersonalBlock">
-                       {fetchedUser &&
+                       {user &&
                         <div className="PersonalData">
-                           <img src={fetchedUser.photo_200 ? fetchedUser.photo_200 : null} alt="Person"/>
+                           <img src={user.photo_200 ? user.photo_200 : null} alt="Person"/>
 
-                           <p>{fetchedUser.first_name ? fetchedUser.first_name : ""}</p>
-                           <p>{fetchedUser.last_name ? (" " + fetchedUser.last_name) : "" }</p>
+                           <p>{user.first_name ? user.first_name : ""}</p>
+                           <p>{user.last_name ? (" " + user.last_name) : "" }</p>
 
                             {
                                /* token &&
@@ -56,6 +50,6 @@ const Personal = ({id, go, activePanel}) => {
             <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
-}
+};
 
 export default Personal;
