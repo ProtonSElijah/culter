@@ -52,7 +52,7 @@ const Events = ({id, go, activePanel}) => {
             </div>
 
 
-            <Bottom go={go} activePanel={activePanel}/>
+            <Bottom />
         </Panel>
     );
 };

@@ -10,7 +10,7 @@ import {fetchPeople} from "../Api/People";
 import { setUserRate } from '../Api/Ratings';
 import {setIndex} from "../redux/actions/people-actions";
 
-const People = ({id, go, activePanel}) => {
+const People = ({id}) => {
     const user = useSelector(state => state.userState.user);
     const people = useSelector(state => state.peopleState.people);
     const index = useSelector(state => state.peopleState.index);
@@ -59,7 +59,7 @@ const People = ({id, go, activePanel}) => {
             <Header panelId={id}/>
             <Deck index={index} setIndex={setIndex} cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
-            <Bottom go={go} activePanel={activePanel}/>
+            <Bottom/>
         </Panel>
     );
 };
