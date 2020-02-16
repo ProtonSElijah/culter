@@ -13,8 +13,10 @@ import './ResetBrowser.css';
 import {authorize} from "./Api/Auth";
 import config from "./Api/api_config.json";
 import settings from "./Api/dev_settings.json";
+import {useSelector} from "react-redux";
 
 const AppCulter = () => {
+    const activePanel2 = useSelector(state => state.panelState.active);
     const [activePanel, setActivePanel] = useState('events');
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
@@ -34,7 +36,7 @@ const AppCulter = () => {
 
 
     return (
-        <View activePanel={activePanel}>
+        <View activePanel={activePanel2}>
             <Personal id='personal' go={go} activePanel={activePanel}/>
             <Grid id="grid" go={go} activePanel={activePanel}/>
             <Events id='events' go={go} activePanel={activePanel}/>
