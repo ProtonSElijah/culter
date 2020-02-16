@@ -34,8 +34,8 @@ function buildUrl(userId, categories, is_personal, page, size) {
 function updateEventsState(isReload, newEvents) {
     if (isReload) {
         store.dispatch(reload(newEvents));
-    } else {
-        if (newEvents.length !== 0)
-            store.dispatch(load(newEvents));
+    } else if (newEvents.length !== 0){
+        store.dispatch(load(newEvents));
     }
+
 }
