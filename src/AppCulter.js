@@ -15,12 +15,10 @@ import config from "./Api/api_config.json";
 import settings from "./Api/dev_settings.json";
 import {useSelector} from "react-redux";
 
+import panels from "./panels.json"
+
 const AppCulter = () => {
-    const activePanel2 = useSelector(state => state.panelState.active);
-    const [activePanel, setActivePanel] = useState('events');
-    const go = e => {
-        setActivePanel(e.currentTarget.dataset.to);
-    };
+    const activePanel = useSelector(state => state.panelState.active);
 
     useEffect(() => {
         async function fetchData() {
@@ -36,12 +34,12 @@ const AppCulter = () => {
 
 
     return (
-        <View activePanel={activePanel2}>
-            <Personal id='personal' go={go} activePanel={activePanel}/>
-            <Grid id="grid" go={go} activePanel={activePanel}/>
-            <Events id='events' go={go} activePanel={activePanel}/>
-            <People id='people' go={go} activePanel={activePanel}/>
-            <Matches id='matches' go={go} activePanel={activePanel}/>
+        <View activePanel={activePanel}>
+            <Personal id={panels.personal}/>
+            <Grid id={panels.grid}/>
+            <Events id={panels.events}/>
+            <People id={panels.people}/>
+            <Matches id={panels.matches}/>
         </View>
     );
 };

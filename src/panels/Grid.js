@@ -13,7 +13,7 @@ import './panelsStyle/Grid.css';
 import {fetchEvents} from "../Api/Events";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-const Grid = ({id, go, activePanel}) => {
+const Grid = ({id}) => {
     const user = useSelector(state => state.userState.user);
     const events = useSelector(state => state.eventsState.events);
 
@@ -94,7 +94,7 @@ const Grid = ({id, go, activePanel}) => {
 
                 <div className="Grid-eventList" onScroll={uploadData}>
                     {events &&
-                        <GridEventList go={go} data={events}/> }
+                        <GridEventList data={events}/> }
                 </div>
 
                 <div className="Filter" onClick={onModal}>
@@ -159,7 +159,7 @@ const Grid = ({id, go, activePanel}) => {
                     </div>
                 </div>
 
-            <Bottom go={go} activePanel={activePanel}/>
+            <Bottom/>
         </Panel>
     );
 };

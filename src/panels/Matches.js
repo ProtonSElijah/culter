@@ -13,7 +13,7 @@ import './panelsStyle/Matches.css';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import {fetchMatches} from "../Api/Matches";
 
-const Matches = ({id, go, activePanel}) => {
+const Matches = ({id}) => {
     const user = useSelector(state => state.userState.user);
     const [matchedPeople, setMatchedPeople] = useState([]);
     const [page, setPage] = useState(0);
@@ -74,7 +74,7 @@ const Matches = ({id, go, activePanel}) => {
                     <div/>
                 }
             </div>
-            <Bottom go={go} activePanel={activePanel}/>
+            <Bottom/>
         </Panel>
     );
 }

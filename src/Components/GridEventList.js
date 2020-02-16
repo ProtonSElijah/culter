@@ -3,14 +3,17 @@ import store from "../redux/store/store";
 
 import '../panels/panelsStyle/Grid.css';
 import {setIndex} from '../redux/actions/events-actions';
+import {changePanel} from "../redux/actions/panel-actions";
 
-const GridEventList = ({go, data}) => {
+import panels from "../panels.json";
+
+const GridEventList = ({data}) => {
 
     const handleClick = e => {
         let index = Number(e.currentTarget.dataset.index);
         store.dispatch(setIndex(index));
-        go(e);
-    }
+        store.dispatch(changePanel(panels.events));
+    };
 
     return data.map (
         (product, index) =>

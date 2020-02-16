@@ -17,26 +17,27 @@ import {changePanel} from "../redux/actions/panel-actions";
 import store from "../redux/store/store";
 import panels from "../panels.json";
 import BottomButton from "./BottomButton";
+import {useSelector} from "react-redux";
 
-const Bottom = ({go, activePanel}) => {
+const Bottom = () => {
+    const activePanel = useSelector(state => state.panelState.active);
     const onChangePanelClick = (event) => {
-        console.log(event);
-        store.dispatch(changePanel(event))
+        store.dispatch(changePanel(event.currentTarget.dataset.to))
     };
 
     return (
         
         <div className="App-bottom">
             <BottomButton onClick={onChangePanelClick} panel={panels.personal} activePanel={activePanel}
-                          activeImage={userActive} disabledImage={userDisabled}  />
+                          activeImage={userActive} disabledImage={userDisabled}/>
             <BottomButton onClick={onChangePanelClick} panel={panels.grid} activePanel={activePanel}
-                          activeImage={gridActive} disabledImage={gridDisabled}  />
+                          activeImage={gridActive} disabledImage={gridDisabled}/>
             <BottomButton onClick={onChangePanelClick} panel={panels.events} activePanel={activePanel}
-                          activeImage={eventsActive} disabledImage={eventsDisabled}  />
+                          activeImage={eventsActive} disabledImage={eventsDisabled}/>
             <BottomButton onClick={onChangePanelClick} panel={panels.people} activePanel={activePanel}
-                          activeImage={peopleActive} disabledImage={peopleDisabled}  />
+                          activeImage={peopleActive} disabledImage={peopleDisabled}/>
             <BottomButton onClick={onChangePanelClick} panel={panels.matches} activePanel={activePanel}
-                          activeImage={chatActive} disabledImage={chatDisabled}  />
+                          activeImage={chatActive} disabledImage={chatDisabled}/>
         </div>
     );
     //Переключатель - две кнопки
