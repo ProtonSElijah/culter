@@ -3,7 +3,6 @@ import '../ComponentsStyle/CardView.scss'
 
 const PersonInformationView = ({person}) => {
 
-    let wantedEvents = person.common_events.slice(0,5);
 
     return  (
 
@@ -12,7 +11,7 @@ const PersonInformationView = ({person}) => {
             <div className="Swipe-content-down-center user">
                 <p>{person.first_name}</p>
 
-                <p>Общих событий: <b>{person.common_events.length}</b></p>
+                <p>Общих событий: <b>{person.count_common_events}</b></p>
    
             </div>
 
