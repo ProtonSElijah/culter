@@ -8,7 +8,7 @@ $swipeLeftColor: palevioletred;
     margin: 1vmax 2.5vmin;
     flex-direction: column;
     display: flex;
-    font-family: "Roboto";
+    font-family: "SF Text", serif;
 }
 
 .Swipe-content-up {
@@ -119,8 +119,6 @@ $swipeLeftColor: palevioletred;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    font-family: 'Roboto', sans-serif;
 }
 
 .user {
@@ -128,7 +126,6 @@ $swipeLeftColor: palevioletred;
 }
 
 .Swipe-content-down-center p:first-child {
-    font-family: 'Roboto';
     font-weight: 600;
     font-size: 4vmax;
 }

@@ -2,6 +2,7 @@
 
 #personal {
     max-height: 100vmax;
+    font-family: "SF Text", serif;
 }
 
 .PersonalContent {
@@ -36,6 +37,5 @@
 .PersonalData p {
     margin-top: 2vmax;
     font-size: 9vmin;
-    font-family: Franklin Gothic Medium;
     letter-spacing: 0.5vmin;
 }

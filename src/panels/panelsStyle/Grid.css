@@ -4,6 +4,7 @@
     height: 84vmax;
     width: 100vmin;
     position: relative;
+    font-family: "SF Text", serif;
 }
 
 .Grid-eventList {
