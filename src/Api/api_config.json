@@ -1,4 +1,5 @@
 {
   "url" : "https://amolodetskiy.me:8080/culter",
-  "is_dev": true
+  "is_dev": true,
+  "images_url": "https://amolodetskiy.me:8080/culter/event/images/"
 }

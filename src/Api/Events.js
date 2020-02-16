@@ -16,7 +16,7 @@ export async function fetchEvents(categories=[1,6], isReload=false, is_personal=
 
     let newEventsJson = await response.json();
     let newEvents = newEventsJson.content;
-
+    updateImageUrls(newEvents);
     updateEventsState(isReload, newEvents);
 
 }
@@ -38,4 +38,13 @@ function updateEventsState(isReload, newEvents) {
         store.dispatch(load(newEvents));
     }
 
+}
+
+
+function updateImageUrls(newEvents) {
+    newEvents.forEach((item) => {
+        item.images.forEach((imageItem) => {
+            imageItem.image = config.images_url + imageItem.image;
+        })
+    });
 }
