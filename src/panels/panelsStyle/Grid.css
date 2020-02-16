@@ -31,7 +31,7 @@
     width: 30vmin;
     height: 25vmax;
     object-fit: cover;
-    background: url("../../preloader.svg") center no-repeat;
+    background: url("../../assets/preloader.svg") center no-repeat;
 }
 
 .Filter {

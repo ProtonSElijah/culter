@@ -1,8 +1,8 @@
 import React from 'react';
 import '../ComponentsStyle/CardView.scss'
 
-import LeftButton from '../../icons/eventAnnotationLeftButton.svg';
-import RightButton from '../../icons/eventAnnotationRightButton.svg';
+import LeftButton from '../../assets/icons/eventAnnotationLeftButton.svg';
+import RightButton from '../../assets/icons/eventAnnotationRightButton.svg';
 
 const EventInformationView = ({event}) => {
     let title = event.short_title.length > 18 ?
@@ -25,8 +25,8 @@ const EventInformationView = ({event}) => {
     return  (
         <div className="Swipe-content-down-container">
 
-            {/* <div className="Swipe-content-down-aside">
-                <div className="Swipe-content-down-button">
+            {/* <div className="Events-content-down-aside">
+                <div className="Events-content-down-button">
                     <img src={LeftButton} alt="leftButton" />
                 </div>
             </div> */}
@@ -40,9 +40,9 @@ const EventInformationView = ({event}) => {
                  }
             </div>
 
-            {/* <div className="Swipe-content-down-aside">
-                <div className="Swipe-content-down-button">
-                    <img id="Swipe-content-down-button-right" src={RightButton} alt="rightButton" />
+            {/* <div className="Events-content-down-aside">
+                <div className="Events-content-down-button">
+                    <img id="Events-content-down-button-right" src={RightButton} alt="rightButton" />
                 </div>
             </div> */}
         </div>

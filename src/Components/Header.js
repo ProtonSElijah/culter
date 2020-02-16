@@ -1,7 +1,7 @@
 import React from 'react';
 import './ComponentsStyle/Header.css';
 
-import IconApp from '../icons/culterIcon.svg';
+import IconApp from '../assets/icons/culterIcon.svg';
 
 const Header = ({panelId}) => {
     let panelTitle = "";
@@ -24,6 +24,6 @@ const Header = ({panelId}) => {
             </div>
         </div>
     );
-}
+};
 
 export default Header;

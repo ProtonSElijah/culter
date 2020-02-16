@@ -6,7 +6,7 @@ import connect from '@vkontakte/vk-connect';
 //import App from './App';
 //import Test from './Test';
 import Matches from './panels/Matches';
-import Swipe from './panels/Swipe';
+import Events from './panels/Events';
 // import registerServiceWorker from './sw';
 import AppCulter from './AppCulter';
 import {Provider} from 'react-redux';

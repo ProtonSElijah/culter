@@ -5,13 +5,13 @@ import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
-import './panelsStyle/Swipe.scss';
+import './panelsStyle/Events.scss';
 import Deck from "../Components/Deck";
 import {fetchEvents} from "../Api/Events";
 import { setRate } from '../Api/Ratings';
 import {setIndex} from "../redux/actions/events-actions";
 
-const Swipe = ({id, go, activePanel}) => {
+const Events = ({id, go, activePanel}) => {
     const user = useSelector(state => state.userState.user);
     const events = useSelector(state => state.eventsState.events);
     const index = useSelector(state => state.eventsState.index);
@@ -47,11 +47,14 @@ const Swipe = ({id, go, activePanel}) => {
     return (
         <Panel id={id}>
             <Header panelId={id}/>
-            <Deck index={index} setIndex={setIndex} cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
+            <div className="container">
+                <Deck index={index} setIndex={setIndex} cards={events} loadCards={loadEvents} setRateBy={setRateBy}/>
+            </div>
+
 
             <Bottom go={go} activePanel={activePanel}/>
         </Panel>
     );
 };
 
-export default Swipe;
+export default Events;

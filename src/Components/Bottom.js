@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import './ComponentsStyle/Bottom.css';
 
-import chatDes from "../icons/chatGrey.svg";
-import eventDes from "../icons/eventGrey.svg";
-import gridDes from "../icons/gridGrey.svg";
-import swipeDes from "../icons/swipeGrey.svg";
-import userDes from "../icons/userGrey.svg";
+import chatDes from "../assets/icons/chatGrey.svg";
+import eventDes from "../assets/icons/eventGrey.svg";
+import gridDes from "../assets/icons/gridGrey.svg";
+import swipeDes from "../assets/icons/swipeGrey.svg";
+import userDes from "../assets/icons/userGrey.svg";
 
-import chatActive from "../icons/chatRed.svg";
-import eventActive from "../icons/eventRed.svg";
-import gridActive from "../icons/gridRed.svg";
-import swipeActive from "../icons/swipeRed.svg";
-import userActive from "../icons/userRed.svg";
+import chatActive from "../assets/icons/chatRed.svg";
+import eventActive from "../assets/icons/eventRed.svg";
+import gridActive from "../assets/icons/gridRed.svg";
+import swipeActive from "../assets/icons/swipeRed.svg";
+import userActive from "../assets/icons/userRed.svg";
 
 const Bottom = ({go, activePanel}) => {
 
@@ -26,8 +26,8 @@ const Bottom = ({go, activePanel}) => {
                <img id="gridButton" src={activePanel == "grid" ? gridActive : gridDes} alt="swipe" />
            </div>
            <div className="Bottom-button Bottom-eventsSwipeButton" onClick={go}
-                data-to="swipe">
-               <img  id="swipeButton" src={activePanel == "swipe" ? swipeActive : swipeDes} alt="swipe" />
+                data-to="events">
+               <img  id="eventsButton" src={activePanel == "events" ? swipeActive : swipeDes} alt="events" />
            </div>
            <div className="Bottom-button Bottom-peopleSwipeButton" onClick={go} data-to="people">
                <img id="peopleButton" src={activePanel == "people" ? eventActive : eventDes} alt="people" />

@@ -43,7 +43,7 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
         </div>
     )
 
-    /*<div className="Swipe-content-down">
+    /*<div className="Events-content-down">
                     {isEventCard ?
                         <EventInformationView event={cardInfo}/> :
                         <PersonInformationView person={cardInfo}/>}

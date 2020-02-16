@@ -3,7 +3,7 @@ import connect from '@vkontakte/vk-connect';
 import View from '@vkontakte/vkui/dist/components/View/View';
 
 import Personal from './panels/Personal';
-import Swipe from './panels/Swipe';
+import Events from './panels/Events';
 import Matches from './panels/Matches';
 import Grid from './panels/Grid';
 import People from './panels/People';
@@ -15,11 +15,11 @@ import config from "./Api/api_config.json";
 import settings from "./Api/dev_settings.json";
 
 const AppCulter = () => {
-    const [activePanel, setActivePanel] = useState('swipe');
+    const [activePanel, setActivePanel] = useState('events');
     const [user, setUser] = useState(null);
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
-    }
+    };
 
     useEffect(() => {
         async function fetchData() {
@@ -39,11 +39,11 @@ const AppCulter = () => {
         <View activePanel={activePanel}>
             <Personal id='personal' go={go} activePanel={activePanel}/>
             <Grid id="grid" go={go} activePanel={activePanel}/>
-            <Swipe id='swipe' go={go} activePanel={activePanel}/>
+            <Events id='events' go={go} activePanel={activePanel}/>
             <People id='people' go={go} activePanel={activePanel}/>
             <Matches id='matches' go={go} activePanel={activePanel}/>
         </View>
     );
-}
+};
 
 export default AppCulter;

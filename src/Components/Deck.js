@@ -5,7 +5,7 @@ import store from "../redux/store/store";
 import Card from "./Card";
 import CardView from "./View/CardView";
 
-import spinner from "../preloader.svg";
+import spinner from "../assets/preloader.svg";
 
 const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
      const onSwipeEnd = async function(isLike) {
