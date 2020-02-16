@@ -4,46 +4,43 @@
     height: 14.79vmax;
     background-color: white;
     color: #ff4f4f;
-    font-family: "Roboto";
     align-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "SF Text", serif;
 }
 
-/*+2 -0.4*/
+/*6.3*/
 .App-header-content {
     width: 100%;
-    height: 4.3vmax;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     font-size: 4vmax;
-    margin-top: 2vmax;
-    margin-right: calc(32px + 1vmin);
+    color: #FFFFFF;
+    background-color: #ff4f4f;
+
+    padding-top: 2vmax;
+    margin-bottom: 1vmax;
+    height: 6.49vmax;
 }
 
-.App-header-content p {
-    margin-left: 1vmin;
-}
-
-/*+2 -0.4 +1*/
-.App-header-bottomLine {
-    width: 85%;
-    height: 0.19vmax;
-    background: #ff4f4d;
-
-    margin-top: 2vmax;
-    margin-bottom: 2vmax;
-}
-
+/*5.3*/
 .App-header-panelTitle {
     width: 100%;
-    height: 4.3vmax;
+    height: 5.3vmax;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.6vmax;
+    font-size: 3vmax;
+    position: relative;
+}
+
+.App-header-panelTitle img {
+    position: absolute;
+    right: 2.5vmin;
+    top: calc(2.65vmax-8.825px);
 }
 /*конец хедера*/
