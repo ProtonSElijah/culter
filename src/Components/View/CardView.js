@@ -3,7 +3,8 @@ import '../ComponentsStyle/CardView.scss'
 import EventInformationView from './EventInformationView';
 import PersonInformationView from './PersonInformationView';
 import ChoiceLabelsView from './ChoiceLabelsView';
-
+import EventEndView from "./EventEndView";
+import PeopleEndView from "./PeopleEndView";
 
 const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, cardInfo,isTransition}) => {
 
@@ -20,6 +21,9 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
         contentStyle["z-index"] = "10";
     }
 
+    let isEnd = cardInfo.hasOwnProperty("isEnd");
+    let isEventEnd = isEnd && cardInfo["end_type"];
+
     let isEventCard = cardInfo.hasOwnProperty("short_title");
 
     let imageSource = isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
@@ -33,9 +37,13 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
                 <img className="Swipe-content-up-image" src={imageSource}/>
 
                 <div className="Swipe-content-down">
-                    {isEventCard ?
-                        <EventInformationView event={cardInfo}/> :
-                        <PersonInformationView person={cardInfo}/>}
+                    {isEnd ?
+                        isEventEnd ?
+                            <EventEndView/> :
+                             <PeopleEndView/> :
+                        isEventCard ? 
+                            <EventInformationView event={cardInfo}/> :
+                             <PersonInformationView person={cardInfo}/>}
                 </div>
 
             </div>

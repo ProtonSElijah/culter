@@ -57,7 +57,7 @@ const People = ({id}) => {
     return (
         <Panel id={id}>
             <Header panelId={id}/>
-            <Deck index={index} setIndex={setIndex} cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
+            <Deck isEventDeck={false} index={index} setIndex={setIndex} cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
             <Bottom/>
         </Panel>
