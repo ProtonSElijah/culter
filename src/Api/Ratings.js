@@ -1,6 +1,6 @@
 import config from "./api_config"
 
-export async function setRate(userId, eventId, isLiked)  {
+export async function setRate(userId, eventId, isLiked) {
     let url = config.url + "/user/" + userId + "/events/ratings";
 
     return fetch(url, {
@@ -17,7 +17,7 @@ export async function setRate(userId, eventId, isLiked)  {
     });
 }
 
-export async function setUserRate(userId, otherUserId, isLiked)  {
+export async function setUserRate(userId, otherUserId, isLiked) {
     let url = config.url + "/user/" + userId + "/users/ratings";
 
     return fetch(url, {
