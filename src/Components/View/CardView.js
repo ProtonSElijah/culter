@@ -6,6 +6,8 @@ import ChoiceLabelsView from './ChoiceLabelsView';
 import EventEndView from "./EventEndView";
 import PeopleEndView from "./PeopleEndView";
 
+import defaultImage from "../../assets/defaultEventImage.jpg";
+
 const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, cardInfo,isTransition}) => {
 
     let rotationCoefficient = isUpperTouch ? -1 : 1;
@@ -26,7 +28,8 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
 
     let isEventCard = cardInfo.hasOwnProperty("short_title");
 
-    let imageSource = isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
+    let imageSource = isEnd ? defaultImage :
+            isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
 
     return  (
 
