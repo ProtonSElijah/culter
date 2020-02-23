@@ -12,8 +12,8 @@ const EventEndView = ({}) => {
         <div className="Swipe-content-down-container">
             <div className="Swipe-content-down-center">
                 <p>События закончились</p>
-                <p><div className="Swipe-content-down-image"><img src={peopleIcon} /></div>&nbsp; Выбери с кем ты хочешь пойти</p>
-                <p><div className="Swipe-content-down-image"><img src={chatIcon} /></div>&nbsp; Позови людей на мероприятие</p>
+                <p><div className="Swipe-content-down-image"><img src={peopleIcon} /></div>&nbsp; Найди компанию на ивент</p>
+                <p><div className="Swipe-content-down-image"><img src={chatIcon} /></div>&nbsp; Позови людей на ивент</p>
             </div>
         </div>
     )
