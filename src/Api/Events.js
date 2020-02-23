@@ -1,8 +1,8 @@
 import config from "./api_config"
 import store from "../redux/store/store";
-import { reload, load } from "../redux/actions/events-actions";
+import {reload, load} from "../redux/actions/events-actions";
 
-export async function fetchEvents(categories=[1,6], isReload=false, is_personal=true )  {
+export async function fetchEvents(categories = [1, 6], isReload = false, is_personal = true) {
     let requestState = store.getState();
     let userId = requestState.userState.user.id;
     let page = requestState.eventsState.page;
@@ -10,7 +10,7 @@ export async function fetchEvents(categories=[1,6], isReload=false, is_personal=
 
     let url = buildUrl(userId, categories, is_personal, page, size);
     let response = await fetch(url, {method: "GET",});
-    if (response.status !== 200){
+    if (response.status !== 200) {
         return;
     }
 
@@ -34,7 +34,7 @@ function buildUrl(userId, categories, is_personal, page, size) {
 function updateEventsState(isReload, newEvents) {
     if (isReload) {
         store.dispatch(reload(newEvents));
-    } else if (newEvents.length !== 0){
+    } else if (newEvents.length !== 0) {
         store.dispatch(load(newEvents));
     }
 

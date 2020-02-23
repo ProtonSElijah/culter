@@ -2,7 +2,7 @@ import config from "./api_config"
 import store from "../redux/store/store";
 import {load, reload} from "../redux/actions/people-actions";
 
-export async function fetchPeople(isReload = false)  {
+export async function fetchPeople(isReload = false) {
     let requestState = store.getState();
     let userId = requestState.userState.user.id;
     let page = requestState.peopleState.page;
@@ -10,7 +10,7 @@ export async function fetchPeople(isReload = false)  {
 
     let url = buildUrl(userId, page, size);
     let response = await fetch(url, {method: "GET",});
-    if (response.status !== 200){
+    if (response.status !== 200) {
         return;
     }
 
