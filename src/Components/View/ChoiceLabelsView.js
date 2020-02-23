@@ -18,11 +18,11 @@ const EventInformationView = ({horizontalShift}) => {
         <div className="Swipe-content-up-labels">
 
             <div style={labelStyles.right} className="Swipe-right-label choice-label">
-                Круто
+                Like
             </div>
 
             <div style={labelStyles.left} className="Swipe-left-label choice-label">
-                Отстой
+                Pass
             </div>
         </div>
     )
