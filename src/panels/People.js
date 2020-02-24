@@ -6,7 +6,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
 import './panelsStyle/People.scss';
 import Deck from "../Components/Deck";
-import {fetchPeople} from "../Api/People";
+import {fetchPeople} from "../services/People";
 import { setUserRate } from '../services/Ratings';
 import {setIndex} from "../redux/actions/people-actions";
 
