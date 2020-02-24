@@ -1,6 +1,4 @@
 import config from "./api_config"
-import store from "../redux/store/store";
-import {load, reload} from "../redux/actions/people-actions";
 
 export async function fetchPeopleCall(userId, page, size, isReload) {
 
