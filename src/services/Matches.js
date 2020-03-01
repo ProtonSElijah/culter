@@ -9,7 +9,6 @@ export async function fetchMatches() {
     let size = requestState.peopleState.size;
 
     let matches = await fetchMatchesCall(userId, page, size);
-    console.log(matches);
     updateStore(matches);
 
 }
