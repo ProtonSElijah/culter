@@ -122,7 +122,7 @@
 /* Список метчей */
 .ListContainer {
     height: 53.71vmax;
-    margin: 0 2.5vmin;
+    margin: 0 5vmin;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-bottom: 0.5vmax;
@@ -130,51 +130,55 @@
 
 .ListContainer::-webkit-scrollbar { width: 0;}
 
-.PersonContainer:last-child .Person{
-
+.PersonContainer {
+    border-bottom: 1px solid #ff4f4d;
+    width: 100%;
+    margin-top: 1.7vmax;
 }
 
-.PersonContainer:last-child .BottomLine {
-
+.ListContainer .PersonContainer:first-child {
+    margin-top: 0;
 }
 
 .Person {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 0;
-    height: 13.3vmax;
+    flex-direction: column;
+    height: 10.2vmax;
+    width: 100%;
+    position: relative;
 }
 
-.BottomLine {
-    margin: 0vmax 7.5vmin;
-    width: 80vmin;
-    height: 1px;
-    background: #ff4f4d;
-}
-
-.Person img {
+.Person .avatar {
     border-radius: 10vmin;
-    margin-left: 0.5vmin;
     width: 8.5vmax;
     height: 8.5vmax;
     object-fit: cover;
+
+    position: absolute;
+    top: 0;
 }
 
-.PersonData {
+.Person .message {
+    height: 5.1vmax;
+    width: 5.1vmax;
+    position: absolute;
+    right: 0;
+}
+
+.Person .personData {
     height: 8vmax;
-    margin-left: 1vmax;
-    margin-top: 0.5vmax;
-    margin-bottom: 0.5vmax;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-     font-size: 4.2vmin;
+    font-size: 4.2vmin;
     letter-spacing: 0.5vmin;
 }
 
-.PersonPlacesList {
-    overflow: hidden;
-    white-space: pre;
+.Person .personData .name, .Person .personData .events {
+    margin-left: 11vmax;
+}
+
+.Person .arrow {
+    margin-bottom: 0.85vmax;
 }
 /*конец списка метчей*/

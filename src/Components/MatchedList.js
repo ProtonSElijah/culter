@@ -1,69 +1,31 @@
 import React, {useState} from 'react';
 
-const MatchedList = ({list}) => {
-    const text = "Перейти в сообщения";
+import chatActive from "../assets/icons/chatRed.svg";
+import matchesArrow from "../assets/icons/matchesArrow.svg";
 
+const MatchedList = ({list}) => {
     return list.map(
         person =>
         <div className="PersonContainer">
             <div className="Person" key={person.key}>
-                <img src={person.photo_400_orig} alt={"Person photo"}/>
-                <div className="PersonData">
-                    <div className="PersonName"><b>{person.first_name + " " + person.last_name}</b></div>
-                    {text.length > 26 &&
-                        <a className="PersonPlacesList" href={"https://vk.com/im?sel=" + person.id}>
-                            {text.slice(0, 26) + ".."}
-                        </a>}
-                    {!(text.length > 26) &&
-                        <a className="PersonPlacesList" href={"https://vk.com/im?sel=" + person.id}>
-                            {text}
-                        </a>}
+                <img className="avatar" src={person.photo_400_orig} alt="Person photo"/>
+                <img className="message" src={chatActive} alt="message" />
+
+                <div className="personData">
+                    <div className="name">{person.first_name}</div>
+                    <div className="events">4 Общих события</div>
                 </div>
+
+                <div className="eventsContainer"></div>
+
+                <img class="arrow" src={matchesArrow} alt="icon" />
+
             </div>
-            <div className="BottomLine"></div>
         </div>
     );
-
-   /* return list.map(
-        person =>
-            <div className="Person" key={person.key}>
-                <img src={person.imgLink} alt={"Person photo"}/>
-                <div className="PersonData">
-                    <div className="PersonName"><b>{person.firstName + " " + person.lastName}</b></div>
-                    <div className="PersonPlacesCount">Общих мест: <b>{person.commonPlacesCount}</b></div>
-                    {person.commonPlaces.toString().length > 25 &&
-                        <div className="PersonPlacesList">
-                            {person.commonPlaces.toString().slice(0, 25) + ".."}
-                        </div>}
-                    {!(person.commonPlaces.toString().length > 25) &&
-                        <div className="PersonPlacesList">
-                            {person.commonPlaces.toString()}
-                        </div>}
-                </div>
-            </div>
-    );*/
 }
 
-
-/*    renderPlaces = () => {
-        let str = this.props.commonPlaces.toString();
-        if (str.length > 25)
-            str = str.slice(0, 25) + "..";
-        return str;
-    };
-
-    render() {
-        return (
-            <div className="Person" key={this.props.key}>
-                <img src={this.props.imgLink} alt={"Person photo"}/>
-                <div className="PersonData">
-                    <div className="PersonName"><b>{this.props.name}</b></div>
-                    <div className="PersonPlacesCount">Общих мест: <b>{this.props.commonPlacesCount}</b></div>
-                    <div className="PersonPlacesList">
-                        {this.renderPlaces()}
-                    </div>
-                </div>
-            </div>
-        );
-    }*/
+/*<a className="PersonPlacesList" href={"https://vk.com/im?sel=" + person.id}>
+                            {"Перейти в сообщения"}
+                        </a>*/
 export default MatchedList;
