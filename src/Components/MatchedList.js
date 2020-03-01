@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import CommonEventsList from './CommonEventsList.js';
+
 import chatActive from "../assets/icons/chatRed.svg";
 import matchesArrow from "../assets/icons/matchesArrow.svg";
 
@@ -10,6 +12,39 @@ const MatchedList = ({list}) => {
             e.currentTarget.parentElement.children[3].style.display == "none" ?
             "flex" : "none";
     };
+
+    let a = [
+        {
+            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
+            date: "27 октября",
+            place: "СК Юбилейный",
+            name: "Гомаз",
+        },
+        {
+            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
+            date: "27 октября",
+            place: "СК Юбилейный",
+            name: "Гомаз",
+        },
+        {
+            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
+            date: "27 октября",
+            place: "СК Юбилейный",
+            name: "Гомаз",
+        },
+        {
+            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
+            date: "27 октября",
+            place: "СК Юбилейный",
+            name: "Гомаз",
+        },
+        {
+            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
+            date: "27 октября",
+            place: "СК Юбилейный",
+            name: "Гомаз",
+        },
+    ];
 
     return list.map(
         person =>
@@ -24,99 +59,14 @@ const MatchedList = ({list}) => {
                 </div>
 
                 <div className="eventsContainer">
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
-                    </div>
+                   <div className="events">
 
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
-                    </div>
+                        <CommonEventsList events={a}/>
 
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
-                    </div>
-
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
-                    </div>
-
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
-                    </div>
-
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
-                    </div>
-
-                    <div className="eventContainer">
-                        <div className="poster">
-                            <img src="https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg" alt="poster" />
-                            <div className="annotation">
-                                <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                                <p>Текст</p>
-                            </div>
-                        </div>
-                        <div className="name">
-                            <p>БОЛЬШОЙ ТЕКСТ ГДЕ МНОГО СИМВОЛОВ</p>
-                        </div>
                     </div>
                 </div>
 
-                <img class="arrow" onClick={openEvents} src={matchesArrow} alt="icon" />
+                <img className="arrow" onClick={openEvents} src={matchesArrow} alt="icon" />
 
             </div>
         </div>

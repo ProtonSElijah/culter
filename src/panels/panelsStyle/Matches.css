@@ -183,10 +183,6 @@
     margin-bottom: 0.85vmax;
 }
 
-.active {
-    visibility: visible;
-}
-
 .Person .eventsContainer {
     margin-top: 2vmax;
     margin-bottom: 1.4vmax;
@@ -196,10 +192,15 @@
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
+
+}
+
+.events {
+    display: flex;
     flex-direction: row;
 }
 
-.Person .eventsContainer .eventContainer {
+.eventContainer {
     height: 100%;
     width: 24.7vmin;
     margin-left: 2.5vmin;
@@ -208,11 +209,11 @@
     overflow-y: hidden;
 }
 
-.eventsContainer .eventContainer:first-child {
+.events .eventContainer:first-child {
     margin-left: 0;
 }
 
-.Person .eventsContainer .eventContainer .poster {
+.eventContainer .poster {
     width: 100%;
     height: 18vmax;
     margin-bottom: 0.5vmax;
@@ -220,7 +221,7 @@
     position: relative;
 }
 
-.Person .eventsContainer .eventContainer .poster .annotation {
+.eventContainer .poster .annotation {
     position: absolute;
     bottom: 0.625vmax;
     left: 0;
@@ -232,7 +233,7 @@
     flex-direction: column;
 }
 
-.Person .eventsContainer .eventContainer .poster .annotation p {
+.eventContainer .poster .annotation p {
     color: #FFFFFF;
     font-size: 1.5625vmax;
     font-style: normal;
@@ -244,7 +245,7 @@
     text-overflow: ellipsis;
 }
 
-.Person .eventsContainer .eventContainer .poster img {
+.eventContainer .poster img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -252,7 +253,7 @@
     box-shadow: 4vmax 4vmax 4vmax #575555 inset;
 }
 
-.Person .eventsContainer .eventContainer .name {
+.eventContainer .name {
     width: 100%;
     height: 2.5vmax;
     display: flex;
@@ -260,7 +261,7 @@
     justify-content: center;
 }
 
-.Person .eventsContainer .eventContainer .name p {
+.eventContainer .name p {
     font-size: 9px;
     font-style: normal;
     font-weight: normal;
