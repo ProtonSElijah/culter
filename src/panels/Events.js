@@ -7,8 +7,8 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
 import './panelsStyle/Events.scss';
 import Deck from "../Components/Deck";
-import {fetchEvents} from "../Api/Events";
-import { setRate } from '../Api/Ratings';
+import {fetchEvents} from "../services/Events";
+import { setEventRate } from '../services/Ratings';
 import {setIndex} from "../redux/actions/events-actions";
 import spinner from "../assets/preloader.svg";
 
@@ -24,7 +24,7 @@ const Events = ({id, go, activePanel}) => {
         await fetchEvents(categories);
     }
     async function setRateBy(eventId, isLike){
-        setRate(user.id, eventId, isLike );
+        setEventRate( eventId, isLike );
     }
 
     // При получении user id, получаем ивенты

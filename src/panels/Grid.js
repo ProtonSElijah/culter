@@ -10,7 +10,7 @@ import GridEventList from "../Components/GridEventList";
 import '../ResetBrowser.css';
 import './panelsStyle/Grid.css';
 
-import {fetchEvents} from "../Api/Events";
+import {fetchEvents} from "../services/Events";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 const Grid = ({id}) => {
