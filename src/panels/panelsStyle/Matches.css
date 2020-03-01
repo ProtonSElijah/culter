@@ -166,6 +166,29 @@
     right: 0;
 }
 
+.Person .messageTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 0;
+}
+
+.messageTitle img {
+    width: 5.1vmax;
+    height: 5.1vmax;
+}
+
+.messageTitle p {
+    color: #FF4F4F;
+    font-size: 10px;
+    line-height: 12px;
+    font-family: "SF Text", serif;
+}
+
 .Person .personData {
     height: 8vmax;
     width: 100%;

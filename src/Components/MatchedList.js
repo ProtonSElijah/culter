@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import CommonEventsList from './CommonEventsList.js';
 
-import chatActive from "../assets/icons/chatRed.svg";
+import chatActive from "../assets/icons/messageRed.svg";
 import matchesArrow from "../assets/icons/matchesArrow.svg";
 
 const MatchedList = ({list}) => {
@@ -51,7 +51,12 @@ const MatchedList = ({list}) => {
         <div className="PersonContainer">
             <div className="Person" key={person.key}>
                 <img className="avatar" src={person.photo_400_orig} alt="Person photo"/>
-                <img className="message" src={chatActive} alt="message" />
+
+
+                <div className="messageTitle">
+                    <img src={chatActive} alt="message" />
+                    <p>Написать</p>
+                </div>
 
                 <div className="personData">
                     <div className="name">{person.first_name}</div>
