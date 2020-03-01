@@ -1,24 +1,19 @@
 import config from "./api_config"
-import store from "../redux/store/store";
-import { reload, load } from "../redux/actions/events-actions";
+import {isValidResponse} from "./Utils";
 
-export async function fetchEvents(categories=[1,6], isReload=false, is_personal=true )  {
-    let requestState = store.getState();
-    let userId = requestState.userState.user.id;
-    let page = requestState.eventsState.page;
-    let size = requestState.eventsState.size;
-
+export async function fetchEventsRequest(userId, categories, is_personal,
+                                         page, size) {
     let url = buildUrl(userId, categories, is_personal, page, size);
     let response = await fetch(url, {method: "GET",});
-    if (response.status !== 200){
-        return;
+    if (!isValidResponse(response)){
+        return [];
     }
 
-    let newEventsJson = await response.json();
-    let newEvents = newEventsJson.content;
-    updateImageUrls(newEvents);
-    updateEventsState(isReload, newEvents);
+    let eventsJson = await response.json();
+    let events = eventsJson.content;
+    updateImageUrls(events);
 
+    return events;
 }
 
 function buildUrl(userId, categories, is_personal, page, size) {
@@ -29,17 +24,6 @@ function buildUrl(userId, categories, is_personal, page, size) {
         + "&page=" + page
         + "&size=" + size;
 }
-
-
-function updateEventsState(isReload, newEvents) {
-    if (isReload) {
-        store.dispatch(reload(newEvents));
-    } else if (newEvents.length !== 0){
-        store.dispatch(load(newEvents));
-    }
-
-}
-
 
 function updateImageUrls(newEvents) {
     newEvents.forEach((item) => {

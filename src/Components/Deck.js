@@ -5,9 +5,7 @@ import store from "../redux/store/store";
 import Card from "./Card";
 import CardView from "./View/CardView";
 
-import spinner from "../assets/preloader.svg";
-
-const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
+const Deck = ({index, setIndex, cards, loadCards, setRateBy, isEventDeck}) => {
      const onSwipeEnd = async function(isLike) {
         setRateBy(cards[index].id, isLike);
 
@@ -21,6 +19,8 @@ const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
 
     let topCardIndex = index;
     let bottomCardIndex = topCardIndex + 1;
+
+    let endCard = {"isEnd": true, "end_type" : isEventDeck}
     return (
 
         cards.length > 0 && topCardIndex < cards.length ?
@@ -32,11 +32,11 @@ const Deck = ({index, setIndex, cards, loadCards, setRateBy}) => {
                         <div/>
                 }
             </div> :
-            <div className="spinner-preloader-forPeople">
-                <img src={spinner} alt="loading spinner"/>
+            <div >
+                <Card cardInfo={endCard} onSwipeEnd={()=>{}}/>
             </div>
       
     )
-}
+};
 
 export default Deck;

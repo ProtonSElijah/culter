@@ -8,12 +8,17 @@ const initialState = {
 function people(state=initialState, action){
     switch(action.type){
         case "PEOPLE_RELOAD":
-            state.people = action.people;
-            state.page = 1;
+            state.people = state.people.concat(action.people);
+            state.page = Math.trunc(state.people.length / state.size);
             return state;
         case "PEOPLE_LOAD":
-            state.people = state.people.concat(action.people);
-            state.page = state.page + 1;
+            let receivedPeople = action.people;
+            let peopleCount = receivedPeople.length;
+            let shiftIndex = state.people.length % state.size;
+            let newPeople = receivedPeople.slice(shiftIndex, peopleCount);
+
+            state.people = state.people.concat(newPeople);
+            state.page = Math.trunc(state.people.length / state.size);
             return state;
         case "PEOPLE_SET_INDEX":
             state.index = action.index;

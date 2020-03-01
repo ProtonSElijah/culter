@@ -15,16 +15,10 @@ import {fetchMatches} from "../Api/Matches";
 
 const Matches = ({id}) => {
     const user = useSelector(state => state.userState.user);
-    const [matchedPeople, setMatchedPeople] = useState([]);
-    const [page, setPage] = useState(0);
-    const [size, setSize] = useState(20);
+    const matches = useSelector(state => state.matchesState.matches);
 
     async function loadMatches(){
-        let peopleResponse = await fetchMatches(user.id, page, size);
-        let newPeople = await peopleResponse.json();
-
-        setPage(page + 1);
-        setMatchedPeople(matchedPeople.concat(newPeople.content));
+        await fetchMatches();
     }
 
     useEffect(() => {
@@ -38,8 +32,6 @@ const Matches = ({id}) => {
             document.body.style.setProperty('--background_page', 'white');
         }
         refreshHeaderVK();
-        if (user != null)
-            loadMatches();
     }, []);
 
     /*<MatchedNavigationButtons
@@ -52,15 +44,15 @@ const Matches = ({id}) => {
         <Panel id={id}>
             <Header panelId={id}/>
             <div className="Head">
-                <p>{matchedPeople.length != 1 ?
-                ""+matchedPeople.length+" новых совпадений" :
-                   "" + matchedPeople.length + " новое совпадение"}</p>
+                <p>{matches.length != 1 ?
+                ""+matches.length+" новых совпадений" :
+                   "" + matches.length + " новое совпадение"}</p>
             </div>
 
             <div className="ScrollContainer">
-                {matchedPeople.length > 0 ?
+                {matches.length > 0 ?
                     <MatchedScrollList
-                        list={matchedPeople}/> :
+                        list={matches}/> :
                     <div/>
                 }
             </div>
@@ -68,9 +60,9 @@ const Matches = ({id}) => {
                 <p>Совпадения</p>
             </div>
             <div className="ListContainer">
-                {matchedPeople.length > 0 ?
+                {matches.length > 0 ?
                     <MatchedList
-                        list={matchedPeople}/> :
+                        list={matches}/> :
                     <div/>
                 }
             </div>

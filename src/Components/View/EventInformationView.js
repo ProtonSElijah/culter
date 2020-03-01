@@ -5,7 +5,7 @@ import LeftButton from '../../assets/icons/eventAnnotationLeftButton.svg';
 import RightButton from '../../assets/icons/eventAnnotationRightButton.svg';
 
 const EventInformationView = ({event}) => {
-    let isDateProvided = event.dates.length > 0;
+    let isDateProvided = event.start_date != null;
 
     let date = "";
     let time = "";
@@ -13,8 +13,8 @@ const EventInformationView = ({event}) => {
     let day = "";
 
     if (isDateProvided) {
-        time = event.dates[0].start_time.slice(0,event.dates[0].start_time.length-3);
-        date = new Date(event.dates[0].start_date);
+        time = event.start_time.slice(0,event.start_time.length-3);
+        date = new Date(event.start_date);
         week = date.toLocaleDateString("ru-Ru", { weekday: 'long' });
         day = date.toLocaleDateString("ru-Ru", { month: 'long', day: 'numeric'});
     }

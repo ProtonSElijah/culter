@@ -10,7 +10,7 @@ import People from './panels/People';
 
 import '@vkontakte/vkui/dist/vkui.css';
 import './ResetBrowser.css';
-import {authorize} from "./Api/Auth";
+import {authorize} from "./services/Auth";
 import config from "./Api/api_config.json";
 import settings from "./Api/dev_settings.json";
 import {useSelector} from "react-redux";

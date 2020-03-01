@@ -6,8 +6,8 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import '../ResetBrowser.css';
 import './panelsStyle/People.scss';
 import Deck from "../Components/Deck";
-import {fetchPeople} from "../Api/People";
-import { setUserRate } from '../Api/Ratings';
+import {fetchPeople} from "../services/People";
+import { setUserRate } from '../services/Ratings';
 import {setIndex} from "../redux/actions/people-actions";
 
 const People = ({id}) => {
@@ -27,7 +27,7 @@ const People = ({id}) => {
     }
 
     async function setRateBy(otherUserId, isLike){
-        setUserRate(user.id, otherUserId, isLike );
+        setUserRate( otherUserId, isLike );
     }
 
     const isUserLoaded = () => {
@@ -57,7 +57,7 @@ const People = ({id}) => {
     return (
         <Panel id={id}>
             <Header panelId={id}/>
-            <Deck index={index} setIndex={setIndex} cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
+            <Deck isEventDeck={false} index={index} setIndex={setIndex} cards={people} loadCards={loadPeople} setRateBy={setRateBy}/>
 
             <Bottom/>
         </Panel>
