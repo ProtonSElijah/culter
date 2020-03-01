@@ -1,23 +1,16 @@
 import config from "./api_config";
-import store from "../redux/store/store";
-import {loadMatches, reloadMatches} from "../redux/actions/matches-actions";
 
-export async function fetchMatches() {
-    let requestState = store.getState();
-    let userId = requestState.userState.user.id;
-    let page = requestState.matchesState.page;
-    let size = requestState.matchesState.size;
-
+export async function fetchMatchesCall(userId, page, size) {
     let url = buildUrl(userId, page, size);
     let response = await fetch(url, {method: "GET",});
     if (response.status !== 200) {
-        return;
+        return [];
     }
 
     let newMatchesJson = await response.json();
     let newMatches = newMatchesJson.content;
-
-    updateStore(newMatches);
+    setUpEmptyCommonEvents(newMatches);
+    return newMatches;
 }
 
 
@@ -28,8 +21,9 @@ function buildUrl(userId, page, size) {
         + "&size=" + size;
 }
 
-function updateStore(newMatches) {
-    if (newMatches.length !== 0)
-        store.dispatch(loadMatches(newMatches));
-
+function setUpEmptyCommonEvents(newMatches) {
+    newMatches.forEach((item) => {
+        item.commonEvents = [];
+    });
 }
+
