@@ -19,6 +19,10 @@ const MatchedList = ({list}) => {
         }
     };
 
+    const toVKChat = (e) => {
+        document.location.href = "https://vk.com/im?sel=" + e.currentTarget.dataset.userid;
+    }
+
     let a = [
         {
             img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
@@ -59,7 +63,7 @@ const MatchedList = ({list}) => {
                 <img className="avatar" src={person.photo_400_orig} alt="Person photo"/>
 
 
-                <div className="messageTitle">
+                <div className="messageTitle" onClick={toVKChat} data-userid={person.id}>
                     <img src={chatActive} alt="message" />
                     <p>Написать</p>
                 </div>
