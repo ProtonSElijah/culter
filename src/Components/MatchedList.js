@@ -11,6 +11,12 @@ const MatchedList = ({list}) => {
         e.currentTarget.parentElement.children[3].style.display =
             e.currentTarget.parentElement.children[3].style.display == "none" ?
             "flex" : "none";
+
+        if (e.currentTarget.parentElement.children[3].style.display == "none") {
+            e.currentTarget.classList.remove("arrowActive");
+        } else {
+            e.currentTarget.classList.add("arrowActive");
+        }
     };
 
     let a = [
