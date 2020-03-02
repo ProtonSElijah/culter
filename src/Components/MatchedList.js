@@ -8,14 +8,14 @@ import matchesArrow from "../assets/icons/matchesArrow.svg";
 const MatchedList = ({list}) => {
 
     const openEvents = (e) => {
-        e.currentTarget.parentElement.children[3].style.display =
-            e.currentTarget.parentElement.children[3].style.display == "none" ?
-            "flex" : "none";
+        let display = e.currentTarget.parentElement.children[3].style.display;
+        let isHidden = display ===  "none" || display === "";
+        e.currentTarget.parentElement.children[3].style.display = isHidden ? "flex" : "none";
 
-        if (e.currentTarget.parentElement.children[3].style.display == "none") {
-            e.currentTarget.classList.remove("arrowActive");
-        } else {
+        if (isHidden) {
             e.currentTarget.classList.add("arrowActive");
+        } else {
+            e.currentTarget.classList.remove("arrowActive");
         }
     };
 
