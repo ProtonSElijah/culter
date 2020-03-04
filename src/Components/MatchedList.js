@@ -6,7 +6,7 @@ import chatActive from "../assets/icons/messageRed.svg";
 import matchesArrow from "../assets/icons/matchesArrow.svg";
 
 const MatchedList = ({list}) => {
-
+    console.log(list);
     const openEvents = (e) => {
         let display = e.currentTarget.parentElement.children[3].style.display;
         let isHidden = display ===  "none" || display === "";
@@ -55,7 +55,6 @@ const MatchedList = ({list}) => {
             name: "Гомаз",
         },
     ];
-
     return list.map(
         person =>
         <div className="PersonContainer">
@@ -75,8 +74,15 @@ const MatchedList = ({list}) => {
 
                 <div className="eventsContainer">
                    <div className="events">
-
-                        <CommonEventsList events={a}/>
+                       {console.log(person)}
+                        <CommonEventsList events={
+                            (() => {
+                                console.log(person);
+                                return true
+                            }) ?
+                                person.commonEvents :
+                                a
+                        }/>
 
                     </div>
                 </div>

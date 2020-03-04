@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 const CommonEventsList = ({events}) => {
+    console.log(events);
     return events.map(
         event =>
         <div className="eventContainer">

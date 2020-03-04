@@ -26,6 +26,7 @@ function matches(state = initialState, action) {
 
             let matchedUserId = state.matches.findIndex((match)=>match.id === otherUserId);
             state.matches[matchedUserId].commonEvents = events;
+            return state;
     }
     return state;
 }
