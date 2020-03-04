@@ -1,7 +1,8 @@
 const initialState = {
     matches: [],
     page: 0,
-    size: 15
+    size: 15,
+    eventsPageSize: 10
 };
 
 function matches(state = initialState, action) {
@@ -19,6 +20,9 @@ function matches(state = initialState, action) {
             state.matches = state.matches.concat(newMatches);
             state.page = Math.trunc(state.matches.length / state.size);
             return state;
+        case  "UPDATE_COMMON_EVENTS":
+            let otherUserId = action.otherUserId;
+
     }
     return state;
 }

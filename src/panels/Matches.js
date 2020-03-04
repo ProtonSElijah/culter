@@ -12,6 +12,7 @@ import './panelsStyle/Matches.css';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import {fetchMatches} from "../services/Matches";
+import {fetchCommonEvents} from "../services/Events";
 
 const Matches = ({id}) => {
     const user = useSelector(state => state.userState.user);
@@ -25,6 +26,16 @@ const Matches = ({id}) => {
         if (user != null)
             loadMatches();
     }, [user]);
+
+    useEffect(() => {
+        if (matches.length !== 0) {
+            matches.forEach(
+                match => {
+                    fetchCommonEvents(match.id);
+                }
+            )
+        }
+    })
 
     useEffect(() => {
         async function refreshHeaderVK() {
