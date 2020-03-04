@@ -22,7 +22,10 @@ function matches(state = initialState, action) {
             return state;
         case  "UPDATE_COMMON_EVENTS":
             let otherUserId = action.otherUserId;
+            let events = action.newEvents;
 
+            let matchedUserId = state.matches.findIndex((match)=>match.id === otherUserId);
+            state.matches[matchedUserId].commonEvents = events;
     }
     return state;
 }
