@@ -10,3 +10,11 @@ export function loadMatches(matches){
         matches
     }
 }
+
+export function updateCommonEvents(otherUserId, newEvents) {
+    return {
+        type: "UPDATE_COMMON_EVENTS",
+        otherUserId,
+        newEvents
+    }
+}

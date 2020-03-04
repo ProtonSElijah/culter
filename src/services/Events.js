@@ -18,8 +18,11 @@ export async function fetchCommonEvents(otherUserId) {
     let userId = requestState.userState.user.id;
     let matches = requestState.matchesState.matches;
 
-
-    let size = requestState.eventsState.size;
+    let matchedUser = matches.find(
+        (match =>  match.id === otherUserId)
+    );
+    let page = matchedUser.page;
+    let size = requestState.matchesState.eventsPageSize;
 
     let newEvents = await fetchCommonEventsRequest(userId, otherUserId, page, size);
 

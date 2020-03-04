@@ -24,6 +24,7 @@ function buildUrl(userId, page, size) {
 function setUpEmptyCommonEvents(newMatches) {
     newMatches.forEach((item) => {
         item.commonEvents = [];
+        item.page = 0;
     });
 }
 
