@@ -166,25 +166,60 @@
     right: 0;
 }
 
+.Person .messageTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 0;
+}
+
+.messageTitle img {
+    width: 5.1vmax;
+    height: 5.1vmax;
+}
+
+.messageTitle p {
+    color: #FF4F4F;
+    font-size: 10px;
+    line-height: 12px;
+    font-family: "SF Text", serif;
+}
+
 .Person .personData {
     height: 8vmax;
     width: 100%;
     display: flex;
     flex-direction: column;
-    font-size: 4.2vmin;
-    letter-spacing: 0.5vmin;
+    font-family: "SF Text", serif;
 }
 
 .Person .personData .name, .Person .personData .events {
-    margin-left: 11vmax;
+    margin-left: 10vmax;
+}
+
+.Person .personData .events {
+    color: #000000;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.Person .personData .name {
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    margin-bottom: 1vmax;
 }
 
 .Person .arrow {
     margin-bottom: 0.85vmax;
 }
 
-.active {
-    visibility: visible;
+.Person .arrowActive {
+    transform: scale(1, -1);
 }
 
 .Person .eventsContainer {
@@ -195,11 +230,16 @@
 
     overflow-x: scroll;
     overflow-y: hidden;
+    display: none;
+
+}
+
+.events {
     display: flex;
     flex-direction: row;
 }
 
-.Person .eventsContainer .eventContainer {
+.eventContainer {
     height: 100%;
     width: 24.7vmin;
     margin-left: 2.5vmin;
@@ -208,11 +248,11 @@
     overflow-y: hidden;
 }
 
-.eventsContainer .eventContainer:first-child {
+.events .eventContainer:first-child {
     margin-left: 0;
 }
 
-.Person .eventsContainer .eventContainer .poster {
+.eventContainer .poster {
     width: 100%;
     height: 18vmax;
     margin-bottom: 0.5vmax;
@@ -220,7 +260,7 @@
     position: relative;
 }
 
-.Person .eventsContainer .eventContainer .poster .annotation {
+.eventContainer .poster .annotation {
     position: absolute;
     bottom: 0.625vmax;
     left: 0;
@@ -232,7 +272,7 @@
     flex-direction: column;
 }
 
-.Person .eventsContainer .eventContainer .poster .annotation p {
+.eventContainer .poster .annotation p {
     color: #FFFFFF;
     font-size: 1.5625vmax;
     font-style: normal;
@@ -244,7 +284,7 @@
     text-overflow: ellipsis;
 }
 
-.Person .eventsContainer .eventContainer .poster img {
+.eventContainer .poster img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -252,7 +292,7 @@
     box-shadow: 4vmax 4vmax 4vmax #575555 inset;
 }
 
-.Person .eventsContainer .eventContainer .name {
+.eventContainer .name {
     width: 100%;
     height: 2.5vmax;
     display: flex;
@@ -260,7 +300,7 @@
     justify-content: center;
 }
 
-.Person .eventsContainer .eventContainer .name p {
+.eventContainer .name p {
     font-size: 9px;
     font-style: normal;
     font-weight: normal;

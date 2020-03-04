@@ -26,18 +26,18 @@ const Bottom = () => {
     };
 
     return (
-        
+
         <div className="App-bottom">
             <BottomButton onClick={onChangePanelClick} panel={panels.personal} activePanel={activePanel}
-                          activeImage={userActive} disabledImage={userDisabled}/>
+                          activeImage={userActive} disabledImage={userDisabled} text='Профиль'/>
             <BottomButton onClick={onChangePanelClick} panel={panels.grid} activePanel={activePanel}
-                          activeImage={gridActive} disabledImage={gridDisabled}/>
+                          activeImage={gridActive} disabledImage={gridDisabled} text='Подборки'/>
             <BottomButton onClick={onChangePanelClick} panel={panels.events} activePanel={activePanel}
-                          activeImage={eventsActive} disabledImage={eventsDisabled}/>
+                          activeImage={eventsActive} disabledImage={eventsDisabled} text='События'/>
             <BottomButton onClick={onChangePanelClick} panel={panels.people} activePanel={activePanel}
-                          activeImage={peopleActive} disabledImage={peopleDisabled}/>
+                          activeImage={peopleActive} disabledImage={peopleDisabled} text='Люди'/>
             <BottomButton onClick={onChangePanelClick} panel={panels.matches} activePanel={activePanel}
-                          activeImage={chatActive} disabledImage={chatDisabled}/>
+                          activeImage={chatActive} disabledImage={chatDisabled} text='Совпадения'/>
         </div>
     );
     //Переключатель - две кнопки
