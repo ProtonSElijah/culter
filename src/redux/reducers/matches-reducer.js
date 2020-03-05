@@ -25,7 +25,9 @@ function matches(state = initialState, action) {
             let events = action.newEvents;
 
             let matchedUserId = state.matches.findIndex((match)=>match.id === otherUserId);
-            state.matches[matchedUserId].commonEvents = events;
+            let updatedMatches = state.matches.slice();
+            updatedMatches[matchedUserId].commonEvents = events;
+            state.matches = updatedMatches;
             return state;
     }
     return state;
