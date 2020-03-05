@@ -28,16 +28,6 @@ const Matches = ({id}) => {
     }, [user]);
 
     useEffect(() => {
-        if (matches.length !== 0) {
-            matches.forEach(
-                match => {
-                    fetchCommonEvents(match.id);
-                }
-            )
-        }
-    })
-
-    useEffect(() => {
         async function refreshHeaderVK() {
             document.getElementById(id).children[0].style.paddingTop = 0;
             document.body.style.setProperty('--background_page', 'white');

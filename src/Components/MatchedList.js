@@ -4,12 +4,16 @@ import CommonEventsList from './CommonEventsList.js';
 
 import chatActive from "../assets/icons/messageRed.svg";
 import matchesArrow from "../assets/icons/matchesArrow.svg";
+import {fetchCommonEvents} from "../services/Events";
 
 const MatchedList = ({list}) => {
-    console.log(list);
     const openEvents = (e) => {
         let display = e.currentTarget.parentElement.children[3].style.display;
         let isHidden = display ===  "none" || display === "";
+        if (isHidden) {
+            let otherUserId = parseInt(e.currentTarget.dataset.id);
+            fetchCommonEvents(otherUserId);
+        }
         e.currentTarget.parentElement.children[3].style.display = isHidden ? "flex" : "none";
 
         if (isHidden) {
@@ -21,40 +25,7 @@ const MatchedList = ({list}) => {
 
     const toVKChat = (e) => {
         document.location.href = "https://vk.com/im?sel=" + e.currentTarget.dataset.userid;
-    }
-
-    let a = [
-        {
-            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
-            date: "27 октября",
-            place: "СК Юбилейный",
-            name: "Гомаз",
-        },
-        {
-            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
-            date: "27 октября",
-            place: "СК Юбилейный",
-            name: "Гомаз",
-        },
-        {
-            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
-            date: "27 октября",
-            place: "СК Юбилейный",
-            name: "Гомаз",
-        },
-        {
-            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
-            date: "27 октября",
-            place: "СК Юбилейный",
-            name: "Гомаз",
-        },
-        {
-            img: "https://www.nastol.com.ua/download.php?img=201502/1280x1024/nastol.com.ua-130464.jpg",
-            date: "27 октября",
-            place: "СК Юбилейный",
-            name: "Гомаз",
-        },
-    ];
+    };
     return list.map(
         person =>
         <div className="PersonContainer">
@@ -74,20 +45,16 @@ const MatchedList = ({list}) => {
 
                 <div className="eventsContainer">
                    <div className="events">
-                       {console.log(person)}
                         <CommonEventsList events={
-                            (() => {
-                                console.log(person);
-                                return true
-                            }) ?
+                            person.commonEvents.length > 0 ?
                                 person.commonEvents :
-                                a
+                                []
                         }/>
 
                     </div>
                 </div>
 
-                <img className="arrow" onClick={openEvents} src={matchesArrow} alt="icon" />
+                <img className="arrow" onClick={openEvents} data-id={person.id} src={matchesArrow} alt="icon" />
 
             </div>
         </div>
