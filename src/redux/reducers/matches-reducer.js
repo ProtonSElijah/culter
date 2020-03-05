@@ -1,7 +1,8 @@
 const initialState = {
     matches: [],
     page: 0,
-    size: 15
+    size: 15,
+    eventsPageSize: 10
 };
 
 function matches(state = initialState, action) {
@@ -18,6 +19,15 @@ function matches(state = initialState, action) {
 
             state.matches = state.matches.concat(newMatches);
             state.page = Math.trunc(state.matches.length / state.size);
+            return state;
+        case  "UPDATE_COMMON_EVENTS":
+            let otherUserId = action.otherUserId;
+            let events = action.newEvents;
+
+            let matchedUserId = state.matches.findIndex((match)=>match.id === otherUserId);
+            let updatedMatches = state.matches.slice();
+            updatedMatches[matchedUserId].commonEvents = events;
+            state.matches = updatedMatches;
             return state;
     }
     return state;

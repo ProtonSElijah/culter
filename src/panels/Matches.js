@@ -11,7 +11,8 @@ import '../ResetBrowser.css';
 import './panelsStyle/Matches.css';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import {fetchMatches} from "../Api/Matches";
+import {fetchMatches} from "../services/Matches";
+import {fetchCommonEvents} from "../services/Events";
 
 const Matches = ({id}) => {
     const user = useSelector(state => state.userState.user);
