@@ -43,6 +43,6 @@ const Bottom = () => {
     //Переключатель - две кнопки
     /*<div className="BottomLeftButton" onClick=onChangePanelClick data-to={left}><div></div></div>
     <div className="BottomRightButton" onClick=onChangePanelClick data-to={right}><div></div></div>*/
-}
+};
 
 export default Bottom;
