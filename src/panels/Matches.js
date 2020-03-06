@@ -21,7 +21,7 @@ const Matches = ({id}) => {
     }
 
     useEffect(() => {
-        if (user != null)
+        if (user)
             loadMatches();
     }, [user]);
 

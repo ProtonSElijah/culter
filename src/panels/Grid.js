@@ -48,11 +48,10 @@ const Grid = ({id}) => {
 
 
     useEffect(() => {
-        if (user != null || user !== undefined)
-            if (events.length === 0){
-                loadEvents();
-            }
-              
+        if (user && events.length === 0) {
+            loadEvents();
+        }
+
     }, [user]);
 
 
