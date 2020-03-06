@@ -43,7 +43,7 @@ const Matches = ({id}) => {
         <Panel id={id}>
             <Header panelId={id}/>
             <div className="Head">
-                <p>{matches.length != 1 ?
+                <p>{matches.length !== 1 ?
                 ""+matches.length+" новых совпадений" :
                    "" + matches.length + " новое совпадение"}</p>
             </div>

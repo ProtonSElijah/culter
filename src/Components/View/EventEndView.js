@@ -4,7 +4,7 @@ import '../ComponentsStyle/CardView.scss'
 import peopleIcon from '../../assets/icons/peopleRed.svg';
 import chatIcon from '../../assets/icons/chatRed.svg';
 
-const EventEndView = ({}) => {
+const EventEndView = () => {
 
 
     return  (
