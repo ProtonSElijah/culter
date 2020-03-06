@@ -29,15 +29,14 @@ const Events = ({id}) => {
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        if (user != null || user !== undefined)
-            if (events.length === 0){
-                setIsLoading(true);
-                loadEvents().then(
-                    () => {
-                        setIsLoading(false);
-                    }
-                );
-            }
+        if (user && events.length === 0) {
+            setIsLoading(true);
+            loadEvents().then(
+                () => {
+                    setIsLoading(false);
+                }
+            );
+        }
     }, [user]);
 
 
