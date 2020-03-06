@@ -30,10 +30,6 @@ const People = ({id}) => {
         setUserRate( otherUserId, isLike );
     }
 
-    const isUserLoaded = () => {
-        return user != null && user !== undefined;
-    };
-
     // При получении user id, получаем ивенты
     // useEffect(() => {
     //     if (isUserLoaded() && people.length === 0){
@@ -49,7 +45,7 @@ const People = ({id}) => {
         }
         refreshHeaderVK();
 
-        if (isUserLoaded() && people.length === 0)
+        if (user && people.length === 0)
             loadPeople();
     }, []);
 

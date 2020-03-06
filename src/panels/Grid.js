@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
-import { reload, load } from "../redux/actions/events-actions";
 
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
@@ -35,25 +34,24 @@ const Grid = ({id}) => {
         }
     };
 
-    async function loadEvents(){
+    const loadEvents = async function (){
         await fetchEvents(categoriesId);
         setIsLoading(false);
-    }
+    };
 
-    async function deleteAndloadEvents(){
-        if (user != null || user !== undefined){
+    const deleteAndloadEvents = async function (){
+        if (user){
             await fetchEvents(categoriesId,true);
             setIsLoading(false);
         }
-    }
+    };
 
 
     useEffect(() => {
-        if (user != null || user !== undefined)
-            if (events.length === 0){
-                loadEvents();
-            }
-              
+        if (user && events.length === 0) {
+            loadEvents();
+        }
+
     }, [user]);
 
 
@@ -67,24 +65,24 @@ const Grid = ({id}) => {
 
     const onModal = e => {
         let modal = document.getElementById("filter_modal");
-        if (modal.style.visibility == "visible") {
+        if (modal.style.visibility === "visible") {
             deleteAndloadEvents();
         }
-        modal.style.visibility = (modal.style.visibility == "visible") ? "hidden" : "visible";
+        modal.style.visibility = (modal.style.visibility === "visible") ? "hidden" : "visible";
     };
 
     const onChangeFilterItemState = e => {
-        if (e.currentTarget.dataset.isactive == "false") {
+        if (e.currentTarget.dataset.isactive === "false") {
             setCategoriesId(categoriesId.concat(e.currentTarget.dataset.id));
         }
         else categoriesId.splice(categoriesId.indexOf(e.currentTarget.dataset.id), 1);
-        e.currentTarget.dataset.isactive = (e.currentTarget.dataset.isactive == "true") ? "false" : "true";
+        e.currentTarget.dataset.isactive = (e.currentTarget.dataset.isactive === "true") ? "false" : "true";
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-disabled");
         e.currentTarget.children[0].classList.toggle("Filter-modal-categories-item-checkbox-active");
     };
 
     const onCloseFilterEnvironment = e => {
-        if (e.target.id == "filter_modal") onModal(e);
+        if (e.target.id === "filter_modal") onModal(e);
     };
 
     return (

@@ -3,7 +3,7 @@ import React from 'react';
 const MatchedScrollList = ({list}) => {
     return list.map(
         person =>
-        <div className="ScrollContainerContent" key={person.key}>
+        <div className="ScrollContainerContent" key={person.id}>
             <div className="ScrollPerson">
                 <img src={person.photo_400_orig} alt="Person" className="ScrollPeopleImg"/>
                 <div>{person.first_name}</div>

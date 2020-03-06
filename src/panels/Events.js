@@ -12,7 +12,7 @@ import { setEventRate } from '../services/Ratings';
 import {setIndex} from "../redux/actions/events-actions";
 import spinner from "../assets/preloader.svg";
 
-const Events = ({id, go, activePanel}) => {
+const Events = ({id}) => {
     const user = useSelector(state => state.userState.user);
     const events = useSelector(state => state.eventsState.events);
     const index = useSelector(state => state.eventsState.index);
@@ -29,15 +29,14 @@ const Events = ({id, go, activePanel}) => {
 
     // При получении user id, получаем ивенты
     useEffect(() => {
-        if (user != null || user != undefined)
-            if (events.length == 0){
-                setIsLoading(true);
-                loadEvents().then(
-                    () => {
-                        setIsLoading(false);
-                    }
-                );
-            }
+        if (user && events.length === 0) {
+            setIsLoading(true);
+            loadEvents().then(
+                () => {
+                    setIsLoading(false);
+                }
+            );
+        }
     }, [user]);
 
 

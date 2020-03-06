@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from "react-redux";
 
 import Header from "../Components/Header";
-import MatchedNavigationButtons from "../Components/MatchedNavigationButtons"
 import MatchedScrollList from "../Components/MatchedScrollList";
 import MatchedList from "../Components/MatchedList";
 import Bottom from "../Components/Bottom";
@@ -12,7 +11,6 @@ import './panelsStyle/Matches.css';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import {fetchMatches} from "../services/Matches";
-import {fetchCommonEvents} from "../services/Events";
 
 const Matches = ({id}) => {
     const user = useSelector(state => state.userState.user);
@@ -23,7 +21,7 @@ const Matches = ({id}) => {
     }
 
     useEffect(() => {
-        if (user != null)
+        if (user)
             loadMatches();
     }, [user]);
 
@@ -45,7 +43,7 @@ const Matches = ({id}) => {
         <Panel id={id}>
             <Header panelId={id}/>
             <div className="Head">
-                <p>{matches.length != 1 ?
+                <p>{matches.length !== 1 ?
                 ""+matches.length+" новых совпадений" :
                    "" + matches.length + " новое совпадение"}</p>
             </div>

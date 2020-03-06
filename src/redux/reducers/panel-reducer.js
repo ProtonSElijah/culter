@@ -6,8 +6,9 @@ function panels(state=initialState, action){
         case "CHANGE_PANEL":
             state.active = action.panel;
             return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default panels;

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from "react-redux";
 import Header from "../Components/Header";
 import Bottom from "../Components/Bottom";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import connect from '@vkontakte/vk-connect';
 import './panelsStyle/Personal.css';
 
 

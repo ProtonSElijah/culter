@@ -23,8 +23,9 @@ function people(state=initialState, action){
         case "PEOPLE_SET_INDEX":
             state.index = action.index;
             return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default people;

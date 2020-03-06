@@ -7,8 +7,9 @@ function user(state=initialState, action){
         case "SET_AUTHORIZED_USER":
             state.user = action.user;
             return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default user;

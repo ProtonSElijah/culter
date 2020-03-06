@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../ComponentsStyle/CardView.scss'
 import EventInformationView from './EventInformationView';
 import PersonInformationView from './PersonInformationView';
@@ -37,7 +37,7 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
 
             <div className="Swipe-content-up">
                 <ChoiceLabelsView horizontalShift={horizontalShift} />
-                <img className="Swipe-content-up-image" src={imageSource}/>
+                <img className="Swipe-content-up-image" src={imageSource} alt="Card"/>
 
                 <div className="Swipe-content-down">
                     {isEnd ?

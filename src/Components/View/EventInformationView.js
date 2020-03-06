@@ -1,9 +1,6 @@
 import React from 'react';
 import '../ComponentsStyle/CardView.scss'
 
-import LeftButton from '../../assets/icons/eventAnnotationLeftButton.svg';
-import RightButton from '../../assets/icons/eventAnnotationRightButton.svg';
-
 const EventInformationView = ({event}) => {
     let isDateProvided = event.start_date != null;
 
