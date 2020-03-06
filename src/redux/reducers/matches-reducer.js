@@ -29,8 +29,9 @@ function matches(state = initialState, action) {
             updatedMatches[matchedUserId].commonEvents = events;
             state.matches = updatedMatches;
             return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default matches;

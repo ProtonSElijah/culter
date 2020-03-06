@@ -17,8 +17,9 @@ function events(state=initialState, action){
         case "SET_INDEX":
             state.index = action.index;
             return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default events;

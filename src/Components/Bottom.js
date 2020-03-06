@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './ComponentsStyle/Bottom.css';
 
 import chatDisabled from "../assets/icons/chatGrey.svg";
