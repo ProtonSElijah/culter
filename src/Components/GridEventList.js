@@ -21,8 +21,9 @@ const GridEventList = ({data}) => {
                data-name={product.name ? product.name : "unknown"}
                data-to="swipe"
                data-index={index}
+                 key={index}
                onClick={handleClick}>
-                <img src={product.images[0].image ? product.images[0].image : null}/>
+                <img src={product.images[0].image ? product.images[0].image : null} alt={product.name ? product.name : "unknown"}/>
             </div>
     );
 }

@@ -37,7 +37,7 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
 
             <div className="Swipe-content-up">
                 <ChoiceLabelsView horizontalShift={horizontalShift} />
-                <img className="Swipe-content-up-image" src={imageSource} alt="card image"/>
+                <img className="Swipe-content-up-image" src={imageSource} alt="Card"/>
 
                 <div className="Swipe-content-down">
                     {isEnd ?

@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 const CommonEventsList = ({events}) => {
 
     return events.map(
         event =>
-        <div className="eventContainer">
+        <div className="eventContainer" key={event.id}>
             <div className="poster">
-                <img src={event.images[0].image} />
+                <img src={event.images[0].image}  alt={event.short_title}/>
                 <div className="annotation">
                     <p>{event.start_date}</p>
                     <p>{event.place}</p>
@@ -17,6 +17,6 @@ const CommonEventsList = ({events}) => {
             </div>
         </div>
     );
-}
+};
 
 export default CommonEventsList;

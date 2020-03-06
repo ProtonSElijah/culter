@@ -28,9 +28,9 @@ const MatchedList = ({list}) => {
     };
     return list.map(
         person =>
-        <div className="PersonContainer">
+        <div className="PersonContainer" key={person.id}>
             <div className="Person" key={person.key}>
-                <img className="avatar" src={person.photo_400_orig} alt="Person photo"/>
+                <img className="avatar" src={person.photo_400_orig} alt="Person"/>
 
 
                 <div className="messageTitle" onClick={toVKChat} data-userid={person.id}>
