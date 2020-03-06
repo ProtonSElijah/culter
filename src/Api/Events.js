@@ -37,8 +37,8 @@ function buildUrl(userId, categories, is_personal, page, size) {
 }
 
 function buildUrlForCommonEvents(userId, otherUserId, page, size) {
-    return config.url + "/user/" + userId
-        + "/common/events?" + "anotherUserId=" + otherUserId
+    return `${config.url}/user/${userId}`
+        + `/common/events?anotherUserId=${otherUserId}`
         + "&page=" + page
         + "&size=" + size;
 }
