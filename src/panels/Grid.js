@@ -34,17 +34,17 @@ const Grid = ({id}) => {
         }
     };
 
-    async function loadEvents(){
+    const loadEvents = async function (){
         await fetchEvents(categoriesId);
         setIsLoading(false);
-    }
+    };
 
-    async function deleteAndloadEvents(){
-        if (user != null || user !== undefined){
+    const deleteAndloadEvents = async function (){
+        if (user){
             await fetchEvents(categoriesId,true);
             setIsLoading(false);
         }
-    }
+    };
 
 
     useEffect(() => {
