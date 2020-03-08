@@ -17,7 +17,7 @@ const Events = ({id}) => {
     const events = useSelector(state => state.eventsState.events);
     const index = useSelector(state => state.eventsState.index);
 
-    const [categories, setCategories] = useState(["1","6"]);
+    const [categories, setCategories] = useState(["3","8"]);
     const [isLoading, setIsLoading] = useState(false);
 
     async function loadEvents(){
