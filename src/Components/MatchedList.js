@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import CommonEventsList from './CommonEventsList.js';
 
@@ -7,7 +7,13 @@ import matchesArrow from "../assets/icons/matchesArrow.svg";
 import {fetchCommonEvents} from "../services/Events";
 
 const MatchedList = ({list}) => {
+    const [currentOPenBlock, setCurrentOPenBlock] = useState(null);
+
     const openEvents = (e) => {
+        if ((currentOPenBlock) && (currentOPenBlock.dataset.id !== e.currentTarget.dataset.id)) {
+            toggleCommonEvents(currentOPenBlock, false);
+        }
+
         let elementStyle = e.currentTarget.parentElement.children[3].style;
 
         let height = elementStyle.height;
@@ -16,10 +22,18 @@ const MatchedList = ({list}) => {
             let otherUserId = parseInt(e.currentTarget.dataset.id);
             fetchCommonEvents(otherUserId);
         }
-        elementStyle.height = isHidden ? "20.5vmax" : "0vmax";
 
-        let arrow = e.currentTarget.parentElement.getElementsByClassName("arrow")[0];
-        if (isHidden) {
+        toggleCommonEvents(e.currentTarget, isHidden);
+
+        setCurrentOPenBlock(e.currentTarget);
+    };
+
+    const toggleCommonEvents = (target, isClosed) => {
+        let elementStyle = target.parentElement.children[3].style;
+        elementStyle.height = isClosed ? "20.5vmax" : "0vmax";
+
+        let arrow = target.parentElement.getElementsByClassName("arrow")[0];
+        if (isClosed){
             arrow.classList.add("arrowActive");
         } else {
             arrow.classList.remove("arrowActive");
