@@ -12,7 +12,9 @@ const CommonEventsList = ({events}) => {
         event =>
         <div className="eventContainer" key={event.id}>
             <div className="poster">
-                <img src={event.images[0].image}  alt={event.short_title}/>
+                <div className="image-container">
+                    <img src={event.images[0].image}  alt={event.short_title}/>
+                </div>
                 <div className="annotation">
                     <p>{getFormattedDay(event.start_date)}</p>
                     <p>{event.place_short_title}</p>
