@@ -40,7 +40,7 @@ const MatchedList = ({list}) => {
 
                 <div className="personData">
                     <div className="name">{person.first_name}</div>
-                    <div className="events">4 Общих события</div>
+                    <div className="events">{person.count_common_events} общих событий</div>
                 </div>
 
                 <div className="eventsContainer">
