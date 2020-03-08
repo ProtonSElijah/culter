@@ -8,14 +8,14 @@ import {fetchCommonEvents} from "../services/Events";
 
 const MatchedList = ({list}) => {
     const openEvents = (e) => {
-        let display = e.currentTarget.parentElement.children[3].style.display;
-        let isHidden = display ===  "none" || display === "";
+        let elementStyle = e.currentTarget.parentElement.children[3].style;
+        let height = elementStyle.height;
+        let isHidden = height ===  "0vmax" || height === "";
         if (isHidden) {
             let otherUserId = parseInt(e.currentTarget.dataset.id);
             fetchCommonEvents(otherUserId);
         }
-        e.currentTarget.parentElement.children[3].style.display = isHidden ? "flex" : "none";
-
+        elementStyle.height = isHidden ? "20.5vmax" : "0vmax";
         if (isHidden) {
             e.currentTarget.classList.add("arrowActive");
         } else {
