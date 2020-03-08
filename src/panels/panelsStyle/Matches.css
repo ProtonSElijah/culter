@@ -225,13 +225,13 @@
 .Person .eventsContainer {
     margin-top: 2vmax;
     margin-bottom: 1.4vmax;
-    height: 20.5vmax;
+    /*height: 20.5vmax;*/
+    height: 0vmax;
     width: 90vmin;
-
+    display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
-    display: none;
-
+    transition:height 0.3s ease-in-out;
 }
 
 .events {
