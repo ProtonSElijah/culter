@@ -10,6 +10,7 @@ export async function fetchMatchesCall(userId, page, size) {
     let newMatchesJson = await response.json();
     let newMatches = newMatchesJson.content;
     setUpEmptyCommonEvents(newMatches);
+    updateEmptyImages(newMatches);
     return newMatches;
 }
 
@@ -28,3 +29,10 @@ function setUpEmptyCommonEvents(newMatches) {
     });
 }
 
+function updateEmptyImages(newMatches) {
+    newMatches.forEach((item) => {
+        if (!item.photo_400_orig){
+            item.photo_400_orig = "https://vk.com/images/camera_200.png?ava=1"
+        }
+    });
+}
