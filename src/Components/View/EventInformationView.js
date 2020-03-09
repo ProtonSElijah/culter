@@ -2,7 +2,7 @@ import React from 'react';
 import '../ComponentsStyle/CardView.scss'
 
 const EventInformationView = ({event}) => {
-    let isDateProvided = event.start_date != null;
+    let isDateProvided = event.start_date && event.start_time;
 
     let date = "";
     let time = "";

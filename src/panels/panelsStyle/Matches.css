@@ -225,12 +225,13 @@
 .Person .eventsContainer {
     margin-top: 2vmax;
     margin-bottom: 1.4vmax;
-    height: 20.5vmax;
+    /*height: 20.5vmax;*/
+    height: 0vmax;
     width: 90vmin;
-
+    display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
-    display: none;
+    transition:height 0.3s ease-in-out;
 }
 
 .events {
@@ -283,12 +284,19 @@
     text-overflow: ellipsis;
 }
 
-.eventContainer .poster img {
+.eventContainer .poster .image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0px -3vmax 4vmax 3px black inset;
+}
+.eventContainer .poster .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 16px;
-    box-shadow: 4vmax 4vmax 4vmax #575555 inset;
+    position: relative;
+    z-index: -1;
 }
 
 .eventContainer .name {
