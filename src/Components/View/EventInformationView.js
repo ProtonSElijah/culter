@@ -21,11 +21,13 @@ const EventInformationView = ({event}) => {
 
             <div className="Swipe-content-down-center">
                 <p>{event.short_title}</p>
-                {isDateProvided &&
-                <p> {day}</p>}
-                {isDateProvided &&
-                <p>{time} {week} </p>
-                 }
+                <div className="Swipe-content-down-center-date">
+                    {isDateProvided &&
+                    <p> {day}</p>}
+                    {isDateProvided &&
+                    <p>{time} {week} </p>
+                     }
+                 </div>
             </div>
 
         </div>
