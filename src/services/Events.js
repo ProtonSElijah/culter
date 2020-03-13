@@ -1,7 +1,7 @@
 import store from "../redux/store/store";
 import {reload, load} from "../redux/actions/events-actions";
 import {fetchCommonEventsRequest, fetchEventsRequest} from "../Api/Events";
-import {updateCommonEvents} from "../redux/actions/matches-actions";
+import {updateCommonEvents, updateCommonEventsCount} from "../redux/actions/matches-actions";
 
 export async function fetchEvents(categories = [1, 6], isReload = false, is_personal = true) {
     let requestState = store.getState();
@@ -11,7 +11,13 @@ export async function fetchEvents(categories = [1, 6], isReload = false, is_pers
 
     let newEvents = await fetchEventsRequest(userId,categories, is_personal, page, size);
 
-    updateEventsState(isReload, newEvents);
+    updateEventsState(isReload, newEvents.content);
+}
+
+function updateCommonEventsCountState(otherUserId, totalElementsCount) {
+    if (totalElementsCount > 0){
+        store.dispatch(updateCommonEventsCount(otherUserId,totalElementsCount))
+    }
 }
 
 export async function fetchCommonEvents(otherUserId) {
@@ -27,7 +33,8 @@ export async function fetchCommonEvents(otherUserId) {
 
     let newEvents = await fetchCommonEventsRequest(userId, otherUserId, page, size);
 
-    updateCommonEventsState(otherUserId, newEvents);
+    updateCommonEventsState(otherUserId, newEvents.content);
+    updateCommonEventsCountState(otherUserId, newEvents.totalElements);
 }
 
 function updateCommonEventsState(otherUserId, newEvents) {
