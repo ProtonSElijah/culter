@@ -46,7 +46,7 @@ const CardView = ({swipeInfo, cardInfo}) => {
                 <ChoiceLabelsView horizontalShift={horizontalShift} />
 
                 <img className="Swipe-content-up-image" src={imageSource} alt="Card"/>
-                {/*<div className="shadow"></div>*/}
+                <div className="shadow"></div>
 
 
                 <div className="Swipe-content-down">

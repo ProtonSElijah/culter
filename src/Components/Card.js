@@ -51,7 +51,7 @@ const Card = ({cardInfo, onSwipeEnd}) => {
 
     };
 
-    async function updateStyle() {
+    function updateStyle() {
         elem = elem? elem : document.getElementById("card-id").firstChild;
 
         let rotationCoefficient = isUpperTouch ? 1 : -1;
