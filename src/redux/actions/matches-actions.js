@@ -18,3 +18,11 @@ export function updateCommonEvents(otherUserId, newEvents) {
         newEvents
     }
 }
+
+export function updateCommonEventsCount(otherUserId, commonEventsCount){
+    return {
+        type: "UPDATE_COUNT_COMMON_EVENTS",
+        otherUserId,
+        commonEventsCount
+    }
+}

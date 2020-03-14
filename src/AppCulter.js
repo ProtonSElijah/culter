@@ -10,7 +10,7 @@ import People from './panels/People';
 
 import '@vkontakte/vkui/dist/vkui.css';
 import './ResetBrowser.css';
-import {authorize} from "./services/Auth";
+import {authorize, setUserImage} from "./services/User";
 import config from "./Api/api_config.json";
 import settings from "./Api/dev_settings.json";
 import {useSelector} from "react-redux";
@@ -26,7 +26,12 @@ const AppCulter = () => {
                 {'id' : settings.user_id} :
                 await connect.sendPromise('VKWebAppGetUserInfo');
             
-            await authorize(fetchedUser);
+            let retrievedUserFromServer = await authorize(fetchedUser);
+            if (retrievedUserFromServer){
+                if (!retrievedUserFromServer.photo_400_orig){
+                    setUserImage(fetchedUser.id, fetchedUser.photo_400_orig);
+                }
+            }
         }
         fetchData();
 

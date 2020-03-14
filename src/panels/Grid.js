@@ -16,7 +16,7 @@ const Grid = ({id}) => {
     const user = useSelector(state => state.userState.user);
     const events = useSelector(state => state.eventsState.events);
 
-    const [categoriesId, setCategoriesId] = useState(["31", "6", "27", "15", "12"]);
+    const [categoriesId, setCategoriesId] = useState(["3", "8", "27", "15", "12"]);
     const [isLoading, setIsLoading] = useState(false);
 
     const uploadData = e => {
@@ -114,24 +114,24 @@ const Grid = ({id}) => {
                         <div className="Filter-modal-categories">
 
                             <div className="Filter-modal-categories-item"
-                               onClick={onChangeFilterItemState} data-isactive={true} data-id={31}>
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={3}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
-                                <p className="Filter-modal-categories-item-name">Квесты</p>
-                            </div>
-
-                            <div className="Filter-modal-categories-item"
-                               onClick={onChangeFilterItemState} data-isactive={true} data-id={15}>
-                                <div className="Filter-modal-categories-item-checkbox
-                                    Filter-modal-categories-item-checkbox-active"></div>
-                                <p className="Filter-modal-categories-item-name">Флешмобы</p>
+                                <p className="Filter-modal-categories-item-name">Концерты</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"
                                onClick={onChangeFilterItemState} data-isactive={true} data-id={6}>
                                 <div className="Filter-modal-categories-item-checkbox
                                     Filter-modal-categories-item-checkbox-active"></div>
-                                <p className="Filter-modal-categories-item-name">Концерты</p>
+                                <p className="Filter-modal-categories-item-name">Выставки</p>
+                            </div>
+
+                            <div className="Filter-modal-categories-item"
+                               onClick={onChangeFilterItemState} data-isactive={true} data-id={8}>
+                                <div className="Filter-modal-categories-item-checkbox
+                                    Filter-modal-categories-item-checkbox-active"></div>
+                                <p className="Filter-modal-categories-item-name">Фестивали</p>
                             </div>
 
                             <div className="Filter-modal-categories-item"

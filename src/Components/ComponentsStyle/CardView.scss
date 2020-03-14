@@ -34,6 +34,15 @@ $swipeLeftColor: palevioletred;
     object-fit: cover;
 }
 
+.Swipe-content-up .shadow{
+    background: linear-gradient(1turn, rgba(0, 0, 0,0.3),rgba(0,0,0,0));
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    bottom: 0;
+}
+
 .choice-label{
     font-size: 6vmax;
 }

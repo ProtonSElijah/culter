@@ -4,16 +4,16 @@ import {isValidResponse} from "./Utils";
 export async function fetchEventsRequest(userId, categories, is_personal,
                                          page, size) {
     let url = buildUrl(userId, categories, is_personal, page, size);
-    return await getEventsByUrl(url);
+    return await getPageableEventsByUrl(url);
 }
 
 export async function fetchCommonEventsRequest(userId, otherUserId, page, size) {
     let url = buildUrlForCommonEvents(userId, otherUserId, page, size);
-    return await getEventsByUrl(url);
+    return await getPageableEventsByUrl(url);
 
 }
 
-async function getEventsByUrl(url) {
+async function getPageableEventsByUrl(url) {
     let response = await fetch(url, {method: "GET",});
     if (!isValidResponse(response)) {
         return [];
@@ -23,7 +23,8 @@ async function getEventsByUrl(url) {
     let events = eventsJson.content;
     updateImageUrls(events);
 
-    return events;
+    eventsJson.content = events;
+    return eventsJson;
 }
 
 
