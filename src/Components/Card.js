@@ -51,14 +51,13 @@ const Card = ({cardInfo, onSwipeEnd}) => {
 
     };
 
-    function updateStyle() {
+    async function updateStyle() {
         elem = elem? elem : document.getElementById("card-id").firstChild;
 
-        let rotationCoefficient = isUpperTouch ? -1 : 1;
+        let rotationCoefficient = isUpperTouch ? 1 : -1;
         let rotation = rotationCoefficient * shift.horizontalShift / 15 ;
 
-        elem.style.transform = "rotate(" + rotation + "deg)" +
-            " translate("+ shift.horizontalShift + "px, "+ shift.verticalShift + "px)";
+        elem.style.transform = `rotate(${rotation}deg) translate(${shift.horizontalShift}px, ${shift.verticalShift}px)`;
         elem.style.transition = isTransition ? "0.2s" : "";
     }
 
