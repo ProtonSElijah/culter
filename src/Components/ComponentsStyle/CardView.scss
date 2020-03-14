@@ -23,9 +23,7 @@ $swipeLeftColor: palevioletred;
     right: 11.5vmin;
     z-index: 400;
 
-    /*width: 87vmin;*/
     width: 72.5vmin;
-    height: 14vmax;
     color: white;
 }
 
@@ -61,13 +59,11 @@ $swipeLeftColor: palevioletred;
 
 .Swipe-content-down-container {
     width: 100%;
-    height: 100%;
     display: flex;
 }
 
 .Swipe-content-down-center {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -83,6 +79,14 @@ $swipeLeftColor: palevioletred;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    line-height: 4vmax;
+    white-space: normal;
+    margin-bottom: 2.5vmax;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .Swipe-content-down-center-date {
@@ -95,6 +99,10 @@ $swipeLeftColor: palevioletred;
 .Swipe-content-down-center-date p {
     font-size: 2.56vmax;
     width: fit-content;
+    height: auto;
+    line-height: 2.56vmax;
+    max-height: 2.56vmax;
+    margin-bottom: 0;
 }
 
 .Swipe-right-label{
