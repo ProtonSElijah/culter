@@ -8,19 +8,25 @@ import PeopleEndView from "./PeopleEndView";
 
 import defaultImage from "../../assets/defaultEventImage.jpg";
 
-const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, cardInfo,isTransition}) => {
+const CardView = ({swipeInfo, cardInfo}) => {
+    let hasMargin = swipeInfo.hasMargin;
+    let horizontalShift = swipeInfo.horizontalShift;
+    let verticalShift = swipeInfo.verticalShift;
+    let isUpperTouch = swipeInfo.isUpperTouch;
+    let isTransition = swipeInfo.isTransition;
 
-    let rotationCoefficient = isUpperTouch ? -1 : 1;
-    let rotation = rotationCoefficient * horizontalShift / 15 ;
-    let contentStyle = {
-            "transform": "rotate(" + rotation + "deg)" +
-                " translate("+ horizontalShift + "px, "+ verticalShift + "px)",
-            "transition" : isTransition ? "0.2s" : ""
-        };
+    // let rotationCoefficient = isUpperTouch ? -1 : 1;
+    // let rotation = rotationCoefficient * horizontalShift / 15 ;
+    // let contentStyle = {
+    //         "transform": "rotate(" + rotation + "deg)" +
+    //             " translate("+ horizontalShift + "px, "+ verticalShift + "px)",
+    //         "transition" : isTransition ? "0.2s" : ""
+    //     };
 
+    let contentStyle = {};
     if (hasMargin){
         contentStyle["position"] = "absolute";
-        contentStyle["z-index"] = "10";
+        contentStyle["zIndex"] = "10";
     }
 
     let isEnd = cardInfo.hasOwnProperty("isEnd");
@@ -30,6 +36,7 @@ const CardView = ({hasMargin, horizontalShift, verticalShift, isUpperTouch, card
 
     let imageSource = isEnd ? defaultImage :
             isEventCard ? cardInfo.images[0].image : cardInfo.photo_400_orig ;
+
 
     return  (
 

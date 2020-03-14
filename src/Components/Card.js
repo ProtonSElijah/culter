@@ -1,116 +1,135 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import './ComponentsStyle/Card.scss'
 import CardView from "./View/CardView";
 
-class Card extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentX: 0,
-            currentY: 0,
-            horizontalShift: 0,
-            verticalShift: 0,
-            isFirstTouch: true,
-            isSwiping: false,
-            height: 0
-        };
-        this.animatePick = this.animatePick.bind(this);
-        this.resetCard = this.resetCard.bind(this);
-    }
 
-    onTouch = (event) => {  
+const Card = ({cardInfo, onSwipeEnd}) => {
+
+    let shiftDict = {
+        horizontalShift: 0,
+        verticalShift: 0
+    };
+    let elem = null;
+    let currentX = 0;
+    let currentY = 0;
+    let isFirstTouch = true;
+    let isSwiping = false;
+    let isTransition = false;
+    let isUpperTouch = false;
+
+    let shift = {horizontalShift: 0, verticalShift: 0};
+
+
+    useEffect(() => {
+        updateStyle();
+    }, []);
+    const onTouch = (event) => {
         let touches = event.changedTouches;
-        for (let i = 0; i < touches.length; i++){
-            this.updateByTouch(touches[i])
+        for (let i = 0; i < touches.length; i++) {
+            updateByTouch(touches[i])
         }
     };
 
-    onTouchStart = (event) => {
-        this.setState({
-            isFirstTouch: true,
-            isSwiping: true,
-            isTransition: false
-        });
+    const onTouchStart = (event) => {
+        isFirstTouch = true;
+        isSwiping = true;
+        isTransition = false;
+        updateStyle();
     };
 
-    onTouchEnd = (event) => {
-        if (Math.abs(this.state.horizontalShift) > 100){
-            let isLike= this.state.horizontalShift > 0;
-            this.animatePick();
-            let thisHandler = this;
+    const onTouchEnd = (event) => {
+        if (Math.abs(shift.horizontalShift) > 100) {
+            let isLike = shift.horizontalShift > 0;
+            animatePick();
             setTimeout(() => {
-                thisHandler.resetCard(false);
-                thisHandler.props.onSwipeEnd(isLike);
-            },400);
+                resetCard(false);
+                onSwipeEnd(isLike);
+            }, 400);
         } else {
-            this.resetCard(true);
+            resetCard(true);
         }
 
     };
 
-    updateByTouch = (touch) =>{
-        let previousX = this.state.currentX;
-        let previousY = this.state.currentY;
+    function updateStyle() {
+        elem = elem? elem : document.getElementById("card-id").firstChild;
 
-        let updatedState = {
-            currentX: touch.clientX,
-            currentY: touch.clientY,
-        };
+        let rotationCoefficient = isUpperTouch ? -1 : 1;
+        let rotation = rotationCoefficient * shift.horizontalShift / 15 ;
 
-        if (this.state.isFirstTouch){
-            updatedState.isUpperTouch = touch.clientY > 300;
-            updatedState.isFirstTouch = false;
-        } else {
-            updatedState.horizontalShift = this.state.horizontalShift + touch.clientX - previousX;
-            updatedState.verticalShift = this.state.verticalShift + touch.clientY - previousY;
-        }
-
-        this.setState(updatedState);
+        elem.style.transform = "rotate(" + rotation + "deg)" +
+            " translate("+ shift.horizontalShift + "px, "+ shift.verticalShift + "px)";
+        elem.style.transition = isTransition ? "0.2s" : "";
     }
+
+    const updateByTouch = (touch) => {
+        let previousX = currentX;
+        let previousY = currentY;
+
+        currentX = touch.clientX;
+        currentY = touch.clientY;
+
+        if (isFirstTouch) {
+            isUpperTouch = touch.clientY < 300;
+
+            isFirstTouch = false;
+        } else {
+            shift =
+                {
+                    horizontalShift: shift.horizontalShift + touch.clientX - previousX,
+                    verticalShift: shift.verticalShift + touch.clientY - previousY
+                }
+
+        }
+        updateStyle();
+
+    };
 
     // Перемещает карту в сторону свайпа
-    animatePick = () => {
+    const animatePick = () => {
         // Задаём сначала транзитивность, а затем перемещаем карточку по вектору движения
-        this.setState({
-            isTransition: true
-        });
-        this.setState({
-            horizontalShift: this.state.horizontalShift * 5,
-            verticalShift: this.state.verticalShift * 5,
-        });
+        isTransition = true;
+        shiftDict.horizontalShift = shift.horizontalShift * 5;
+        shiftDict.verticalShift = shift.verticalShift * 5;
+        shift = shiftDict;
+        updateStyle();
     };
 
     // Возвращает карту в начальное положение
-    resetCard = (withTransition) => {
-        this.setState({
-            isTransition: withTransition,
-            isSwiping: false,
-            horizontalShift: 0,
-            verticalShift: 0,
-            currentX: 0,
-            currentY: 0,
-        });
+    const resetCard = (withTransition) => {
+        isTransition = withTransition;
+        isSwiping = false;
+        shiftDict.horizontalShift = 0;
+        shiftDict.verticalShift = 0;
+        shift = shiftDict;
+        currentY = 0;
+        currentX = 0;
+        updateStyle();
     };
 
-    render() {
-        return (
-            <div
-                style={{"position":"absolute", "z-index":"20"}}
-                className="Swipe-main"
-                 onTouchMove={this.onTouch}
-                 onTouchEnd={this.onTouchEnd}
-                 onTouchStart={this.onTouchStart}>
-                <CardView
-                    hasMargin={false}
-                    cardInfo={this.props.cardInfo}
-                    isSwiping={this.state.isSwiping}
-                    horizontalShift={this.state.horizontalShift}
-                    verticalShift={this.state.verticalShift}
-                    isUpperTouch={this.state.isUpperTouch}
-                    isTransition={this.state.isTransition}/>
-            </div>
-        );
-    }
-}
+    let swipeInfo = {
+        isSwiping: isSwiping,
+        hasMargin: false,
+        horizontalShift: shift.horizontalShift,
+        verticalShift: shift.verticalShift,
+        isUpperTouch: isUpperTouch,
+        isTransition: isTransition
+    };
+    return (
+        <div
+            id={"card-id"}
+            className="Swipe-main"
+            onTouchMove={onTouch}
+            onTouchEnd={onTouchEnd}
+            onTouchStart={onTouchStart}>
+            <CardView
+                swipeInfo={swipeInfo}
+                cardInfo={cardInfo}
+                />
+        </div>
+    );
+
+};
+
 
 export default Card;

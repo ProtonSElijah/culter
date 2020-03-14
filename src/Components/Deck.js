@@ -28,7 +28,7 @@ const Deck = ({index, setIndex, cards, loadCards, setRateBy, isEventDeck}) => {
                 <Card cardInfo={cards[topCardIndex]} onSwipeEnd={onSwipeEnd}/>
                 {
                     bottomCardIndex < cards.length ?
-                        <CardView hasMargin={true} cardInfo={cards[bottomCardIndex]} />:
+                        <CardView swipeInfo={{hasMargin: true}} cardInfo={cards[bottomCardIndex]} />:
                         <div/>
                 }
             </div> :
