@@ -107,10 +107,25 @@ $swipeLeftColor: palevioletred;
 .Swipe-content-down-center-date p {
     font-size: 2.56vmax;
     width: fit-content;
+    max-width: 100%;
     height: auto;
     line-height: 2.56vmax;
-    max-height: 2.56vmax;
     margin-bottom: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* Две строчки */
+    max-height: 5.12vmax;
+
+    /* Одна строчка */
+    /*white-space: nowrap;
+    display: unset;
+    max-height: 2.56vmax;*/
+}
+
+.Swipe-content-down-center-date p:last-child {
+    margin-top: 1vmax;
 }
 
 .Swipe-right-label{
