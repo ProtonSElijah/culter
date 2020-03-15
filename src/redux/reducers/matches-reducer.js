@@ -1,3 +1,5 @@
+import {calculateElementsToAdd} from "./utils";
+
 const initialState = {
     matches: [],
     page: 0,
@@ -24,10 +26,16 @@ function matches(state = initialState, action) {
 
         case  "UPDATE_COMMON_EVENTS": {
             let otherUserId = action.otherUserId;
-            let events = action.newEvents;
+            let receivedEvents = action.newEvents;
+
+            let pageSize = state.eventsPageSize;
 
             state = updateUserById(state, otherUserId, (matchedUser) =>{
-                matchedUser.commonEvents = events
+                let commonEventsLength = matchedUser.commonEvents.length;
+
+                let elementsToAdd = calculateElementsToAdd(receivedEvents, commonEventsLength, pageSize);
+                matchedUser.commonEvents = matchedUser.commonEvents.concat(elementsToAdd);
+                matchedUser.page = Math.trunc(matchedUser.commonEvents.length / state.eventsPageSize);
             });
             return state;
         }
