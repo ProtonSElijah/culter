@@ -11,8 +11,10 @@ const PeopleEndView = () => {
         <div className="Swipe-content-down-container">
             <div className="Swipe-content-down-center">
                 <p>Люди закончились</p>
-                <p><div className="Swipe-content-down-image"><img src={eventsIcon}  alt="events icon"/></div>&nbsp; Выбери куда пойти</p>
-                <p><div className="Swipe-content-down-image"><img src={chatIcon} alt="chat icon" /></div>&nbsp; Позови людей на ивент</p>
+                <div className="Swipe-content-down-center-date">
+                    <p><img style={{"width": "20px"}} src={eventsIcon} alt="chat icon" />&nbsp;: выбери события</p>
+                    <p><img style={{"width": "20px"}} src={chatIcon} alt="chat icon" />&nbsp;: позови на событие</p>
+                </div>
             </div>
         </div>
     )
