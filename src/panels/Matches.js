@@ -15,10 +15,29 @@ import {fetchMatches} from "../services/Matches";
 const Matches = ({id}) => {
     const user = useSelector(state => state.userState.user);
     const matches = useSelector(state => state.matchesState.matches);
+    const matchesCount = useSelector(state => state.matchesState.matchesCount);
+    let isLoading = false;
 
     async function loadMatches(){
         await fetchMatches();
     }
+
+    const onMatchesScroll = (e) => {
+        let elem = e.currentTarget;
+        if (elem.scrollHeight - elem.clientHeight*2 <= elem.scrollTop) {
+            try {
+                if (!isLoading){
+                    if (matchesCount > matches.length){
+                        isLoading = true;
+                        loadMatches().then(() => isLoading = false);
+                    }
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    };
 
     useEffect(() => {
         if (user)
@@ -58,7 +77,7 @@ const Matches = ({id}) => {
             <div className="Dialogues">
                 <p>Совпадения</p>
             </div>
-            <div className="ListContainer">
+            <div className="ListContainer" onScroll={onMatchesScroll}>
                 {matches.length > 0 ?
                     <MatchedList
                         list={matches}/> :

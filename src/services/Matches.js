@@ -5,8 +5,8 @@ import { fetchMatchesCall } from "../Api/Matches"
 export async function fetchMatches() {
     let requestState = store.getState();
     let userId = requestState.userState.user.id;
-    let page = requestState.peopleState.page;
-    let size = requestState.peopleState.size;
+    let page = requestState.matchesState.page;
+    let size = requestState.matchesState.size;
 
     let matches = await fetchMatchesCall(userId, page, size);
     updateStore(matches);
@@ -15,7 +15,7 @@ export async function fetchMatches() {
 
 
 function updateStore(newMatches) {
-    if (newMatches.length !== 0)
+    if (newMatches.content.length !== 0)
         store.dispatch(loadMatches(newMatches));
 
 }

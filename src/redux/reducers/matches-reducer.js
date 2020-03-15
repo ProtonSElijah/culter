@@ -3,8 +3,9 @@ import {calculateElementsToAdd} from "./utils";
 const initialState = {
     matches: [],
     page: 0,
-    size: 15,
-    eventsPageSize: 10
+    size: 5,
+    eventsPageSize: 10,
+    matchesCount: 0
 };
 
 function matches(state = initialState, action) {
@@ -14,13 +15,14 @@ function matches(state = initialState, action) {
             state.page = Math.trunc(state.matches.length / state.size);
             return state;
         case "MATCHES_LOAD": {
-            let receivedMatches = action.matches;
+            let receivedMatches = action.matches.content;
             let matchesCount = receivedMatches.length;
             let shiftIndex = state.matches.length % state.size;
             let newMatches = receivedMatches.slice(shiftIndex, matchesCount);
 
             state.matches = state.matches.concat(newMatches);
             state.page = Math.trunc(state.matches.length / state.size);
+            state.matchesCount = action.matches.totalElements;
             return state;
         }
 

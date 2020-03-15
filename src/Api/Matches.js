@@ -11,7 +11,8 @@ export async function fetchMatchesCall(userId, page, size) {
     let newMatches = newMatchesJson.content;
     setUpEmptyCommonEvents(newMatches);
     updateEmptyImages(newMatches);
-    return newMatches;
+    newMatchesJson.content = newMatches;
+    return newMatchesJson;
 }
 
 
