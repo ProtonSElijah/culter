@@ -223,15 +223,15 @@
 }
 
 .Person .eventsContainer {
-    margin-top: 2vmax;
-    margin-bottom: 1.4vmax;
+    /*margin-top: 2vmax;
+    margin-bottom: 1.4vmax;*/
     /*height: 20.5vmax;*/
     height: 0vmax;
     width: 90vmin;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
-    transition:height 0.3s ease-in-out;
+    transition:height,margin-bottom,margin-top 0.3s ease-in-out;
 }
 
 .events {

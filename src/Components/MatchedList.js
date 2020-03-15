@@ -8,6 +8,7 @@ import {fetchCommonEvents} from "../services/Events";
 
 const MatchedList = ({list}) => {
     const [currentOPenBlock, setCurrentOPenBlock] = useState(null);
+    let isLoading = false;
 
     const openEvents = (e) => {
         if ((currentOPenBlock) && (currentOPenBlock.dataset.id !== e.currentTarget.dataset.id)) {
@@ -31,9 +32,11 @@ const MatchedList = ({list}) => {
     const toggleCommonEvents = (target, isClosed) => {
         let elementStyle = target.parentElement.children[3].style;
         elementStyle.height = isClosed ? "22vmax" : "0vmax";
-
+        elementStyle.marginBottom = isClosed ? "1.4vmax" : "0vmax";
+        elementStyle.marginTop = isClosed ? "2vmax" : "0vmax";
         let arrow = target.parentElement.getElementsByClassName("arrow")[0];
         if (isClosed){
+
             arrow.classList.add("arrowActive");
         } else {
             arrow.classList.remove("arrowActive");
@@ -46,6 +49,19 @@ const MatchedList = ({list}) => {
 
     const toVKProfile = (e) => {
         document.location.href = "https://vk.com/id" + e.currentTarget.dataset.userid;
+    };
+
+    const myFunction = (e) =>{
+        let elem = e.currentTarget;
+
+        let otherUserId = parseInt(elem.dataset.id);
+        if (elem.scrollWidth - elem.clientWidth*2 <= elem.scrollLeft){
+            if (!isLoading){
+                isLoading = true;
+                fetchCommonEvents(otherUserId).then(() => {isLoading = false});
+
+            }
+        }
     };
     return list.map(
         person =>
@@ -64,7 +80,7 @@ const MatchedList = ({list}) => {
                     <div className="events">{person.count_common_events} общих событий</div>
                 </div>
 
-                <div className="eventsContainer">
+                <div className="eventsContainer" data-id={person.id}  onScroll={myFunction}>
                    <div className="events">
                         <CommonEventsList events={
                             person.commonEvents.length > 0 ?
