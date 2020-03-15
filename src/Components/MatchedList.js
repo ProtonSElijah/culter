@@ -30,7 +30,7 @@ const MatchedList = ({list}) => {
 
     const toggleCommonEvents = (target, isClosed) => {
         let elementStyle = target.parentElement.children[3].style;
-        elementStyle.height = isClosed ? "20.5vmax" : "0vmax";
+        elementStyle.height = isClosed ? "22vmax" : "0vmax";
 
         let arrow = target.parentElement.getElementsByClassName("arrow")[0];
         if (isClosed){

@@ -240,7 +240,6 @@
 }
 
 .eventContainer {
-    height: 100%;
     width: 24.7vmin;
     margin-left: 2.5vmin;
     display: flex;
@@ -308,13 +307,19 @@
 }
 
 .eventContainer .name p {
-    font-size: 9px;
+    font-size: 1.6vmax;
     font-style: normal;
     font-weight: normal;
     font-family: "SF Text", serif;
 
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    line-height: 1.6vmax;
+    white-space: normal;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 /*конец списка метчей*/
