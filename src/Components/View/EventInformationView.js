@@ -3,7 +3,7 @@ import '../ComponentsStyle/CardView.scss'
 
 const EventInformationView = ({event}) => {
     let isDateProvided = event.start_date && event.start_time;
-
+    let isPlaceProvided = event.place && event.place.title;
     let date = "";
     let time = "";
     let week = "";
@@ -16,6 +16,18 @@ const EventInformationView = ({event}) => {
         day = date.toLocaleDateString("ru-Ru", { month: 'long', day: 'numeric'});
     }
 
+    let place = "";
+    if (isPlaceProvided){
+
+        if (event.place.title.length <= 16){
+            place = event.place.title;
+        } else {
+            place = event.place.short_title;
+        }
+
+
+    }
+
     return  (
         <div className="Swipe-content-down-container">
 
@@ -23,9 +35,9 @@ const EventInformationView = ({event}) => {
                 <p>{event.short_title}</p>
                 <div className="Swipe-content-down-center-date">
                     {isDateProvided &&
-                    <p> {day}</p>}
-                    {isDateProvided &&
-                    <p>{time} {week} </p>
+                    <p> {day}, {week}</p>}
+                    {isPlaceProvided &&
+                    <p>{place} </p>
                      }
                  </div>
             </div>
