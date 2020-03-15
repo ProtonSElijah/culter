@@ -51,22 +51,26 @@ const MatchedList = ({list}) => {
         document.location.href = "https://vk.com/id" + e.currentTarget.dataset.userid;
     };
 
-    const myFunction = (e) =>{
+    const loadCommonEvents = (e) =>{
         let elem = e.currentTarget;
 
+
         let otherUserId = parseInt(elem.dataset.id);
+
         if (elem.scrollWidth - elem.clientWidth*2 <= elem.scrollLeft){
             if (!isLoading){
-                isLoading = true;
-                fetchCommonEvents(otherUserId).then(() => {isLoading = false});
-
+                let otherUser = list.find((person) => person.id === otherUserId);
+                if (otherUser.commonEvents.length < otherUser.count_common_events){
+                    isLoading = true;
+                    fetchCommonEvents(otherUserId).then(() => {isLoading = false});
+                }
             }
         }
     };
     return list.map(
         person =>
         <div className="PersonContainer" key={person.id}>
-            <div className="Person" key={person.key}>
+            <div className="Person">
                 <img className="avatar" src={person.photo_400_orig} onClick={toVKProfile} alt="Person"/>
 
 
@@ -80,7 +84,7 @@ const MatchedList = ({list}) => {
                     <div className="events">{person.count_common_events} общих событий</div>
                 </div>
 
-                <div className="eventsContainer" data-id={person.id}  onScroll={myFunction}>
+                <div className="eventsContainer" data-id={person.id}  onScroll={loadCommonEvents}>
                    <div className="events">
                         <CommonEventsList events={
                             person.commonEvents.length > 0 ?
@@ -96,7 +100,7 @@ const MatchedList = ({list}) => {
             </div>
         </div>
     );
-}
+};
 
 /*<a className="PersonPlacesList" href={"https://vk.com/im?sel=" + person.id}>
                             {"Перейти в сообщения"}
