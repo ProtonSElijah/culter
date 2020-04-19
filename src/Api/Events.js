@@ -13,6 +13,11 @@ export async function fetchCommonEventsRequest(userId, otherUserId, page, size) 
 
 }
 
+export async function fetchEventsByQuery(query, page, size){
+    let url = buildUrlForEventsByQuery(query, page, size);
+    return await getPageableEventsByUrl(url);
+}
+
 async function getPageableEventsByUrl(url) {
     let response = await fetch(url, {method: "GET",});
     if (!isValidResponse(response)) {
@@ -42,6 +47,12 @@ function buildUrlForCommonEvents(userId, otherUserId, page, size) {
         + `/common/events?anotherUserId=${otherUserId}`
         + "&page=" + page
         + "&size=" + size;
+}
+
+function buildUrlForEventsByQuery(query, page, size) {
+    return `${config.url}/event/search`
+    + `?query=${query}`+ `&page=${page}` + `&size=${size}`;
+}
 }
 
 function updateImageUrls(newEvents) {
