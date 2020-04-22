@@ -53,7 +53,7 @@ function buildUrlForEventsByQuery(query, page, size) {
     return `${config.url}/event/search`
     + `?query=${query}`+ `&page=${page}` + `&size=${size}`;
 }
-}
+
 
 function updateImageUrls(newEvents) {
     newEvents.forEach((item) => {
