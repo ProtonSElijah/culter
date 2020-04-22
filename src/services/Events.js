@@ -1,6 +1,6 @@
 import store from "../redux/store/store";
-import {reload, load} from "../redux/actions/events-actions";
-import {fetchCommonEventsRequest, fetchEventsRequest} from "../Api/Events";
+import {reload, load, getEventsByQuery} from "../redux/actions/events-actions";
+import {fetchCommonEventsRequest, fetchEventsRequest, fetchEventsByQuery} from "../Api/Events";
 import {updateCommonEvents, updateCommonEventsCount} from "../redux/actions/matches-actions";
 
 export async function fetchEvents(categories = [1, 6], isReload = false, is_personal = true) {
@@ -14,11 +14,6 @@ export async function fetchEvents(categories = [1, 6], isReload = false, is_pers
     updateEventsState(isReload, newEvents.content);
 }
 
-function updateCommonEventsCountState(otherUserId, totalElementsCount) {
-    if (totalElementsCount > 0){
-        store.dispatch(updateCommonEventsCount(otherUserId,totalElementsCount))
-    }
-}
 
 export async function fetchCommonEvents(otherUserId) {
     let requestState = store.getState();
@@ -37,6 +32,22 @@ export async function fetchCommonEvents(otherUserId) {
     updateCommonEventsCountState(otherUserId, newEvents.totalElements);
 }
 
+export async function searchEventsByQuery(query) {
+    let requestState = store.getState();
+    let page = requestState.eventsState.searchSelection.page;
+    let size = requestState.eventsState.searchSelection.size;
+
+    let newEvents = await fetchEventsByQuery(query,page,size);
+    
+    updateSearchEventsState(query, newEvents.content);
+}
+
+function updateCommonEventsCountState(otherUserId, totalElementsCount) {
+    if (totalElementsCount > 0){
+        store.dispatch(updateCommonEventsCount(otherUserId,totalElementsCount))
+    }
+}
+
 function updateCommonEventsState(otherUserId, newEvents) {
     if (newEvents.length !== 0)
         store.dispatch(updateCommonEvents(otherUserId,newEvents))
@@ -49,6 +60,10 @@ function updateEventsState(isReload, newEvents) {
         store.dispatch(load(newEvents));
     }
 
+}
+
+function updateSearchEventsState(query, newEvents){
+    store.dispatch(getEventsByQuery(query,newEvents));
 }
 
 

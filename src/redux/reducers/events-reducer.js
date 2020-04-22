@@ -6,6 +6,7 @@ const initialState = {
     size: 20,
     index: 0,
     searchSelection: {
+        query: "",
         page: 0,
         pageSize: 20,
         events: []
@@ -24,24 +25,24 @@ function events(state=initialState, action){
         case "SET_INDEX":
             state.index = action.index;
             return state;
-        case "RELOAD_SEARCH":{
-            let page = action.events / state.searchSelection.size;
-            let size = state.searchSelection.pageSize;
-            state.searchSelection = {
-                events: action.events,
-                page: page,
-                pageSize: size
-            }
-            return state
-        }
         case "SEARCH":{
+            let isReload = state.searchSelection.query !== action.query;
+            let updatedEvents = [];
             let size = state.searchSelection.pageSize;
-            let previousLength = state.searchSelection.events.length;
-            let eventsToAdd = calculateElementsToAdd(action.events, previousLength, size);
 
-            let updatedEvents = state.searchSelection.events.concat(eventsToAdd);
+            if (!isReload){
+                let previousLength = state.searchSelection.events.length;
+                let eventsToAdd = calculateElementsToAdd(action.events, previousLength, size);
+                updatedEvents = state.searchSelection.events.concat(eventsToAdd);
+            } else {
+                updatedEvents = action.events;
+            }
+            
+
             let page = Math.trunc(updatedEvents.length / size);
+            let query = action.query;
             state.searchSelection = {
+                query: query,
                 events: updatedEvents,
                 pageSize: size,
                 page: page
