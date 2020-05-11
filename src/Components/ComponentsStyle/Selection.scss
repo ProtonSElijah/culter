@@ -1,0 +1,29 @@
+$width:95vmin;
+$leftMargin: 2.5vmin;
+
+.selection-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.selection-container > .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: $leftMargin;
+    width: $width;
+}
+
+.selection-container > .body{
+    width: $width;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.selection-container > .body > .scroll{
+    margin-left: $leftMargin;
+    display: flex;
+    flex-direction: row;
+}

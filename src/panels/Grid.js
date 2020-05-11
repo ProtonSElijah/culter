@@ -12,6 +12,7 @@ import './panelsStyle/Grid.css';
 import {fetchEvents} from "../services/Events";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import Search from '../Components/Search';
+import Selection from '../Components/Selection';
 
 const Grid = ({id}) => {
     const user = useSelector(state => state.userState.user);
@@ -92,6 +93,9 @@ const Grid = ({id}) => {
             <Header panelId={id}/>
 
                 <Search />
+
+                <Selection/>
+                <Selection/>
 
                 <div className="Grid-eventList" onScroll={uploadData}>
                     {events &&

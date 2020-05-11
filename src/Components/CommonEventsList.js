@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './ComponentsStyle/CommonEventsList.scss';
 const CommonEventsList = ({events}) => {
 
     const getFormattedDay = (date) => {
@@ -10,7 +10,7 @@ const CommonEventsList = ({events}) => {
 
     return events.map(
         event =>
-        <div className="eventContainer" key={event.id}>
+        <div className="eventContainer" >
             <div className="poster">
                 <div className="image-container">
                     <img src={event.images[0].image}  alt={event.short_title}/>
