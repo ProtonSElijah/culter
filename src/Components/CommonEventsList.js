@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CommonEventsList = ({events}) => {
-    console.log(events);
+
     const getFormattedDay = (date) => {
         if (!date) return "";
         let day = new Date(date);
