@@ -1,33 +1,29 @@
 import React from 'react';
-import '../ComponentsStyle/CardView.scss'
+import '../ComponentsStyle/CardView.scss';
 
 const PersonInformationView = ({person}) => {
+  const getAge = (birthday) => {
+    const birthdayDate = new Date(birthday);
+    const ageDifMs = Date.now() - birthdayDate.getTime();
+    const ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  };
 
-    const getAge = (birthday) => {
-        let birthdayDate = new Date(birthday);
-        let ageDifMs = Date.now() - birthdayDate.getTime();
-        let ageDate = new Date(ageDifMs);
-        return  Math.abs(ageDate.getUTCFullYear() - 1970);
-    };
+  let age = '';
+  if (person.birthday) {
+    age = getAge(person.birthday);
+  }
+  return (
 
-    let age = "";
-    if (person.birthday){
-       age = getAge(person.birthday);
-    }
-    return  (
+    <div className="Swipe-content-down-container">
 
-        <div className="Swipe-content-down-container">
+      <div className="Swipe-content-down-center user">
+        <p>{person.first_name}{age? `, ${age}` : ''}</p>
+        <p>Общих событий: <b>{person.count_common_events}</b></p>
+      </div>
 
-            <div className="Swipe-content-down-center user">
-                <p>{person.first_name}{age? `, ${age}` : ""}</p>
-
-                <p>Общих событий: <b>{person.count_common_events}</b></p>
-   
-            </div>
-
-        </div>
-    )
-
+    </div>
+  );
 };
 
 export default PersonInformationView;

@@ -18,7 +18,7 @@ class Card extends Component {
         this.resetCard = this.resetCard.bind(this);
     }
 
-    onTouch = (event) => {  
+    onTouch = (event) => {
         let touches = event.changedTouches;
         for (let i = 0; i < touches.length; i++){
             this.updateByTouch(touches[i])

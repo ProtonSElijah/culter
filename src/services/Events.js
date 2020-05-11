@@ -1,69 +1,69 @@
-import store from "../redux/store/store";
-import {reload, load, getEventsByQuery} from "../redux/actions/events-actions";
-import {fetchCommonEventsRequest, fetchEventsRequest, fetchEventsByQuery} from "../Api/Events";
-import {updateCommonEvents, updateCommonEventsCount} from "../redux/actions/matches-actions";
+import store from '../redux/store/store';
+import {reload, load, getEventsByQuery} from '../redux/actions/events-actions';
+import {fetchCommonEventsRequest, fetchEventsRequest, fetchEventsByQuery} from '../Api/Events';
+import {updateCommonEvents, updateCommonEventsCount} from '../redux/actions/matches-actions';
 
 export async function fetchEvents(categories = [1, 6], isReload = false, is_personal = true) {
-    let requestState = store.getState();
-    let userId = requestState.userState.user.id;
-    let page = requestState.eventsState.page;
-    let size = requestState.eventsState.size;
+  const requestState = store.getState();
+  const userId = requestState.userState.user.id;
+  const page = requestState.eventsState.page;
+  const size = requestState.eventsState.size;
 
-    let newEvents = await fetchEventsRequest(userId,categories, is_personal, page, size);
+  const newEvents = await fetchEventsRequest(userId, categories, is_personal, page, size);
 
-    updateEventsState(isReload, newEvents.content);
+  updateEventsState(isReload, newEvents.content);
 }
 
 
 export async function fetchCommonEvents(otherUserId) {
-    let requestState = store.getState();
-    let userId = requestState.userState.user.id;
-    let matches = requestState.matchesState.matches;
+  const requestState = store.getState();
+  const userId = requestState.userState.user.id;
+  const matches = requestState.matchesState.matches;
 
-    let matchedUser = matches.find(
-        (match =>  match.id === otherUserId)
-    );
-    let page = matchedUser.page;
-    let size = requestState.matchesState.eventsPageSize;
+  const matchedUser = matches.find(
+      ((match) => match.id === otherUserId),
+  );
+  const page = matchedUser.page;
+  const size = requestState.matchesState.eventsPageSize;
 
-    let newEvents = await fetchCommonEventsRequest(userId, otherUserId, page, size);
+  const newEvents = await fetchCommonEventsRequest(userId, otherUserId, page, size);
 
-    updateCommonEventsState(otherUserId, newEvents.content);
-    updateCommonEventsCountState(otherUserId, newEvents.totalElements);
+  updateCommonEventsState(otherUserId, newEvents.content);
+  updateCommonEventsCountState(otherUserId, newEvents.totalElements);
 }
 
 export async function searchEventsByQuery(query) {
-    let requestState = store.getState();
-    let page = requestState.eventsState.searchSelection.page;
-    let size = requestState.eventsState.searchSelection.size;
+  const requestState = store.getState();
+  const page = requestState.eventsState.searchSelection.page;
+  const size = requestState.eventsState.searchSelection.size;
 
-    let newEvents = await fetchEventsByQuery(query,page,size);
-    
-    updateSearchEventsState(query, newEvents.content);
+  const newEvents = await fetchEventsByQuery(query, page, size);
+
+  updateSearchEventsState(query, newEvents.content);
 }
 
 function updateCommonEventsCountState(otherUserId, totalElementsCount) {
-    if (totalElementsCount > 0){
-        store.dispatch(updateCommonEventsCount(otherUserId,totalElementsCount))
-    }
+  if (totalElementsCount > 0) {
+    store.dispatch(updateCommonEventsCount(otherUserId, totalElementsCount));
+  }
 }
 
 function updateCommonEventsState(otherUserId, newEvents) {
-    if (newEvents.length !== 0)
-        store.dispatch(updateCommonEvents(otherUserId,newEvents))
+  if (newEvents.length !== 0) {
+    store.dispatch(updateCommonEvents(otherUserId, newEvents));
+  }
 }
 
 function updateEventsState(isReload, newEvents) {
-    if (isReload) {
-        store.dispatch(reload(newEvents));
-    } else if (newEvents.length !== 0) {
-        store.dispatch(load(newEvents));
-    }
-
+  if (isReload) {
+    store.dispatch(reload(newEvents));
+  } else if (newEvents.length !== 0) {
+    store.dispatch(load(newEvents));
+  }
 }
 
-function updateSearchEventsState(query, newEvents){
-    store.dispatch(getEventsByQuery(query,newEvents));
+function updateSearchEventsState(query, newEvents) {
+  store.dispatch(getEventsByQuery(query, newEvents));
 }
 
 

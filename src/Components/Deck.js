@@ -1,42 +1,42 @@
 import React from 'react';
-import store from "../redux/store/store";
+import store from '../redux/store/store';
 
 
-import Card from "./Card";
-import CardView from "./View/CardView";
+import Card from './Card';
+import CardView from './View/CardView';
 
 const Deck = ({index, setIndex, cards, loadCards, setRateBy, isEventDeck}) => {
-     const onSwipeEnd = async function(isLike) {
-        setRateBy(cards[index].id, isLike);
+  const onSwipeEnd = async function(isLike) {
+    setRateBy(cards[index].id, isLike);
 
-        // Uploading if necessary
-        if (cards.length - index < 10){
-            loadCards();
-        }
+    // Uploading if necessary
+    if (cards.length - index < 10) {
+      loadCards();
+    }
 
-        store.dispatch(setIndex(index + 1));
-    };
+    store.dispatch(setIndex(index + 1));
+  };
 
-    let topCardIndex = index;
-    let bottomCardIndex = topCardIndex + 1;
+  const topCardIndex = index;
+  const bottomCardIndex = topCardIndex + 1;
 
-    let endCard = {"isEnd": true, "end_type" : isEventDeck}
-    return (
+  const endCard = {'isEnd': true, 'end_type': isEventDeck};
+  return (
 
         cards.length > 0 && topCardIndex < cards.length ?
             <div>
-                <Card cardInfo={cards[topCardIndex]} onSwipeEnd={onSwipeEnd}/>
-                {
+              <Card cardInfo={cards[topCardIndex]} onSwipeEnd={onSwipeEnd}/>
+              {
                     bottomCardIndex < cards.length ?
                         <CardView hasMargin={true} cardInfo={cards[bottomCardIndex]} />:
                         <div/>
-                }
+              }
             </div> :
             <div >
-                <Card cardInfo={endCard} onSwipeEnd={()=>{}}/>
+              <Card cardInfo={endCard} onSwipeEnd={()=>{}}/>
             </div>
-      
-    )
+
+  );
 };
 
 export default Deck;

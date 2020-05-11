@@ -1,5 +1,5 @@
 export function calculateElementsToAdd(collection, collectionWhereAddLength, pageSize) {
-    let elementsCount = collection.length;
-    let shiftIndex = collectionWhereAddLength % pageSize;
-    return collection.slice(shiftIndex, elementsCount);
+  const elementsCount = collection.length;
+  const shiftIndex = collectionWhereAddLength % pageSize;
+  return collection.slice(shiftIndex, elementsCount);
 }
