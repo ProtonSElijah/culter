@@ -17,3 +17,11 @@ export function setIndex(index){
         index
     }
 }
+
+export function getEventsByQuery(query, events){
+    return {
+        type: "SEARCH",
+        query,
+        events
+    }
+}
